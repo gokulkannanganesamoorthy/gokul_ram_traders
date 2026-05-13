@@ -6,6 +6,7 @@ import Stats from './components/Stats';
 import Products from './components/Products';
 import BrandShowcase from './components/BrandShowcase';
 import WhyUs from './components/WhyUs';
+import CTA from './components/CTA';
 import Footer from './components/Footer';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <WhyUs />
         <Products />
         <BrandShowcase />
+        <CTA />
       </main>
       <Footer />
     </div>
