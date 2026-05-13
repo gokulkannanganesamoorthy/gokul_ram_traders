@@ -5,10 +5,10 @@ export default function Navbar() {
 
   const items = [
     { id: 'hero', label: 'Home' },
-    { id: 'stats', label: 'Excellence' },
-    { id: 'products', label: 'Offerings' },
-    { id: 'brands', label: 'Partners' },
-    { id: 'contact', label: 'Reach' }
+    { id: 'why-us', label: 'About' },
+    { id: 'products', label: 'Products' },
+    { id: 'brands', label: 'Brands' },
+    { id: 'contact', label: 'Contact' }
   ]
 
   useEffect(() => {

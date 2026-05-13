@@ -1,22 +1,22 @@
-import { useInView } from '../hooks/useInView'
+import { useInView } from '../hooks/useInView';
 
 const STATS = [
-  { value: '15+', label: 'Experience', sub: 'Years of Trust' },
+  { value: '13+', label: 'Experience', sub: 'Years of Trust' },
   { value: '100%', label: 'Authentic', sub: 'Genuine Brands' },
   { value: 'Direct', label: 'Authorized', sub: 'Brand Dealers' },
   { value: 'Ready', label: 'Availability', sub: 'Fast Local Stock' },
-]
+];
 
 export default function Stats() {
-  const [ref, inView] = useInView({ once: true, threshold: 0.2 })
+  const [ref, inView] = useInView({ once: true, threshold: 0.2 });
 
   return (
     <section id="stats" ref={ref} className="section-padding bg-white">
       <div className="container-wide">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {STATS.map((stat, i) => (
-            <div 
-              key={stat.label} 
+            <div
+              key={stat.label}
               className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
@@ -27,12 +27,14 @@ export default function Stats() {
                 <h2 className="text-6xl font-light tracking-tighter mb-4">
                   {stat.value}
                 </h2>
-                <p className="text-sm text-brand-gray-600 font-medium">{stat.sub}</p>
+                <p className="text-sm text-brand-gray-600 font-medium">
+                  {stat.sub}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

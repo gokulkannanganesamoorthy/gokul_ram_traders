@@ -72,7 +72,7 @@ export default function CTA() {
 
           <div className="mt-20 text-center">
             <a
-              href="https://maps.google.com/?q=Gokul+Ram+Traders+Rajapalayam"
+              href="https://maps.app.goo.gl/7Xjbt1dYqnoMBvtg7"
               target="_blank"
               rel="noreferrer"
               className="text-xs font-bold uppercase tracking-[0.3em] border-b-2 border-brand-black pb-2 hover:text-brand-gray-400 hover:border-brand-gray-400 transition-all"

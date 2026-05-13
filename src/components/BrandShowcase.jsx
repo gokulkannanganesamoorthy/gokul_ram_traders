@@ -33,7 +33,7 @@ export default function BrandShowcase() {
               className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <h4 className="text-3xl md:text-5xl text-brand-black tracking-tighter hover:font-light transition-all">
+              <h4 className="text-3xl md:text-5xl font-light  text-brand-black tracking-tighter  hover:text-brand-gray-400 transition-all">
                 {brand}
               </h4>
             </div>
