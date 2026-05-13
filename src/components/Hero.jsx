@@ -18,12 +18,6 @@ export default function Hero() {
           <span className="font-medium">Electricals.</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-brand-gray-600 font-light max-w-2xl mx-auto leading-relaxed mb-16">
-          Premium Electrical & Plumbing Solutions Built For Long-Term
-          Performance. Delivering genuine branded products to Rajapalayam for
-          over 15 years.
-        </p>
-
         <div className="flex justify-center">
           <a
             href="#contact"

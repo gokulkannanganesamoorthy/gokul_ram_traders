@@ -8,7 +8,7 @@ const CATEGORIES = [
   },
   {
     id: '02',
-    name: 'Piping Systems',
+    name: 'Pipes',
     desc: 'Heavy-duty PVC, CPVC and GI piping for secure builds.',
   },
   {
@@ -18,7 +18,7 @@ const CATEGORIES = [
   },
   {
     id: '04',
-    name: 'Switchgear',
+    name: 'Switches & Gears',
     desc: 'Modular switches and advanced circuit protection.',
   },
   {
@@ -28,6 +28,11 @@ const CATEGORIES = [
   },
   {
     id: '06',
+    name: 'Water Tanks',
+    desc: 'Triple-layer insulated storage tanks for domestic and industrial use.',
+  },
+  {
+    id: '07',
     name: 'Accessories',
     desc: 'All essential electrical and plumbing accessories.',
   },

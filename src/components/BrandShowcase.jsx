@@ -8,6 +8,11 @@ const BRANDS = [
   'Hi-Fi',
   'Orient',
   'Kundan',
+  'LEO',
+  'Ganga',
+  'Surya',
+  'Almonard',
+  'Vinay',
 ];
 
 export default function BrandShowcase() {

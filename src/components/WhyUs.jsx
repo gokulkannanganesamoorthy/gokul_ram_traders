@@ -10,8 +10,16 @@ const FEATURES = [
     desc: 'Sourcing directly from top brands.',
   },
   {
-    title: 'Project Ready',
+    title: 'Stock Ready',
     desc: 'Wholesale inventory and bulk supply for contractors.',
+  },
+  {
+    title: 'Wide Range & Best Price',
+    desc: 'Wide Range of Products from Top Brands at Best Price.',
+  },
+  {
+    title: 'Quality & Reliability',
+    desc: 'Quality & Reliability Guaranteed.',
   },
 ];
 
