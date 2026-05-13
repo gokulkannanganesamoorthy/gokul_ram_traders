@@ -1,51 +1,36 @@
-import { useRef } from 'react'
-import { useStickyScrollProgress } from '../hooks/useScrollProgress'
-
-const BRANDS = ['Supreme', 'Crompton', 'V-Guard', 'Goldmedal', 'HiFi']
+const BRANDS = [
+  { name: 'Supreme', type: 'Piping Systems' },
+  { name: 'Crompton', type: 'Consumer Electricals' },
+  { name: 'V-Guard', type: 'Power Solutions' },
+  { name: 'Goldmedal', type: 'Modular Switches' },
+  { name: 'Havells', type: 'Industrial Switchgear' },
+  { name: 'Finolex', type: 'Wires & Cables' }
+]
 
 export default function BrandShowcase() {
-  const containerRef = useRef(null)
-  const progress = useStickyScrollProgress(containerRef)
-
-  const interpolate = (p, start, end, from, to) => {
-    if (p < start) return from
-    if (p > end) return to
-    return from + (to - from) * ((p - start) / (end - start))
-  }
-
   return (
-    <section ref={containerRef} id="brands" className="relative h-[300vh] bg-white border-t border-[#E5E5E5]">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        
-        <div className="relative w-full h-full flex items-center justify-center">
-          {BRANDS.map((brand, i) => {
-            const chunk = 1 / BRANDS.length
-            const start = i * chunk
-            const peak = start + chunk / 2
-            const end = start + chunk
-            
-            const op = interpolate(progress, start - 0.1, peak, 0, 1) * interpolate(progress, peak, end + 0.1, 1, 0)
-            const scale = interpolate(progress, start - 0.1, end + 0.1, 0.8, 1.5)
-            const blur = interpolate(progress, start - 0.1, peak, 20, 0) + interpolate(progress, peak, end + 0.1, 0, 20)
+    <section id="brands" className="bg-brand-gray-100 border-t border-brand-gray-200">
+      <div className="container-wide">
+        <div className="grid-modular">
+          
+          <div className="grid-cell md:col-span-4 bg-brand-white">
+            <p className="label-mono">Partnerships</p>
+            <h2 className="text-4xl font-black uppercase tracking-tighter">Authorized Dealer</h2>
+            <p className="mt-8 text-brand-gray-600 leading-relaxed">
+              We maintain direct partnerships with India's leading electrical brands to ensure 100% genuine products and manufacturer warranties for every purchase.
+            </p>
+          </div>
 
-            return (
-              <div 
-                key={brand}
-                className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4 leading-[0.8] text-[clamp(4rem,15vw,18rem)]"
-                style={{ 
-                  opacity: Math.max(0, op), 
-                  transform: `scale(${scale})`, 
-                  filter: `blur(${blur}px)`,
-                  fontFamily: 'Inter, sans-serif',
-                  display: progress >= start - 0.1 && progress <= end + 0.1 ? 'block' : 'none'
-                }}
-              >
-                {brand}
+          <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-px bg-brand-gray-200">
+            {BRANDS.map((brand) => (
+              <div key={brand.name} className="bg-brand-white p-8 flex flex-col justify-between aspect-square group cursor-pointer hover:bg-brand-gray-100 transition-colors">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors">{brand.type}</span>
+                <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter">{brand.name}</h4>
               </div>
-            )
-          })}
-        </div>
+            ))}
+          </div>
 
+        </div>
       </div>
     </section>
   )

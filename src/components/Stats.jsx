@@ -1,88 +1,40 @@
-import { useRef } from 'react'
-import { useStickyScrollProgress } from '../hooks/useScrollProgress'
-
 export default function Stats() {
-  const containerRef = useRef(null)
-  const progress = useStickyScrollProgress(containerRef)
-
-  // Helper to interpolate values
-  const interpolate = (p, start, end, from, to) => {
-    if (p < start) return from
-    if (p > end) return to
-    return from + (to - from) * ((p - start) / (end - start))
-  }
-
-  // Crossfade logic for 4 stats
-  const getStyles = (start, end) => {
-    const opacity = interpolate(progress, start, start + 0.1, 0, 1) * interpolate(progress, end - 0.1, end, 1, 0)
-    const scale = interpolate(progress, start, end, 0.8, 1.2)
-    const blur = interpolate(progress, start, start + 0.1, 10, 0) + interpolate(progress, end - 0.1, end, 0, 10)
-    return {
-      opacity: Math.max(0, opacity),
-      transform: `scale(${scale})`,
-      filter: `blur(${blur}px)`,
-      display: progress >= start - 0.1 && progress <= end + 0.1 ? 'flex' : 'none'
-    }
-  }
+  const data = [
+    { label: 'Experience', value: '15+', sub: 'Years in Rajapalayam' },
+    { label: 'Brands', value: '06+', sub: 'Premium Partners' },
+    { label: 'Service', value: '100%', sub: 'Genuine Guarantee' },
+    { label: 'Clientele', value: '5K+', sub: 'Happy Customers' },
+  ]
 
   return (
-    <section ref={containerRef} id="stats" className="relative h-[400vh] bg-white">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        
-        {/* Stat 1 */}
-        <div 
-          className="absolute text-center flex flex-col items-center justify-center"
-          style={getStyles(0, 0.25)}
-        >
-          <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            15+
-          </h2>
-          <p className="type-label text-[#737373] mt-4">Years of excellence</p>
-        </div>
-
-        {/* Stat 2 */}
-        <div 
-          className="absolute text-center flex flex-col items-center justify-center"
-          style={getStyles(0.25, 0.5)}
-        >
-          <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            500+
-          </h2>
-          <p className="type-label text-[#737373] mt-4">Product SKUs</p>
-        </div>
-
-        {/* Stat 3 */}
-        <div 
-          className="absolute text-center flex flex-col items-center justify-center"
-          style={getStyles(0.5, 0.75)}
-        >
-          <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            100%
-          </h2>
-          <p className="type-label text-[#737373] mt-4">Genuine Brands</p>
-        </div>
-
-        {/* Stat 4 */}
-        <div 
-          className="absolute text-center flex flex-col items-center justify-center"
-          style={getStyles(0.75, 1.0)}
-        >
-          <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            5,000+
-          </h2>
-          <p className="type-label text-[#737373] mt-4">Happy Customers</p>
+    <section id="experience" className="bg-brand-gray-100">
+      <div className="container-wide">
+        <div className="grid-modular">
+          {data.map((item, i) => (
+            <div key={item.label} className="grid-cell md:col-span-3">
+              <p className="label-mono">{item.label}</p>
+              <div className="mt-8">
+                <span className="text-5xl font-black tracking-tighter leading-none">{item.value}</span>
+                <p className="text-brand-gray-400 mt-3 text-xs uppercase tracking-widest font-bold">{item.sub}</p>
+              </div>
+            </div>
+          ))}
+          
+          <div className="grid-cell md:col-span-12 py-12 md:py-20 flex md:flex-row flex-col items-center justify-between gap-12">
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter max-w-2xl">
+              Building the infrastructure for tomorrow's industry.
+            </h2>
+            <div className="flex flex-col gap-4 w-full md:w-auto">
+              <div className="flex justify-between items-center border-b border-brand-gray-200 pb-4 gap-20">
+                <span className="label-mono mb-0">Project Scale</span>
+                <span className="font-bold">Residential to Industrial</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-brand-gray-200 pb-4 gap-20">
+                <span className="label-mono mb-0">Direct Dealership</span>
+                <span className="font-bold">Authorized Distributor</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

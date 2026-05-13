@@ -1,84 +1,70 @@
-import { useRef } from 'react'
-import { useStickyScrollProgress } from '../hooks/useScrollProgress'
+const PRODUCTS = [
+  { 
+    id: '01', 
+    name: 'Wiring & Cables', 
+    desc: 'High-grade copper wiring for residential and industrial safety.',
+    tags: ['FR', 'FRLS', 'Armored']
+  },
+  { 
+    id: '02', 
+    name: 'Pipes & Fittings', 
+    desc: 'Durable PVC and GI piping systems for conduit protection.',
+    tags: ['Heavy Duty', 'Fire Retardant']
+  },
+  { 
+    id: '03', 
+    name: 'Motors & Pumps', 
+    desc: 'Energy-efficient solutions for water management and industry.',
+    tags: ['Single Phase', 'Three Phase']
+  },
+  { 
+    id: '04', 
+    name: 'Switchgear', 
+    desc: 'Modern modular switches and advanced circuit protection.',
+    tags: ['MCB', 'RCCB', 'Smart Home']
+  }
+]
 
 export default function Products() {
-  const containerRef = useRef(null)
-  const progress = useStickyScrollProgress(containerRef)
-
-  const interpolate = (p, start, end, from, to) => {
-    if (p < start) return from
-    if (p > end) return to
-    return from + (to - from) * ((p - start) / (end - start))
-  }
-
-  const getOpacity = (start, peak, end) => {
-    const op = interpolate(progress, start, peak, 0, 1) * interpolate(progress, peak + 0.1, end, 1, 0)
-    return Math.max(0, op)
-  }
-
   return (
-    <section ref={containerRef} id="products" className="relative h-[300vh] bg-white">
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden px-6">
-        
-        <div className="relative w-full h-[60vh] flex flex-col justify-center">
+    <section id="products" className="bg-brand-gray-100 border-t border-brand-gray-200">
+      <div className="container-wide">
+        <div className="grid-modular">
           
-          <div 
-            className="absolute top-0 text-[#0A0A0A] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
-            style={{ 
-              transform: `translateX(${100 - progress * 200}%)`,
-              fontFamily: 'Inter, sans-serif' 
-            }}
-          >
-            WIRING
+          <div className="grid-cell md:col-span-12 py-16">
+            <p className="label-mono">Core Categories</p>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">Product Ecosystem</h2>
           </div>
 
-          <div 
-            className="absolute top-1/4 text-[#E5E5E5] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
-            style={{ 
-              transform: `translateX(${50 - progress * 200}%)`,
-              fontFamily: 'Inter, sans-serif' 
-            }}
-          >
-            PIPES
-          </div>
-
-          <div 
-            className="absolute top-2/4 text-[#0A0A0A] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
-            style={{ 
-              transform: `translateX(${0 - progress * 200}%)`,
-              fontFamily: 'Inter, sans-serif' 
-            }}
-          >
-            MOTORS
-          </div>
-
-          <div 
-            className="absolute top-3/4 text-[#E5E5E5] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
-            style={{ 
-              transform: `translateX(${-50 - progress * 200}%)`,
-              fontFamily: 'Inter, sans-serif' 
-            }}
-          >
-            SWITCHES
-          </div>
+          {PRODUCTS.map((product) => (
+            <div key={product.id} className="grid-cell md:col-span-6 group cursor-pointer hover:bg-brand-black transition-colors duration-500">
+              <div className="flex justify-between items-start mb-20">
+                <span className="text-brand-gray-400 font-mono text-sm group-hover:text-brand-gray-600 transition-colors">{product.id}</span>
+                <div className="w-12 h-12 border border-brand-gray-200 flex items-center justify-center rounded-full group-hover:bg-brand-white group-hover:border-transparent transition-all">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:text-brand-black">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6 group-hover:text-brand-white transition-colors">
+                  {product.name}
+                </h3>
+                <p className="text-brand-gray-600 max-w-sm group-hover:text-brand-gray-400 transition-colors">
+                  {product.desc}
+                </p>
+                <div className="flex gap-2 mt-8 flex-wrap">
+                  {product.tags.map(tag => (
+                    <span key={tag} className="px-3 py-1 bg-brand-gray-100 rounded-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-600">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
 
         </div>
-
-        <div className="relative h-20 w-full max-w-4xl mt-12">
-          <p style={{ opacity: getOpacity(0, 0.15, 0.35) }} className="absolute type-body-lg text-[#525252] transition-opacity duration-300">
-            High-grade copper wiring and industrial cables for projects of any scale.
-          </p>
-          <p style={{ opacity: getOpacity(0.2, 0.4, 0.6) }} className="absolute type-body-lg text-[#525252] transition-opacity duration-300">
-            Durable PVC and metal piping systems for electrical and plumbing safety.
-          </p>
-          <p style={{ opacity: getOpacity(0.45, 0.65, 0.85) }} className="absolute type-body-lg text-[#525252] transition-opacity duration-300">
-            Premium energy-efficient motors and pumps from trusted global manufacturers.
-          </p>
-          <p style={{ opacity: getOpacity(0.7, 0.85, 1) }} className="absolute type-body-lg text-[#525252] transition-opacity duration-300">
-            Modular switches and automation panels for a modern, connected lifestyle.
-          </p>
-        </div>
-
       </div>
     </section>
   )
