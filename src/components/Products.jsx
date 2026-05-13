@@ -142,12 +142,12 @@ export default function Products() {
                     {cat.id}
                   </span>
                   <div className="flex items-center gap-3">
-                    {/* View Brands label — always visible */}
+                    {/* View Brands label */}
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Dynamic Animated Icon — spins/animates on hover */}
-                    <div className="transition-opacity duration-500">
+                    {/* Icon — always animates on mobile, hover-triggered on desktop */}
+                    <div className="md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500 [&_svg]:md:paused [&_svg]:md:group-hover:running">
                       <CategoryIcon name={cat.name} />
                     </div>
                   </div>
@@ -161,7 +161,7 @@ export default function Products() {
                     {cat.desc}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 transform lg:translate-y-2 lg:group-hover:translate-y-0">
+                  <div className="flex flex-wrap gap-2 transition-all duration-500">
                     <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">
                       Partner Brands
                     </p>

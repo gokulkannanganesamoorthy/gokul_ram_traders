@@ -8,9 +8,11 @@ import BrandShowcase from './components/BrandShowcase';
 import WhyUs from './components/WhyUs';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import WireDivider from './components/WireDivider';       // #1
-import PageLoader from './components/PageLoader';         // #3
-import PipeJunction from './components/PipeJunction';     // #5
+import WireDivider from './components/WireDivider';
+import PageLoader from './components/PageLoader';
+import PipeJunction from './components/PipeJunction';
+import FloatingContact from './components/FloatingContact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
 
@@ -38,22 +40,27 @@ function App() {
 
   return (
     <>
-      {/* #3 — Fan Blade Page Loader */}
+      {/* Page loader */}
       <PageLoader />
+
+      {/* Floating mobile contact bar */}
+      <FloatingContact />
+      {/* Scroll to top button */}
+      <ScrollToTop />
 
       <div className="bg-brand-white min-h-screen flex flex-col bg-grid">
         <Navbar />
         <main className="flex-grow">
           <Hero />
-          <WireDivider />           {/* #1 — Wire Uncoiling */}
+          <WireDivider />
           <Stats />
-          <WireDivider />           {/* #1 — Wire Uncoiling */}
+          <WireDivider />
           <WhyUs />
-          <PipeJunction />          {/* #5 — Pipe Junction */}
+          <PipeJunction />
           <Products />
-          <WireDivider />           {/* #1 — Wire Uncoiling */}
+          <WireDivider />
           <BrandShowcase />
-          <PipeJunction />          {/* #5 — Pipe Junction */}
+          <PipeJunction />
           <CTA />
         </main>
         <Footer />

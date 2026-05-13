@@ -13,13 +13,13 @@ export default function CTA() {
         <div
           className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-start gap-16 md:gap-32">
-            {/* Minimal Header */}
+          <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-32">
+            {/* Header */}
             <div className="max-w-sm">
-              <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-brand-gray-400 mb-6">
+              <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-brand-gray-400 mb-4 md:mb-6">
                 Connect
               </p>
-              <h2 className="text-5xl font-light tracking-tighter mb-8">
+              <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-4 md:mb-8">
                 Ready for your <br /> next project?
               </h2>
               <p className="text-brand-gray-600 text-sm leading-relaxed">
@@ -28,16 +28,17 @@ export default function CTA() {
               </p>
             </div>
 
-            {/* Informative Stack */}
-            <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-12 md:gap-20">
+            {/* 2×2 contact grid */}
+            <div className="flex-1 w-full grid grid-cols-2 gap-y-10 gap-x-6 md:gap-20">
+
               {/* Call */}
-              <div className="group">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-3">
+              <div className="group min-w-0">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2 md:mb-3">
                   Call Support
                 </span>
                 <a
                   href="tel:+919364501230"
-                  className="text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-2"
+                  className="text-base md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 break-all"
                 >
                   +91 93645 01230
                 </a>
@@ -47,15 +48,15 @@ export default function CTA() {
               </div>
 
               {/* WhatsApp */}
-              <div className="group">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-3">
+              <div className="group min-w-0">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2 md:mb-3">
                   WhatsApp
                 </span>
                 <a
                   href="https://wa.me/919364501230"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-2 underline underline-offset-8 decoration-brand-black/10"
+                  className="text-base md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 underline underline-offset-4 decoration-brand-black/10"
                 >
                   Direct Message
                 </a>
@@ -65,13 +66,13 @@ export default function CTA() {
               </div>
 
               {/* Email */}
-              <div className="group">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-3">
+              <div className="group min-w-0">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2 md:mb-3">
                   Email
                 </span>
                 <a
                   href="mailto:mecrjpm@gmail.com"
-                  className="text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-2 uppercase"
+                  className="text-[13px] md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 break-all"
                 >
                   mecrjpm@gmail.com
                 </a>
@@ -80,9 +81,9 @@ export default function CTA() {
                 </p>
               </div>
 
-              {/* Office */}
-              <div className="group">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-3">
+              {/* Address */}
+              <div className="group min-w-0">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2 md:mb-3">
                   Address
                 </span>
                 <address className="not-italic">
@@ -90,12 +91,11 @@ export default function CTA() {
                     href="https://maps.app.goo.gl/7Xjbt1dYqnoMBvtg7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xl font-medium tracking-tight mb-2 leading-tight"
+                    className="text-sm md:text-xl font-medium tracking-tight leading-snug block mb-2"
                   >
-                    141 B/2 Andalpuram, <br />
+                    141 B/2 Andalpuram,<br />
                     Rajapalayam 626108
                   </a>
-                  <br />
                   <a
                     href="https://maps.app.goo.gl/7Xjbt1dYqnoMBvtg7"
                     target="_blank"
@@ -106,6 +106,7 @@ export default function CTA() {
                   </a>
                 </address>
               </div>
+
             </div>
           </div>
         </div>

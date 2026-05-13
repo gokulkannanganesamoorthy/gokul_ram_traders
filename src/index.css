@@ -173,3 +173,25 @@ html.lenis { height: auto; }
   animation: pipe-flow 0.65s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+/* ── Brand marquee (mobile) ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Product icons always spin on mobile ── */
+@media (max-width: 767px) {
+  .group svg {
+    animation: spin 3s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+}
+
+
