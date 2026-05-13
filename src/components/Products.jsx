@@ -8,17 +8,17 @@ const CATEGORIES = [
   },
   {
     id: '02',
-    name: 'Pipes',
+    name: 'Pipes, Hoses & Fittings',
     desc: 'Heavy-duty PVC, CPVC and GI piping for secure builds.',
   },
   {
     id: '03',
-    name: 'Pump Systems',
+    name: 'Motor Pumps & Compressors',
     desc: 'High-performance water solutions for homes and industry.',
   },
   {
     id: '04',
-    name: 'Switches & Gears',
+    name: 'Switches & Switchgears',
     desc: 'Modular switches and advanced circuit protection.',
   },
   {
