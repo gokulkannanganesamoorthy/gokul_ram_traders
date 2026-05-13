@@ -1,60 +1,66 @@
-import { useState, useEffect } from 'react'
-import { useInView } from '../hooks/useInView'
+import { useState, useEffect } from 'react';
+import { useInView } from '../hooks/useInView';
 
 const BRAND_MAPPING = {
-  'Supreme': ['Pipes & Hoses', 'Water Tanks'],
-  'Crompton': ['Fans & Ventilation'],
-  'V-Guard': ['Fans & Ventilation', 'Water Heaters'],
-  'Goldmedal': ['Accessories'],
-  'Hi-Fi': ['Accessories'],
-  'Oriant': ['Pump Systems'],
-  'Kundan': ['Wiring & Cables'],
-  'LEO': ['Accessories'],
-  'Ganga': ['Water Tanks'],
-  'Surya': ['Accessories'],
-  'Almonard': ['Fans & Ventilation'],
-  'Vinay': ['Accessories'],
-  'Legrand': ['MCBs & Boards', 'Accessories'],
-  'Vijay': ['Pipes & Hoses'],
-  'Metro': ['Sanitaryware'],
-  'Atlas': ['Sanitaryware'],
-  'KVB': ['Accessories'],
-  'Frixon': ['Accessories'],
-  'Life': ['Sanitaryware'],
-  'Zoloto': ['Sanitaryware', 'Accessories'],
-  'Apaxx': ['Accessories'],
-  'Meet': ['Accessories'],
-  'L&T': ['MCBs & Boards'],
-  'Shivasu': ['MCBs & Boards'],
-}
+  Supreme: ['Pipes', 'Water Tanks', 'Accessories'],
+  Crompton: ['Fans'],
+  'V-Guard': ['Fans', 'Water Heaters'],
+  Goldmedal: ['Switches & Accessories'],
+  'Hi-Fi': ['Switches & Accessories'],
+  Oriant: ['Pump Systems'],
+  Kundan: ['Wiring & Cables'],
+  LEO: ['Sanitaryware'],
+  Ganga: ['Water Tanks'],
+  Surya: ['Lighting'],
+  Almonard: ['Ventilation'],
+  Vinay: ['Switches & Accessories'],
+  Legrand: ['MCBs'],
+  Vijay: ['Pipes'],
+  Metro: ['Sanitaryware'],
+  Atlas: ['Sanitaryware'],
+  KVB: ['Lights'],
+  Frixon: ['Lights'],
+  Life: ['Sanitaryware'],
+  Zoloto: ['Sanitaryware'],
+  Apaxx: ['Accessories'],
+  Meet: ['Sanitaryware'],
+  'L&T': ['MCBs Starters'],
+  Shivasu: ['MCB Boards'],
+};
 
-const BRANDS = Object.keys(BRAND_MAPPING)
+const BRANDS = Object.keys(BRAND_MAPPING);
 
 export default function BrandShowcase() {
-  const [ref, inView] = useInView({ once: true })
-  const [hoveredBrand, setHoveredBrand] = useState(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [ref, inView] = useInView({ once: true });
+  const [hoveredBrand, setHoveredBrand] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY })
-    }
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
     if (hoveredBrand) {
-      window.addEventListener('mousemove', handleMouseMove)
+      window.addEventListener('mousemove', handleMouseMove);
     }
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [hoveredBrand])
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [hoveredBrand]);
 
   return (
-    <section id="brands" ref={ref} className="section-padding bg-white border-t border-brand-black/5 relative overflow-hidden">
+    <section
+      id="brands"
+      ref={ref}
+      className="section-padding bg-white border-t border-brand-black/5 relative overflow-hidden"
+    >
       <div className="container-wide text-center">
-        <p className={`text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-20 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
+        <p
+          className={`text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-20 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+        >
           Direct Partnerships
         </p>
 
         <div className="flex flex-wrap justify-center gap-x-12 md:gap-x-24 gap-y-12 md:gap-y-20">
           {BRANDS.map((brand, i) => (
-            <div 
+            <div
               key={brand}
               onMouseEnter={() => setHoveredBrand(brand)}
               onMouseLeave={() => setHoveredBrand(null)}
@@ -71,11 +77,11 @@ export default function BrandShowcase() {
 
       {/* Cursor Follower "Trial" */}
       {hoveredBrand && (
-        <div 
+        <div
           className="fixed pointer-events-none z-[100] transition-transform duration-100 ease-out flex flex-col"
-          style={{ 
-            left: mousePos.x + 20, 
-            top: mousePos.y + 20
+          style={{
+            left: mousePos.x + 20,
+            top: mousePos.y + 20,
           }}
         >
           <div className="bg-brand-black px-4 py-2 rounded-full shadow-2xl animate-in fade-in zoom-in-95 duration-200">
@@ -86,5 +92,5 @@ export default function BrandShowcase() {
         </div>
       )}
     </section>
-  )
+  );
 }

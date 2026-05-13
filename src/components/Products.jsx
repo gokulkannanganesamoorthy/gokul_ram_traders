@@ -4,32 +4,32 @@ const CATEGORIES = [
   { 
     id: '01', 
     name: 'Wiring & Cables', 
-    desc: 'FR/FRLS Grade Copper wiring from Supreme and Finolex.',
-    brands: ['Supreme', 'V-Guard', 'Goldmedal', 'Kundan', 'Vijay']
+    desc: 'FR/FRLS Grade Copper wiring solutions.',
+    brands: ['Kundan']
   },
   { 
     id: '02', 
     name: 'Pipes & Hoses', 
     desc: 'PVC, Casing-Caping, GI Pipes, Wiring Pipes and heavy-duty Water Hoses.',
-    brands: ['Supreme', 'Vijay', 'Sun']
+    brands: ['Supreme', 'Vijay']
   },
   { 
     id: '03', 
     name: 'Pump Systems', 
     desc: 'High-performance motors and industrial Pump Starters.',
-    brands: ['Oriant']
+    brands: ['Oriant', 'L&T']
   },
   { 
     id: '04', 
-    name: 'MCBs & Boards', 
+    name: 'MCBs, Switchgears & Boards', 
     desc: 'MCBs, TPN Boxes, Metal/Wood/Wiring boards, and Switchgear.',
-    brands: ['Legrand', 'L&T', 'Shivasu']
+    brands: ['Legrand', 'L&T', 'Shivasu', 'Goldmedal', 'Hi-Fi', 'Vinay']
   },
   { 
     id: '05', 
     name: 'Fans & Ventilation', 
-    desc: 'Ceiling fans, Exhaust fans, and energy-efficient Lighting.',
-    brands: ['Crompton', 'Almonard', 'V-Guard']
+    desc: 'Ceiling fans, Exhaust fans, and industrial ventilation.',
+    brands: ['Crompton', 'V-Guard', 'Almonard']
   },
   { 
     id: '06', 
@@ -47,13 +47,13 @@ const CATEGORIES = [
     id: '08', 
     name: 'Sanitaryware', 
     desc: 'Premium faucets, showers and modern bathroom fittings.',
-    brands: ['Metro', 'Atlas', 'Zoloto', 'Life']
+    brands: ['Metro', 'Atlas', 'Zoloto', 'Life', 'LEO', 'Meet']
   },
   { 
     id: '09', 
-    name: 'Accessories', 
-    desc: 'All essential electrical and plumbing hardware.',
-    brands: ['Apaxx', 'Zoloto', 'Goldmedal', 'Vinay', 'Legrand', 'Hi-Fi', 'LEO', 'Surya', 'KVB', 'Frixon', 'Meet']
+    name: 'Lighting & Accessories', 
+    desc: 'All essential electrical accessories, lighting and plumbing hardware.',
+    brands: ['Surya', 'KVB', 'Frixon', 'Apaxx', 'Supreme', 'Goldmedal']
   },
 ];
 
@@ -87,7 +87,6 @@ export default function Products() {
                     {cat.desc}
                   </p>
 
-                  {/* Brands Layer: Visible on Hover on Desktop, Always visible on Mobile */}
                   <div className="flex flex-wrap gap-2 mt-4 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-500">
                     <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">Partner Brands</p>
                     {cat.brands.map(brand => (
