@@ -1,5 +1,32 @@
 import { useInView } from '../hooks/useInView';
 
+const CONTACT_METHODS = [
+  {
+    id: '01',
+    label: 'Direct Inquiry',
+    value: '+91 93645 01230',
+    sub: 'Immediate Technical Support',
+    link: 'tel:+919364501230',
+    action: 'Call Now'
+  },
+  {
+    id: '02',
+    label: 'Digital Support',
+    value: 'WhatsApp Message',
+    sub: 'Project Details & Brochures',
+    link: 'https://wa.me/919364501230',
+    action: 'Send Message'
+  },
+  {
+    id: '03',
+    label: 'Official Mail',
+    value: 'mecrjpm@gmail.com',
+    sub: 'Bulk Quotations & Tenders',
+    link: 'mailto:mecrjpm@gmail.com',
+    action: 'Email Us'
+  }
+];
+
 export default function CTA() {
   const [ref, inView] = useInView({ once: true });
 
@@ -7,81 +34,72 @@ export default function CTA() {
     <section
       id="contact"
       ref={ref}
-      className="section-padding bg-white border-t border-brand-black/5"
+      className="section-padding bg-[#fafafa] relative overflow-hidden"
     >
       <div className="container-wide">
         <div className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-20 md:gap-32">
-            
-            {/* Branding Column */}
-            <div className="lg:max-w-xl">
-              <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-brand-gray-400 mb-8">
-                Next Steps
-              </p>
-              <h2 className="text-6xl md:text-8xl font-light tracking-tighter leading-[0.9] mb-12">
-                Ready to <br />
-                <span className="font-medium">Scale up?</span>
-              </h2>
-              <p className="text-brand-gray-600 leading-relaxed text-lg max-w-sm">
-                From residential wiring to massive industrial infrastructure, we supply the materials that power progress.
-              </p>
-            </div>
+          <div className="mb-24 md:mb-32 max-w-4xl">
+             <p className="text-[10px] uppercase tracking-[0.6em] font-bold text-brand-gray-400 mb-8">
+                Interaction
+             </p>
+             <h2 className="text-6xl md:text-[8rem] font-light tracking-tighter leading-[0.9]">
+                Let's build <br />
+                <span className="font-medium text-brand-black/40 italic">excellence.</span>
+             </h2>
+          </div>
 
-            {/* Technical Links Column */}
-            <div className="w-full lg:max-w-2xl">
-              <div className="flex flex-col">
-                {/* Interaction Row: Phone */}
-                <div className="group border-b border-brand-black/10 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                  <div>
-                    <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2">Inquiries</span>
-                    <a href="tel:+919364501230" className="text-3xl md:text-5xl font-light tracking-tighter hover:text-brand-gray-400 transition-colors">
-                      +91 93645 01230
-                    </a>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-px lg:bg-brand-black/5 border-y border-brand-black/5">
+            {CONTACT_METHODS.map((method, i) => (
+              <a 
+                key={method.id}
+                href={method.link}
+                target={method.link.startsWith('http') ? '_blank' : undefined}
+                rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="group relative bg-[#fafafa] py-12 md:py-20 lg:px-12 transition-all duration-700 hover:bg-white"
+              >
+                <div className="relative z-10">
+                  <span className="text-[9px] font-mono text-brand-gray-400 mb-8 block">{method.id} — {method.label}</span>
+                  <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">
+                    {method.value}
+                  </h3>
+                  <p className="text-brand-gray-400 text-sm mb-12 opacity-100 group-hover:text-brand-black transition-colors duration-500">
+                    {method.sub}
+                  </p>
+                  
+                  <div className="flex items-center gap-4 group-hover:gap-6 transition-all duration-500">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-black">{method.action}</span>
+                    <div className="w-8 h-8 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:text-white">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                  <a href="tel:+919364501230" className="w-12 h-12 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:text-white">
-                       <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
                 </div>
 
-                {/* Interaction Row: WhatsApp */}
-                <div className="group border-b border-brand-black/10 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                  <div>
-                    <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2">Support</span>
-                    <a 
-                      href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-3xl md:text-5xl font-light tracking-tighter hover:text-brand-gray-400 transition-colors"
-                    >
-                      WhatsApp Message
-                    </a>
-                  </div>
-                  <a href="https://wa.me/919364501230" className="w-12 h-12 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:text-white">
-                       <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
+                {/* Subtle Hover Reveal */}
+                <div className="absolute inset-0 bg-white scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom z-0" />
+              </a>
+            ))}
+          </div>
 
-                {/* Interaction Row: Email & Address */}
-                <div className="py-10 md:py-14 flex flex-col md:flex-row justify-between gap-12">
-                   <div className="flex-1">
-                      <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-4">Official Channel</span>
-                      <a href="mailto:mecrjpm@gmail.com" className="text-lg font-medium hover:text-brand-gray-400 transition-colors border-b border-brand-black/20 pb-1">mecrjpm@gmail.com</a>
-                   </div>
-                   <div className="flex-1">
-                      <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-4">Physical Office</span>
-                      <p className="text-sm font-medium leading-relaxed">
-                        141 B/2 Andalpuram,<br />
-                        Rajapalayam 626108.
-                      </p>
-                   </div>
-                </div>
-              </div>
+          {/* Location Block - Technical Design */}
+          <div className="mt-24 md:mt-32 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+            <div className="space-y-6">
+               <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-gray-400">Headquarters</span>
+               <p className="text-xl md:text-2xl font-light leading-relaxed tracking-tight">
+                 141 B/2 ANDALPURAM, CHATRAPATTI MAIN ROAD,<br />
+                 RAJAPALAYAM, TAMIL NADU 626108.
+               </p>
             </div>
-
+            <a 
+              href="https://maps.app.goo.gl/7Xjbt1dYqnoMBvtg7" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex flex-col items-end gap-4"
+            >
+              <span className="text-[10px] uppercase tracking-widest font-bold text-brand-black">View Location</span>
+              <div className="w-16 h-[1px] bg-brand-black/20 group-hover:w-24 group-hover:bg-brand-black transition-all duration-500" />
+            </a>
           </div>
         </div>
       </div>
