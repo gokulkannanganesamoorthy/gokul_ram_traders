@@ -79,7 +79,7 @@ export default function Products() {
                 <div className="flex justify-between items-start mb-6 md:mb-8">
                   <span className="text-[10px] font-mono text-brand-gray-400">{cat.id}</span>
                   {/* Hover Affordance for Desktop */}
-                  <div className="hidden lg:flex items-center gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+                  <div className="hidden lg:flex items-center gap-3 opacity-100 transition-opacity">
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-black">View Brands</span>
                     <div className="w-6 h-6 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all duration-500">
                       <svg width="10" height="10" viewBox="0 0 12 12" fill="none" className="group-hover:rotate-90 transition-transform duration-500">
