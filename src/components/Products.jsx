@@ -75,7 +75,7 @@ export default function Products() {
               className={`transition-all duration-1000 group relative ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="border-b border-brand-black/10 pb-8 md:pb-12 group-hover:border-brand-black transition-all h-full flex flex-col min-h-[360px] cursor-pointer">
+              <div className="border-b border-brand-black/10 pb-8 md:pb-12 group-hover:border-brand-black transition-all h-full flex flex-col min-h-[320px] cursor-pointer">
                 <div className="flex justify-between items-start mb-6 md:mb-8">
                   <span className="text-[10px] font-mono text-brand-gray-400">{cat.id}</span>
                   {/* Hover Affordance for Desktop */}
@@ -94,12 +94,12 @@ export default function Products() {
                     {cat.name}
                   </h3>
                   
-                  <p className="text-brand-gray-600 leading-relaxed mb-8 text-sm md:text-base lg:group-hover:opacity-0 transition-opacity duration-300">
+                  <p className="text-brand-gray-600 leading-relaxed mb-6 text-sm md:text-base">
                     {cat.desc}
                   </p>
 
-                  {/* Brands Layer: Visible on Hover on Desktop, Always visible on Mobile */}
-                  <div className="flex flex-wrap gap-2 mt-4 lg:absolute lg:top-24 lg:left-0 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-500">
+                  {/* Brands Layer: Visible on Hover below description */}
+                  <div className="flex flex-wrap gap-2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 transform lg:translate-y-2 lg:group-hover:translate-y-0">
                     <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">Partner Brands</p>
                     {cat.brands.map(brand => (
                       <span key={brand} className="text-[10px] px-3 py-1 rounded-full border border-brand-black/5 text-brand-black font-medium">

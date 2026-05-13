@@ -23,7 +23,7 @@ export default function Hero() {
         >
           Gokul Ram
           <br />
-          <span className="font-medium italic">Electricals</span>
+          <span className="font-medium  ">Electricals</span>
         </h1>
 
         <div

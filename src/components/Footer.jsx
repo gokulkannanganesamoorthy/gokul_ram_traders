@@ -4,75 +4,62 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-brand-black/5 pt-24 pb-12">
+    <footer className="bg-white pt-32 pb-12 border-t border-brand-black/5 overflow-hidden">
       <div className="container-wide">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-24 mb-24">
-          {/* Brand Section */}
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold tracking-tighter mb-4">Gokul Ram Traders.</h3>
-              <p className="text-sm text-brand-gray-600 leading-relaxed max-w-sm">
-                Established in 2013, we provide high-quality electrical and plumbing solutions to Rajapalayam. Wholesale pricing for projects of all scales.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              {['Instagram', 'WhatsApp', 'Email'].map((social) => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="text-[10px] uppercase tracking-widest font-bold text-brand-black hover:text-brand-gray-400 transition-colors"
-                >
-                  {social}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-8">
-            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">Navigation</p>
-            <nav className="flex flex-col gap-4">
-              {['Products', 'Brands', 'Why Us', 'Contact'].map((link) => (
-                <a 
-                  key={link} 
-                  href={`#${link.toLowerCase().replace(' ', '-')}`} 
-                  className="text-sm font-medium text-brand-black hover:translate-x-1 transition-transform inline-block"
-                >
-                  {link}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Location Section */}
-          <div className="space-y-8">
-            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">Headquarters</p>
-            <div className="text-sm text-brand-black leading-relaxed">
-              <p>42/B Tenkasi Road,</p>
-              <p>Opposite to Old EB Office,</p>
-              <p>Rajapalayam - 626117.</p>
-              <p className="mt-4 font-bold">+91 94431 23456</p>
-            </div>
+        {/* Unique Branding Element */}
+        <div className="relative mb-32 flex justify-center">
+          <h2 className="text-[15vw] font-black tracking-tighter text-brand-black/5 leading-none select-none">
+            GOKUL RAM
+          </h2>
+          <div className="absolute inset-0 flex items-center justify-center">
+             <div className="text-center">
+                <p className="text-[10px] uppercase tracking-[0.6em] font-bold text-brand-black mb-2">Established 2013</p>
+                <p className="text-sm font-medium text-brand-gray-600">Premium Industrial Supply</p>
+             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-brand-black/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gray-400">
-            © {new Date().getFullYear()} GOKUL RAM TRADERS. ALL RIGHTS RESERVED.
-          </p>
-          
+        <div className="flex flex-col md:flex-row justify-between items-end gap-16 md:gap-8">
+          {/* Minimal Info */}
+          <div className="space-y-4">
+            <div className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gray-400">Headquarters</div>
+            <p className="text-sm font-medium leading-relaxed max-w-[200px]">
+              42/B Tenkasi Road,<br />
+              Rajapalayam - 626117.
+            </p>
+          </div>
+
+          {/* Sleek Links Row */}
+          <div className="flex flex-wrap gap-x-12 gap-y-4">
+            {['Instagram', 'WhatsApp', 'Email', 'Location'].map((link) => (
+              <a 
+                key={link} 
+                href="#" 
+                className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-black hover:text-brand-gray-400 transition-colors"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+
+          {/* Minimalist Top Trigger */}
           <button 
             onClick={scrollToTop}
-            className="group flex items-center gap-3 text-[10px] uppercase tracking-widest font-bold text-brand-black"
+            className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-black border-b border-brand-black pb-1 hover:text-brand-gray-400 hover:border-brand-gray-400 transition-all"
           >
-            Back to Top
-            <div className="w-8 h-8 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-brand-black group-hover:text-white group-hover:-translate-y-1 transition-all">
-                <path d="M12 19V5M5 12l7-7 7 7" />
-              </svg>
-            </div>
+            Top
           </button>
+        </div>
+
+        {/* Modular Bottom Bar */}
+        <div className="mt-24 pt-12 border-t border-brand-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[9px] uppercase tracking-[0.3em] font-medium text-brand-gray-400">
+            © GOKUL RAM TRADERS. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex gap-8 text-[9px] uppercase tracking-[0.3em] font-medium text-brand-gray-400">
+            <span>Rajapalayam, TN</span>
+            <span>Industrial Wholesalers</span>
+          </div>
         </div>
       </div>
     </footer>
