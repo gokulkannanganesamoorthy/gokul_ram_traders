@@ -17,21 +17,43 @@ const SPOOL_COLORS = {
   'Professional Installation':    { rim: '#000000', core: '#6b7280', label: 'Service' },
 };
 
-function SpoolIcon({ name }) {
-  const colors = SPOOL_COLORS[name] || { rim: '#374151', core: '#9ca3af', label: '' };
+function FanIcon() {
   return (
-    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="group-hover:rotate-[360deg] transition-transform duration-[1200ms] ease-out">
-      {/* Outer rim */}
-      <circle cx="24" cy="24" r="22" fill={colors.rim} opacity="0.15" stroke={colors.rim} strokeWidth="2" />
-      {/* Spool flanges */}
-      <ellipse cx="24" cy="24" rx="18" ry="18" fill="none" stroke={colors.rim} strokeWidth="3" />
-      {/* Cable windings */}
-      {[14, 17, 20].map((r) => (
-        <circle key={r} cx="24" cy="24" r={r} stroke={colors.core} strokeWidth="1.5" strokeDasharray="4 3" fill="none" opacity="0.7" />
-      ))}
-      {/* Center hub */}
-      <circle cx="24" cy="24" r="5" fill={colors.rim} />
-      <circle cx="24" cy="24" r="2.5" fill={colors.core} />
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 100 100"
+      fill="none"
+      className="group-hover:rotate-[360deg] transition-transform duration-[1200ms] ease-out"
+    >
+      {/* Blade 1 — sweeping left */}
+      <path
+        d="M50 50
+           C44 46, 32 40, 18 36
+           C10 33, 4 34, 4 38
+           C4 42, 12 46, 22 48
+           C34 50, 46 52, 50 50Z"
+        fill="#000000"
+      />
+
+      {/* Blade 2 — sweeping right (180° opposite) */}
+      <path
+        d="M50 50
+           C56 54, 68 60, 82 64
+           C90 67, 96 66, 96 62
+           C96 58, 88 54, 78 52
+           C66 50, 54 48, 50 50Z"
+        fill="#000000"
+      />
+
+      {/* Downrod / canopy cap at top */}
+      <rect x="46" y="2" width="8" height="12" rx="3" fill="#111111" />
+
+      {/* Motor housing — layered circles for 3D depth */}
+      <circle cx="50" cy="50" r="12" fill="#111111" />
+      <circle cx="50" cy="50" r="8"  fill="#2a2a2a" />
+      <circle cx="50" cy="50" r="4"  fill="#555555" />
+      <circle cx="50" cy="50" r="2"  fill="#888888" />
     </svg>
   );
 }
@@ -73,13 +95,13 @@ export default function Products() {
                 <div className="flex justify-between items-start mb-6 md:mb-8">
                   <span className="text-[10px] font-mono text-brand-gray-400">{cat.id}</span>
                   <div className="flex items-center gap-3">
-                    {/* View Brands label — always visible */}
-                    <span className="hidden lg:block text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
+                    {/* View Brands label — always visible on all devices */}
+                    <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* #6 — Cable Spool Icon — spins on hover */}
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <SpoolIcon name={cat.name} />
+                    {/* Fan Icon — spins on hover */}
+                    <div className="transition-opacity duration-500">
+                      <FanIcon />
                     </div>
                   </div>
                 </div>
