@@ -1,14 +1,13 @@
-import { useEffect } from 'react'
-import Lenis from '@studio-freight/lenis'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Stats from './components/Stats'
-import Products from './components/Products'
-import BrandShowcase from './components/BrandShowcase'
-import WhyUs from './components/WhyUs'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
-
+import { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Stats from './components/Stats';
+import Products from './components/Products';
+import BrandShowcase from './components/BrandShowcase';
+import WhyUs from './components/WhyUs';
+import CTA from './components/CTA';
+import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
@@ -22,19 +21,19 @@ function App() {
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
-    })
+    });
 
     function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
+    requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy()
-    }
-  }, [])
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <div className="bg-brand-white">
@@ -42,14 +41,14 @@ function App() {
       <main>
         <Hero />
         <Stats />
+        <WhyUs />
         <Products />
         <BrandShowcase />
-        <WhyUs />
         <CTA />
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
