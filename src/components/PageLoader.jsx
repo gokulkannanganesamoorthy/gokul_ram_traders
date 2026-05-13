@@ -46,7 +46,7 @@ export default function PageLoader() {
               to   { transform: rotate(360deg); transform-origin: center; }
             }
           `}</style>
-          {/* 3 blades at 0°, 120°, 240° */}
+          {/* 2 slim blades at 0° and 180° */}
           {[0, 120, 240].map((angle) => (
             <g
               key={angle}
@@ -57,8 +57,8 @@ export default function PageLoader() {
             >
               <ellipse
                 cx="36"
-                cy="16"
-                rx="10"
+                cy="18"
+                rx="4"
                 ry="16"
                 fill="#1a1a1a"
                 opacity="0.85"
