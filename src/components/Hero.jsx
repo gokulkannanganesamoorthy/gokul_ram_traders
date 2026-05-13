@@ -28,34 +28,31 @@ export default function Hero() {
       <div className="sticky top-14 h-[calc(100vh-3.5rem)] w-full flex flex-col items-center justify-center overflow-hidden">
         
         <motion.div 
-          style={{ y, opacity, filter }}
+          style={{ y, opacity, blur: blurValue }}
           className="text-center px-4 w-full max-w-[90vw]"
         >
           <motion.h1 
-            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap"
+            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              fontSize: 'clamp(3.5rem, 12vw, 15rem)',
               letterSpacing
             }}
           >
             The Best
           </motion.h1>
           <motion.h1 
-            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap"
+            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              fontSize: 'clamp(3.5rem, 12vw, 15rem)',
               letterSpacing
             }}
           >
             Electrical
           </motion.h1>
           <motion.h1 
-            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap"
+            className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              fontSize: 'clamp(3.5rem, 12vw, 15rem)',
               letterSpacing
             }}
           >

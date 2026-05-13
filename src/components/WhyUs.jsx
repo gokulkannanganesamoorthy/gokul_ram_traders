@@ -19,11 +19,10 @@ function ChapterNumber({ reason, index, total, scrollYProgress }) {
 
   return (
     <motion.h2 
-      className="absolute text-white font-black leading-none tracking-tighter"
+      className="absolute text-white font-black leading-none tracking-tighter text-[clamp(8rem,25vw,30rem)]"
       style={{ 
         opacity: op,
-        fontFamily: 'Inter, sans-serif', 
-        fontSize: 'clamp(8rem, 25vw, 30rem)' 
+        fontFamily: 'Inter, sans-serif'
       }}
     >
       {reason.num}

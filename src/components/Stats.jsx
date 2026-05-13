@@ -36,70 +36,62 @@ export default function Stats() {
 
   return (
     <section ref={containerRef} id="stats" className="relative h-[400vh] bg-white">
-      <div className="sticky top-14 h-[calc(100vh-3.5rem)] w-full overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         
-        {/* Progress bar line to indicate scrolling */}
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-[#E5E5E5]">
-          <motion.div 
-            className="w-full bg-[#0A0A0A] origin-top"
-            style={{ height: '100%', scaleY: scrollYProgress }}
-          />
-        </div>
-
         {/* Stat 1 */}
         <motion.div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity1, scale: scale1, filter: blur1 }}
+          style={{ opacity: opacity1, scale: scale1, blur: blurValue1 }}
         >
           <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none"
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(5rem, 15vw, 20rem)' }}
+            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             15+
           </h2>
-          <p className="type-label text-[#737373] mt-4">Years of service</p>
+          <p className="type-label text-[#737373] mt-4">Years of excellence</p>
         </motion.div>
 
         {/* Stat 2 */}
         <motion.div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity2, scale: scale2, filter: blur2 }}
+          style={{ opacity: opacity2, scale: scale2, blur: blurValue2 }}
         >
           <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none"
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(5rem, 15vw, 20rem)' }}
+            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             500+
           </h2>
-          <p className="type-label text-[#737373] mt-4">Products stocked</p>
+          <p className="type-label text-[#737373] mt-4">Product SKUs</p>
         </motion.div>
 
         {/* Stat 3 */}
         <motion.div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity3, scale: scale3, filter: blur3 }}
+          style={{ opacity: opacity3, scale: scale3, blur: blurValue3 }}
         >
           <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none"
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(5rem, 15vw, 20rem)' }}
+            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            06+
+            100%
           </h2>
-          <p className="type-label text-[#737373] mt-4">Premium brands</p>
+          <p className="type-label text-[#737373] mt-4">Genuine Brands</p>
         </motion.div>
 
         {/* Stat 4 */}
         <motion.div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity4, scale: scale4, filter: blur4 }}
+          style={{ opacity: opacity4, scale: scale4, blur: blurValue4 }}
         >
           <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none"
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(5rem, 15vw, 20rem)' }}
+            className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            1K+
+            5,000+
           </h2>
-          <p className="type-label text-[#737373] mt-4">Customers served</p>
+          <p className="type-label text-[#737373] mt-4">Happy Customers</p>
         </motion.div>
 
       </div>

@@ -25,13 +25,14 @@ export default function CTA() {
       <div className="sticky top-14 h-[calc(100vh-3.5rem)] w-full overflow-hidden flex items-center justify-center">
         
         {/* Massive Foreground Text */}
+        {/* The massive text fades and blurs out as you scroll down */}
         <motion.div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-          style={{ opacity: textOpacity, scale: textScale, filter: textBlur }}
+          style={{ opacity: textOpacity, scale: textScale, blur: textBlurValue }}
         >
           <h2 
-            className="text-[#0A0A0A] font-black uppercase tracking-tighter text-center leading-[0.8]"
-            style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(5rem, 20vw, 25rem)' }}
+            className="text-[#0A0A0A] font-black uppercase tracking-tighter text-center leading-[0.8] text-[clamp(5rem,20vw,25rem)]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Find
             <br />
