@@ -26,8 +26,9 @@ export default function WhyUs() {
 
   return (
     <section
-      id="why-us"
+      id="about"
       ref={ref}
+      aria-label="About Gokul Ram Electricals"
       className="section-padding bg-transparent relative overflow-hidden"
     >
       <div className="container-wide relative z-10">

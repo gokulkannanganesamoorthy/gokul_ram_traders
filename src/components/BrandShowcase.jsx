@@ -42,6 +42,7 @@ export default function BrandShowcase() {
       id="brands"
       ref={ref}
       className="section-padding bg-transparent border-t border-brand-black/5"
+      aria-label="Our Brand Partners"
     >
       <div className="container-wide">
         <div

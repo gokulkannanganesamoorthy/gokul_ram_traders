@@ -73,7 +73,7 @@ export default function Products() {
   const [ref, inView] = useInView({ once: true });
 
   return (
-    <section id="products" ref={ref} className="section-padding bg-transparent">
+    <section id="products" ref={ref} aria-label="Products — Electrical, Plumbing & Piping" className="section-padding bg-transparent">
       <div className="container-wide">
         <div
           className={`mb-20 md:mb-32 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
