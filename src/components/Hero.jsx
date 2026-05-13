@@ -30,7 +30,7 @@ export default function Hero() {
           className={`flex flex-col items-center gap-10 transition-all duration-1000 delay-500 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
           <a href="#contact" className="btn-primary">
-            Get a Quote
+            <span>Get a Quote</span>
           </a>
         </div>
       </div>

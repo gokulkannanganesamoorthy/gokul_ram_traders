@@ -4,7 +4,7 @@ import { useInView } from '../hooks/useInView';
 const BRAND_MAPPING = {
   Supreme: ['Pipes', 'Water Tanks', 'Accessories'],
   Ashirwad: ['Pipes'],
-  Global: ['Pipes'],
+  Global: ['HDPE Pipes'],
   Crompton: ['Fans'],
   'V-Guard': ['Fans', 'Water Heaters'],
   Goldmedal: ['Switches & Accessories'],

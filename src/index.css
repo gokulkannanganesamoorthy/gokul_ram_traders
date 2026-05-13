@@ -33,7 +33,24 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-10 py-5 rounded-full bg-brand-black text-brand-white text-[11px] uppercase tracking-[0.2em] font-bold transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-2xl;
+    @apply relative inline-flex items-center justify-center px-12 py-6 rounded-full bg-brand-black text-brand-white text-[11px] uppercase tracking-[0.3em] font-bold overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)];
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-brand-white scale-x-0 origin-right transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)];
+  }
+
+  .btn-primary:hover {
+    @apply text-brand-black shadow-2xl;
+  }
+
+  .btn-primary:hover::before {
+    @apply scale-x-100 origin-left;
+  }
+
+  .btn-primary span {
+    @apply relative z-10;
   }
 
   .reveal-hidden {
