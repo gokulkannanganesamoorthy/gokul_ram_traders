@@ -33,34 +33,57 @@
   }
 
   .bg-grid {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 
   .btn-primary {
-    @apply relative inline-flex items-center justify-center px-12 py-6 rounded-full bg-brand-black text-brand-white text-[11px] uppercase tracking-[0.3em] font-bold overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)];
-    animation: breathing 4s ease-in-out infinite;
-  }
-
-  @keyframes breathing {
-    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3); }
-    50% { transform: scale(1.03); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.4); }
+    @apply relative inline-flex items-center justify-center px-10 py-5 rounded-full bg-brand-black text-brand-white text-[11px] uppercase tracking-[0.25em] font-bold overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)];
   }
 
   .btn-primary::before {
     content: '';
-    @apply absolute inset-0 bg-brand-white opacity-0 transition-opacity duration-700 ease-in-out;
+    @apply absolute inset-0 bg-brand-white opacity-0 transition-opacity duration-700;
+  }
+
+  /* Elegant Glint Effect */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    transition: all 0.7s;
+    animation: glint 10s infinite linear;
+  }
+
+  @keyframes glint {
+    0% { left: -60%; }
+    10% { left: 150%; }
+    100% { left: 150%; }
   }
 
   .btn-primary:hover {
-    @apply text-brand-black tracking-[0.5em] px-16;
-    animation: none;
-    transform: scale(1.05);
+    @apply tracking-[0.4em] px-14 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)];
+    transform: translateY(-2px);
   }
 
-  .btn-primary:hover::before {
-    @apply opacity-100;
+  .btn-primary:hover::after {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 
   .btn-primary span {

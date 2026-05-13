@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Navbar() {
   const [active, setActive] = useState('hero')
   const [isOpen, setIsOpen] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const requestRef = useRef()
 
   const items = [
     { id: 'hero', label: 'Home' },
@@ -13,24 +14,26 @@ export default function Navbar() {
     { id: 'contact', label: 'Contact' }
   ]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Update Active Section
-      const scrollPos = window.scrollY + 200
-      items.forEach(item => {
-        const el = document.getElementById(item.id)
-        if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
-          setActive(item.id)
-        }
-      })
+  const updateProgress = () => {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+    const scrolled = (window.scrollY / scrollHeight)
+    setProgress(scrolled)
 
-      // Update Scroll Progress
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (window.scrollY / totalHeight) * 100
-      setScrollProgress(progress)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Update Active Section
+    const scrollPos = window.scrollY + 200
+    items.forEach(item => {
+      const el = document.getElementById(item.id)
+      if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+        setActive(item.id)
+      }
+    })
+
+    requestRef.current = requestAnimationFrame(updateProgress)
+  }
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(updateProgress)
+    return () => cancelAnimationFrame(requestRef.current)
   }, [])
 
   const activeLabel = items.find(i => i.id === active)?.label
@@ -38,11 +41,14 @@ export default function Navbar() {
   return (
     <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-fit px-4 md:px-0">
       
-      {/* Scroll Progress Bar - Industrial Minimalist */}
-      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-brand-black/5 hidden md:block">
+      {/* Scroll Progress Bar - High-Performance Version */}
+      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-brand-black/5 hidden md:block overflow-hidden">
         <div 
-          className="h-full bg-brand-black transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,0,0,0.2)]"
-          style={{ width: `${scrollProgress}%` }}
+          className="h-full bg-brand-black origin-left shadow-[0_0_10px_rgba(0,0,0,0.2)]"
+          style={{ 
+            transform: `scaleX(${progress})`,
+            willChange: 'transform'
+          }}
         />
       </div>
 

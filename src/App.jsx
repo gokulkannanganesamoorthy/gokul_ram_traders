@@ -36,9 +36,9 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-brand-white">
+    <div className="bg-brand-white min-h-screen flex flex-col bg-grid">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <Hero />
         <Stats />
         <WhyUs />

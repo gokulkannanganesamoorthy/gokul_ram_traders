@@ -41,7 +41,7 @@ export default function BrandShowcase() {
     <section
       id="brands"
       ref={ref}
-      className="section-padding bg-white border-t border-brand-black/5"
+      className="section-padding bg-transparent border-t border-brand-black/5"
     >
       <div className="container-wide">
         <div

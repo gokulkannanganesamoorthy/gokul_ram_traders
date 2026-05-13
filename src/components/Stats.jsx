@@ -36,10 +36,7 @@ export default function Stats() {
   const [ref, inView] = useInView({ once: true })
 
   return (
-    <section id="stats" ref={ref} className="section-padding bg-white relative overflow-hidden">
-      {/* Technical Grid Overlay */}
-      <div className="absolute inset-0 bg-grid opacity-100 pointer-events-none" />
-      
+    <section id="stats" ref={ref} className="section-padding bg-transparent relative overflow-hidden">
       <div className="container-wide relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-20 md:gap-12">
           {STATS.map((stat, i) => (
