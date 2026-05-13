@@ -1,21 +1,27 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
 
 export default function Hero() {
   const containerRef = useRef(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start']
-  })
+  const [progress, setProgress] = useState(0)
 
-  // Scroll animations for typography
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0, 0])
-  const letterSpacing = useTransform(scrollYProgress, [0, 1], ['-0.05em', '0.05em'])
-  
-  const blurValue = useTransform(scrollYProgress, [0, 1], [0, 8])
-  const filter = useMotionTemplate`blur(${blurValue}px)`
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const scrollHeight = rect.height - window.innerHeight
+      const p = Math.max(0, Math.min(1, -rect.top / scrollHeight))
+      setProgress(p)
+    }
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Derived animation values
+  const y = progress * 100
+  const opacity = 1 - progress * 1.2
+  const blur = progress * 10
+  const letterSpacing = -0.05 + progress * 0.1
 
   return (
     <section 
@@ -24,57 +30,54 @@ export default function Hero() {
       className="relative h-[150vh] bg-white pt-14"
       aria-label="Hero — Best Electrical Shop in Tamil Nadu"
     >
-      {/* Sticky container holds the text while user scrolls */}
       <div className="sticky top-14 h-[calc(100vh-3.5rem)] w-full flex flex-col items-center justify-center overflow-hidden">
         
-        <motion.div 
-          style={{ y, opacity, blur: blurValue }}
+        <div 
+          style={{ 
+            transform: `translateY(${y}px)`, 
+            opacity: Math.max(0, opacity), 
+            filter: `blur(${blur}px)` 
+          }}
           className="text-center px-4 w-full max-w-[90vw]"
         >
-          <motion.div 
+          <h1 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              letterSpacing
+              letterSpacing: `${letterSpacing}em`
             }}
           >
             The Best
-          </motion.div>
-          <motion.div 
+          </h1>
+          <h1 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              letterSpacing
+              letterSpacing: `${letterSpacing}em`
             }}
           >
             Electrical
-          </motion.div>
-          <motion.div 
+          </h1>
+          <h1 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
-              letterSpacing
+              letterSpacing: `${letterSpacing}em`
             }}
           >
             Shop.
-          </motion.div>
-        </motion.div>
+          </h1>
+        </div>
 
-        {/* Scroll indicator */}
-        <motion.div 
-          style={{ opacity }}
+        <div 
+          style={{ opacity: Math.max(0, opacity) }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         >
           <p className="type-label text-[#737373]">Scroll to explore</p>
-          <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-[1px] h-12 bg-[#0A0A0A]"
-          />
-        </motion.div>
+          <div className="w-[1px] h-12 bg-[#0A0A0A] animate-bounce" />
+        </div>
       </div>
 
-      {/* Metrics bar sitting at the very bottom of the 150vh section */}
       <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-[#E5E5E5] bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#E5E5E5]">

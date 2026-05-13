@@ -1,47 +1,38 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
+import { useStickyScrollProgress } from '../hooks/useScrollProgress'
 
 export default function Stats() {
   const containerRef = useRef(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start']
-  })
+  const progress = useStickyScrollProgress(containerRef)
 
-  // Mapping scroll progress to individual stats
-  // Stat 1: 0 to 0.25
-  const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [0, 1, 1, 0])
-  const scale1 = useTransform(scrollYProgress, [0, 0.3], [0.8, 1.2])
-  const blurValue1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [10, 0, 0, 10])
-  const blur1 = useMotionTemplate`blur(${blurValue1}px)`
+  // Helper to interpolate values
+  const interpolate = (p, start, end, from, to) => {
+    if (p < start) return from
+    if (p > end) return to
+    return from + (to - from) * ((p - start) / (end - start))
+  }
 
-  // Stat 2: 0.25 to 0.50
-  const opacity2 = useTransform(scrollYProgress, [0.2, 0.35, 0.45, 0.55], [0, 1, 1, 0])
-  const scale2 = useTransform(scrollYProgress, [0.2, 0.55], [0.8, 1.2])
-  const blurValue2 = useTransform(scrollYProgress, [0.2, 0.35, 0.45, 0.55], [10, 0, 0, 10])
-  const blur2 = useMotionTemplate`blur(${blurValue2}px)`
-
-  // Stat 3: 0.50 to 0.75
-  const opacity3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], [0, 1, 1, 0])
-  const scale3 = useTransform(scrollYProgress, [0.45, 0.8], [0.8, 1.2])
-  const blurValue3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], [10, 0, 0, 10])
-  const blur3 = useMotionTemplate`blur(${blurValue3}px)`
-
-  // Stat 4: 0.75 to 1.00
-  const opacity4 = useTransform(scrollYProgress, [0.7, 0.85, 0.95, 1], [0, 1, 1, 0])
-  const scale4 = useTransform(scrollYProgress, [0.7, 1], [0.8, 1.2])
-  const blurValue4 = useTransform(scrollYProgress, [0.7, 0.85, 0.95, 1], [10, 0, 0, 10])
-  const blur4 = useMotionTemplate`blur(${blurValue4}px)`
+  // Crossfade logic for 4 stats
+  const getStyles = (start, end) => {
+    const opacity = interpolate(progress, start, start + 0.1, 0, 1) * interpolate(progress, end - 0.1, end, 1, 0)
+    const scale = interpolate(progress, start, end, 0.8, 1.2)
+    const blur = interpolate(progress, start, start + 0.1, 10, 0) + interpolate(progress, end - 0.1, end, 0, 10)
+    return {
+      opacity: Math.max(0, opacity),
+      transform: `scale(${scale})`,
+      filter: `blur(${blur}px)`,
+      display: progress >= start - 0.1 && progress <= end + 0.1 ? 'flex' : 'none'
+    }
+  }
 
   return (
     <section ref={containerRef} id="stats" className="relative h-[400vh] bg-white">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         
         {/* Stat 1 */}
-        <motion.div 
+        <div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity1, scale: scale1, blur: blurValue1 }}
+          style={getStyles(0, 0.25)}
         >
           <h2 
             className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
@@ -50,12 +41,12 @@ export default function Stats() {
             15+
           </h2>
           <p className="type-label text-[#737373] mt-4">Years of excellence</p>
-        </motion.div>
+        </div>
 
         {/* Stat 2 */}
-        <motion.div 
+        <div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity2, scale: scale2, blur: blurValue2 }}
+          style={getStyles(0.25, 0.5)}
         >
           <h2 
             className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
@@ -64,12 +55,12 @@ export default function Stats() {
             500+
           </h2>
           <p className="type-label text-[#737373] mt-4">Product SKUs</p>
-        </motion.div>
+        </div>
 
         {/* Stat 3 */}
-        <motion.div 
+        <div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity3, scale: scale3, blur: blurValue3 }}
+          style={getStyles(0.5, 0.75)}
         >
           <h2 
             className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
@@ -78,12 +69,12 @@ export default function Stats() {
             100%
           </h2>
           <p className="type-label text-[#737373] mt-4">Genuine Brands</p>
-        </motion.div>
+        </div>
 
         {/* Stat 4 */}
-        <motion.div 
+        <div 
           className="absolute text-center flex flex-col items-center justify-center"
-          style={{ opacity: opacity4, scale: scale4, blur: blurValue4 }}
+          style={getStyles(0.75, 1.0)}
         >
           <h2 
             className="text-[#0A0A0A] font-black uppercase tracking-tighter leading-none text-[clamp(5rem,15vw,20rem)]"
@@ -92,8 +83,7 @@ export default function Stats() {
             5,000+
           </h2>
           <p className="type-label text-[#737373] mt-4">Happy Customers</p>
-        </motion.div>
-
+        </div>
       </div>
     </section>
   )
