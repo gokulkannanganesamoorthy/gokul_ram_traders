@@ -46,7 +46,7 @@
   }
   
   .reveal-visible {
-    @apply opacity-100 translate-y-0 blur-0 scale-100;
+    @apply opacity-100 translate-y-0 blur-none scale-100;
   }
 
   .pill {
