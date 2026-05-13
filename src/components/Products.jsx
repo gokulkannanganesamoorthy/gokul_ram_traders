@@ -10,44 +10,44 @@ const CATEGORIES = [
   { 
     id: '02', 
     name: 'Pipes & Hoses', 
-    desc: 'PVC, Casing-Caping, GI Pipes, and heavy-duty Water Hoses.',
-    brands: ['Supreme', 'Ganga', 'Surya', 'Hi-Fi', 'Life']
+    desc: 'PVC, Casing-Caping, GI Pipes, Wiring Pipes and heavy-duty Water Hoses.',
+    brands: ['Supreme', 'Vijay', 'Sun']
   },
   { 
     id: '03', 
     name: 'Pump Systems', 
     desc: 'High-performance motors and industrial Pump Starters.',
-    brands: ['Crompton', 'V-Guard', 'LEO', 'L&T', 'KVB']
+    brands: ['Oriant']
   },
   { 
     id: '04', 
     name: 'MCBs & Boards', 
     desc: 'MCBs, TPN Boxes, Metal/Wood/Wiring boards, and Switchgear.',
-    brands: ['Legrand', 'L&T', 'Goldmedal', 'Vinay', 'Meet', 'Oriant']
+    brands: ['Legrand', 'L&T', 'Shivasu']
   },
   { 
     id: '05', 
     name: 'Fans & Ventilation', 
     desc: 'Ceiling fans, Exhaust fans, and energy-efficient Lighting.',
-    brands: ['Crompton', 'Oriant', 'Almonard', 'Surya', 'V-Guard']
+    brands: ['Crompton', 'Almonard', 'V-Guard']
   },
   { 
     id: '06', 
     name: 'Water Tanks', 
     desc: 'Triple-layer insulated storage tanks for all requirements.',
-    brands: ['Supreme', 'Ganga', 'Shivasu']
+    brands: ['Supreme', 'Ganga']
   },
   { 
     id: '07', 
     name: 'Water Heaters', 
     desc: 'Premium electric geysers and instant heating solutions.',
-    brands: ['Crompton', 'V-Guard', 'Oriant']
+    brands: ['V-Guard']
   },
   { 
     id: '08', 
     name: 'Sanitaryware', 
     desc: 'Premium faucets, showers and modern bathroom fittings.',
-    brands: ['Metro', 'Atlas', 'Frixon', 'Zoloto', 'Life']
+    brands: ['Metro', 'Atlas', 'Zoloto', 'Life']
   },
   { 
     id: '09', 
@@ -83,23 +83,21 @@ export default function Products() {
                     {cat.name}
                   </h3>
                   
-                  {/* Default Description - Hidden on Hover Desktop */}
-                  <p className="text-brand-gray-600 leading-relaxed mb-8 text-sm md:text-base lg:group-hover:opacity-0 transition-opacity duration-300">
+                  <p className="text-brand-gray-600 leading-relaxed mb-8 text-sm md:text-base">
                     {cat.desc}
                   </p>
 
-                  {/* Brands Layer - Visible on Hover Desktop / Always on Mobile */}
-                  <div className="lg:absolute lg:inset-x-0 lg:bottom-20 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 flex flex-wrap gap-2 mt-4 lg:mt-0">
+                  <div className="flex flex-wrap gap-2 mt-4">
                     <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">Partner Brands</p>
                     {cat.brands.map(brand => (
-                      <span key={brand} className="text-[10px] px-3 py-1 rounded-full border border-brand-black/5 text-brand-black font-medium">
+                      <span key={brand} className="text-[10px] px-3 py-1 rounded-full border border-brand-black/5 text-brand-black font-medium group-hover:border-brand-black/20 transition-colors">
                         {brand}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <a href="#contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-black mt-8">
+                <a href="#contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-black mt-12 group-hover:gap-4 transition-all">
                   Inquire
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                     <path d="M5 12h14M12 5l7 7-7 7" />
