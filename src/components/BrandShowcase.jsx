@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 
 const BRANDS = ['Supreme', 'Crompton', 'V-Guard', 'Goldmedal', 'HiFi']
 
@@ -12,7 +12,9 @@ function BrandItem({ brand, index, total, scrollYProgress }) {
   // Add a little overlap
   const op = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], [0, 1, 0])
   const scale = useTransform(scrollYProgress, [start - 0.1, end + 0.1], [0.8, 1.5])
-  const blur = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], ['blur(20px)', 'blur(0px)', 'blur(20px)'])
+  
+  const blurValue = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], [20, 0, 20])
+  const blur = useMotionTemplate`blur(${blurValue}px)`
 
   return (
     <motion.h2 

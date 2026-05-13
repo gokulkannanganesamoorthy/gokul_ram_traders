@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 
 export default function CTA() {
   const containerRef = useRef(null)
@@ -12,7 +12,9 @@ export default function CTA() {
   // The massive text fades and blurs out as you scroll down
   const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.8], [1, 1, 0])
   const textScale = useTransform(scrollYProgress, [0, 0.8], [1, 1.5])
-  const textBlur = useTransform(scrollYProgress, [0, 0.4, 0.8], ['blur(0px)', 'blur(0px)', 'blur(40px)'])
+  
+  const textBlurValue = useTransform(scrollYProgress, [0, 0.4, 0.8], [0, 0, 40])
+  const textBlur = useMotionTemplate`blur(${textBlurValue}px)`
 
   // The contact details fade in sharply at the end
   const detailsOpacity = useTransform(scrollYProgress, [0.6, 0.9], [0, 1])

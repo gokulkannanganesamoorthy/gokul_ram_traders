@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 
 export default function Hero() {
   const containerRef = useRef(null)
@@ -13,7 +13,9 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0, 0])
   const letterSpacing = useTransform(scrollYProgress, [0, 1], ['-0.05em', '0.05em'])
-  const filter = useTransform(scrollYProgress, [0, 1], ['blur(0px)', 'blur(8px)'])
+  
+  const blurValue = useTransform(scrollYProgress, [0, 1], [0, 8])
+  const filter = useMotionTemplate`blur(${blurValue}px)`
 
   return (
     <section 

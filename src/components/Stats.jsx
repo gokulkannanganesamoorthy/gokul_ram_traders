@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 
 export default function Stats() {
   const containerRef = useRef(null)
@@ -13,22 +13,26 @@ export default function Stats() {
   // Stat 1: 0 to 0.25
   const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [0, 1, 1, 0])
   const scale1 = useTransform(scrollYProgress, [0, 0.3], [0.8, 1.2])
-  const blur1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], ['blur(10px)', 'blur(0px)', 'blur(0px)', 'blur(10px)'])
+  const blurValue1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.3], [10, 0, 0, 10])
+  const blur1 = useMotionTemplate`blur(${blurValue1}px)`
 
   // Stat 2: 0.25 to 0.50
   const opacity2 = useTransform(scrollYProgress, [0.2, 0.35, 0.45, 0.55], [0, 1, 1, 0])
   const scale2 = useTransform(scrollYProgress, [0.2, 0.55], [0.8, 1.2])
-  const blur2 = useTransform(scrollYProgress, [0.2, 0.35, 0.45, 0.55], ['blur(10px)', 'blur(0px)', 'blur(0px)', 'blur(10px)'])
+  const blurValue2 = useTransform(scrollYProgress, [0.2, 0.35, 0.45, 0.55], [10, 0, 0, 10])
+  const blur2 = useMotionTemplate`blur(${blurValue2}px)`
 
   // Stat 3: 0.50 to 0.75
   const opacity3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], [0, 1, 1, 0])
   const scale3 = useTransform(scrollYProgress, [0.45, 0.8], [0.8, 1.2])
-  const blur3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], ['blur(10px)', 'blur(0px)', 'blur(0px)', 'blur(10px)'])
+  const blurValue3 = useTransform(scrollYProgress, [0.45, 0.6, 0.7, 0.8], [10, 0, 0, 10])
+  const blur3 = useMotionTemplate`blur(${blurValue3}px)`
 
   // Stat 4: 0.75 to 1.00
   const opacity4 = useTransform(scrollYProgress, [0.7, 0.85, 0.95, 1], [0, 1, 1, 0])
   const scale4 = useTransform(scrollYProgress, [0.7, 1], [0.8, 1.2])
-  const blur4 = useTransform(scrollYProgress, [0.7, 0.85, 0.95, 1], ['blur(10px)', 'blur(0px)', 'blur(0px)', 'blur(10px)'])
+  const blurValue4 = useTransform(scrollYProgress, [0.7, 0.85, 0.95, 1], [10, 0, 0, 10])
+  const blur4 = useMotionTemplate`blur(${blurValue4}px)`
 
   return (
     <section ref={containerRef} id="stats" className="relative h-[400vh] bg-white">
