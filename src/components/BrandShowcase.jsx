@@ -18,14 +18,13 @@ function BrandItem({ brand, index, total, scrollYProgress }) {
 
   return (
     <motion.h2 
-      className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4"
+      className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4 leading-[0.8]"
       style={{ 
         opacity: op, 
         scale, 
         filter: blur,
         fontFamily: 'Inter, sans-serif', 
-        fontSize: 'clamp(4rem, 15vw, 18rem)', 
-        lineHeight: 0.8 
+        fontSize: 'clamp(4rem, 15vw, 18rem)'
       }}
     >
       {brand}
