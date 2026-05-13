@@ -162,3 +162,14 @@
 html.lenis { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
+
+/* ── Pipe flow animation ── */
+@keyframes pipe-flow {
+  0%   { stroke-dashoffset: 42; opacity: 0.25; }
+  40%  { opacity: 1; }
+  100% { stroke-dashoffset: 0;  opacity: 1; }
+}
+.group:hover .pipe-animated {
+  animation: pipe-flow 0.65s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+

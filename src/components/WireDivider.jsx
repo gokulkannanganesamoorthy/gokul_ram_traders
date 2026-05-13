@@ -2,28 +2,29 @@
 // Cylindrical look via gradient, with brand text printed on the insulation like real cables
 import { useInView } from '../hooks/useInView';
 
-const WIRE_TEXTS = [
-  'GOKUL RAM ELECTRICALS',
-  '1100V FR / FRLS',
-  'RAJAPALAYAM • TN',
-  'WHOLESALE SUPPLY',
-  'GENUINE BRANDS',
-];
+const WIRE_TEXTS = ['GOKUL RAM ELECTRICALS'];
 
 export default function WireDivider({ label }) {
   const [ref, inView] = useInView({ once: true, rootMargin: '-10% 0px' });
-  const text = label || WIRE_TEXTS[Math.floor(Math.random() * WIRE_TEXTS.length)];
+  const text =
+    label || WIRE_TEXTS[Math.floor(Math.random() * WIRE_TEXTS.length)];
 
   return (
-    <div ref={ref} className="container-wide py-6 overflow-hidden" aria-hidden="true">
+    <div
+      ref={ref}
+      className="container-wide py-6 overflow-hidden"
+      aria-hidden="true"
+    >
       {/* Cylindrical wire: a thick bar with a radial gradient to simulate 3D tube */}
       <div
         className="relative w-full h-6 rounded-full overflow-hidden transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
-          background: 'linear-gradient(to bottom, #b0b0b5 0%, #e8e8ea 28%, #f5f5f7 50%, #e8e8ea 72%, #b0b0b5 100%)',
+          background:
+            'linear-gradient(to bottom, #b0b0b5 0%, #e8e8ea 28%, #f5f5f7 50%, #e8e8ea 72%, #b0b0b5 100%)',
           transform: inView ? 'scaleX(1)' : 'scaleX(0)',
           transformOrigin: 'left',
-          boxShadow: '0 3px 10px rgba(0,0,0,0.12), inset 0 -2px 4px rgba(0,0,0,0.1), inset 0 2px 3px rgba(255,255,255,0.6)',
+          boxShadow:
+            '0 3px 10px rgba(0,0,0,0.12), inset 0 -2px 4px rgba(0,0,0,0.1), inset 0 2px 3px rgba(255,255,255,0.6)',
         }}
       >
         {/* Inner highlight stripe — top gloss */}

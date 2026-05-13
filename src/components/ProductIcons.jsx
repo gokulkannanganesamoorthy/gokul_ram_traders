@@ -45,7 +45,7 @@ export function PipesIcon() {
         strokeLinejoin="round"
         fill="none"
       />
-      {/* Animated pipe — draws itself on hover */}
+      {/* Animated pipe — loops on hover via pipe-flow keyframe in index.css */}
       <path
         d="M3 9 H15 Q16 9 16 10 V21"
         stroke="#1a1a1a"
@@ -53,8 +53,8 @@ export function PipesIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
+        className="pipe-animated"
         style={{ strokeDasharray: 42, strokeDashoffset: 42 }}
-        className="group-hover:[stroke-dashoffset:0] transition-[stroke-dashoffset] duration-700 ease-in-out"
       />
       {/* Flanges */}
       <line x1="3" y1="6.5" x2="3" y2="11.5" stroke="#1a1a1a" strokeWidth="2" />
@@ -62,6 +62,7 @@ export function PipesIcon() {
     </svg>
   );
 }
+
 
 export function MotorIcon() {
   return (
