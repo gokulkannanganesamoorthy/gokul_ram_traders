@@ -3,11 +3,13 @@ import { useInView } from '../hooks/useInView';
 
 const BRAND_MAPPING = {
   Supreme: ['Pipes', 'Water Tanks', 'Accessories'],
+  Ashirwad: ['Pipes'],
   Crompton: ['Fans'],
   'V-Guard': ['Fans', 'Water Heaters'],
   Goldmedal: ['Switches & Accessories'],
   'Hi-Fi': ['Switches & Accessories'],
   Oriant: ['Pump Systems'],
+  ELGI: ['Compressors'],
   Kundan: ['Wiring & Cables'],
   LEO: ['Sanitaryware'],
   Ganga: ['Water Tanks'],

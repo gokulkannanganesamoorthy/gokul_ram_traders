@@ -11,13 +11,13 @@ const CATEGORIES = [
     id: '02', 
     name: 'Pipes & Hoses', 
     desc: 'PVC, Casing-Caping, GI Pipes, Wiring Pipes and heavy-duty Water Hoses.',
-    brands: ['Supreme', 'Vijay', 'Sun']
+    brands: ['Supreme', 'Vijay', 'Ashirwad']
   },
   { 
     id: '03', 
     name: 'Motor Pumps & Compressors', 
     desc: 'High-performance motors and industrial Pump Starters.',
-    brands: ['Oriant']
+    brands: ['Oriant', 'ELGI']
   },
   { 
     id: '04', 
