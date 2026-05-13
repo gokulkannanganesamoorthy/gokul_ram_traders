@@ -15,7 +15,7 @@ export default function Hero() {
         <h1 className="text-[clamp(3.5rem,12vw,14.5rem)] font-light leading-[0.85] tracking-tight mb-12">
           Gokul Ram
           <br />
-          <span className="font-medium">Electricals.</span>
+          <span className="font-medium">Electricals</span>
         </h1>
 
         <div className="flex justify-center">

@@ -13,6 +13,15 @@ const BRANDS = [
   'Surya',
   'Almonard',
   'Vinay',
+  'Legrand',
+  'Vijay',
+  'Venus',
+  'Sun',
+  'Metro',
+  'NMP',
+  'Swan',
+  'KVB',
+  'Frixon',
 ];
 
 export default function BrandShowcase() {

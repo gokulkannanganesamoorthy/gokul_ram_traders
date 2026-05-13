@@ -13,7 +13,7 @@ export default function Stats() {
   return (
     <section id="stats" ref={ref} className="section-padding bg-white">
       <div className="container-wide">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
