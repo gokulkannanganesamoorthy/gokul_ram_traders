@@ -33,8 +33,8 @@ const CATEGORIES = [
   },
   {
     id: '07',
-    name: 'Solar Solutions',
-    desc: 'High-efficiency panels and industrial inverter systems.',
+    name: 'Tools & Hardware',
+    desc: 'Professional grade hand tools and industrial hardware.',
   },
   {
     id: '08',

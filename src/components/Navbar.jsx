@@ -26,8 +26,8 @@ export default function Navbar() {
   }, [])
 
   return (
-    <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-6">
-      <nav className="glass rounded-full px-2 py-2 flex items-center gap-1">
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 md:px-0">
+      <nav className="glass rounded-full p-1.5 flex items-center gap-1 max-w-full overflow-x-auto no-scrollbar scroll-smooth">
         {items.map((item) => (
           <a
             key={item.id}
@@ -38,14 +38,14 @@ export default function Navbar() {
               const el = document.getElementById(item.id)
               if (el) {
                 window.scrollTo({
-                  top: el.offsetTop,
+                  top: el.offsetTop - 80,
                   behavior: 'smooth'
                 })
               }
             }}
-            className={`px-6 py-3 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`px-5 py-3 md:px-8 md:py-3.5 rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap cursor-pointer flex-shrink-0 ${
               active === item.id 
-                ? 'bg-brand-black text-brand-white shadow-lg scale-105' 
+                ? 'bg-brand-black text-brand-white shadow-xl' 
                 : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
             }`}
           >
@@ -53,6 +53,11 @@ export default function Navbar() {
           </a>
         ))}
       </nav>
+      
+      <style dangerouslySetInnerHTML={{ __html: `
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
     </div>
   )
 }
