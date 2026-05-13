@@ -1,27 +1,19 @@
 export function WiringIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      {/* Zigzag lightning bolt — electric current */}
-      <polyline
-        points="13,2 8,13 12,13 11,22 16,11 12,11 13,2"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        fill="none"
-        className="group-hover:stroke-black transition-all duration-300"
-        style={{ strokeDasharray: 50, strokeDashoffset: 50 }}
-      />
-      <polyline
-        points="13,2 8,13 12,13 11,22 16,11 12,11 13,2"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        fill="none"
-        className="group-hover:[stroke-dashoffset:0] transition-all duration-500"
-        style={{ strokeDasharray: 50, strokeDashoffset: 0 }}
-      />
+      {/* Cable outer insulation ring */}
+      <circle cx="12" cy="12" r="9" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* 3-core conductor cross-section */}
+      <circle cx="9" cy="10" r="2" fill="#1a1a1a" opacity="0.85" />
+      <circle cx="15" cy="10" r="2" fill="#1a1a1a" opacity="0.85" />
+      <circle cx="12" cy="15" r="2" fill="#1a1a1a" opacity="0.85" />
+      {/* Inner insulation rings on hover */}
+      <circle cx="9" cy="10" r="1" fill="white"
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <circle cx="15" cy="10" r="1" fill="white"
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
+      <circle cx="12" cy="15" r="1" fill="white"
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200" />
     </svg>
   );
 }
@@ -29,19 +21,24 @@ export function WiringIcon() {
 export function PipesIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      {/* Horizontal pipe body */}
-      <rect x="2" y="9" width="20" height="6" rx="3" stroke="#1a1a1a" strokeWidth="1.5" />
-      {/* Flow arrow that appears on hover and slides right */}
+      {/* L-elbow pipe — horizontal then down */}
       <path
-        d="M7 12 L10 12 M10 12 L8.5 10.5 M10 12 L8.5 13.5"
+        d="M3 9 H15 Q16 9 16 10 V21"
         stroke="#1a1a1a"
-        strokeWidth="1.3"
+        strokeWidth="3"
         strokeLinecap="round"
-        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-5 transition-all duration-700 ease-in-out"
+        strokeLinejoin="round"
+        fill="none"
       />
-      {/* End cap flanges */}
-      <line x1="2" y1="8" x2="2" y2="16" stroke="#1a1a1a" strokeWidth="2" />
-      <line x1="22" y1="8" x2="22" y2="16" stroke="#1a1a1a" strokeWidth="2" />
+      {/* Left flange cap */}
+      <line x1="3" y1="6.5" x2="3" y2="11.5" stroke="#1a1a1a" strokeWidth="2" />
+      {/* Bottom flange cap */}
+      <line x1="13.5" y1="21" x2="18.5" y2="21" stroke="#1a1a1a" strokeWidth="2" />
+      {/* Flow dot travels on hover */}
+      <circle
+        cx="8" cy="9" r="1.5" fill="#a1a1aa"
+        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-[50px] group-hover:translate-y-[30px] transition-all duration-1000 ease-in-out"
+      />
     </svg>
   );
 }
@@ -84,26 +81,19 @@ export function MotorIcon() {
 
 export function SwitchIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="6"
-        y="4"
-        width="12"
-        height="16"
-        rx="2"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-      />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ overflow: 'hidden' }}>
+      <rect x="6" y="4" width="12" height="16" rx="2" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Switch handle — flips from top to bottom, stays within box */}
       <rect
         x="10"
-        y="8"
+        y="7"
         width="4"
-        height="6"
+        height="5"
         rx="1"
         fill="#1a1a1a"
-        className="group-hover:translate-y-4 transition-transform duration-300"
+        className="group-hover:translate-y-[5px] transition-transform duration-300"
       />
-      <circle cx="12" cy="19" r="1" fill="#a1a1aa" />
+      <circle cx="12" cy="18.5" r="1" fill="#a1a1aa" />
     </svg>
   );
 }
@@ -265,30 +255,19 @@ export function SolarIcon() {
 
 export function ToolIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      {/* Hard hat brim */}
-      <path
-        d="M3 17 Q3 19 12 19 Q21 19 21 17"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      {/* Hard hat dome */}
-      <path
-        d="M6 17 C6 11 8 8 12 8 C16 8 18 11 18 17"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-      />
-      {/* Center ridge line */}
-      <line x1="12" y1="8" x2="12" y2="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Brim highlight — slides in on hover */}
-      <path
-        d="M5 17 Q5 18.5 12 18.5 Q19 18.5 19 17"
-        stroke="#a1a1aa"
-        strokeWidth="1"
-        strokeLinecap="round"
-        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"
-      />
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="group-hover:rotate-12 transition-transform duration-300 origin-center"
+    >
+      {/* Wrench open-end ring at top-left */}
+      <circle cx="7" cy="7" r="4" stroke="#1a1a1a" strokeWidth="1.5" fill="none" />
+      {/* Notch cut out of ring */}
+      <line x1="9.8" y1="4.2" x2="10.5" y2="3.5" stroke="white" strokeWidth="2.5" />
+      {/* Handle going diagonally to bottom-right */}
+      <line x1="10" y1="10" x2="20" y2="20" stroke="#1a1a1a" strokeWidth="3" strokeLinecap="round" />
     </svg>
   );
 }
