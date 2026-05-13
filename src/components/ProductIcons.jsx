@@ -71,7 +71,7 @@ export function MotorIcon() {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="group-hover:rotate-180 transition-transform duration-700 ease-in-out"
+      className="group-hover:rotate-180 transition-transform duration-700 ease-in-out mobile-spin"
     >
       {/* Gear outer ring */}
       <circle cx="12" cy="12" r="6" stroke="#1a1a1a" strokeWidth="1.5" />
@@ -138,7 +138,7 @@ export function FanIcon() {
       height="24"
       viewBox="0 0 72 72"
       fill="none"
-      className="group-hover:rotate-[360deg] transition-transform duration-[1200ms] ease-out"
+      className="group-hover:rotate-[360deg] transition-transform duration-[1200ms] ease-out mobile-spin"
     >
       {/* 3 blades at 0° , 120° and 240° */}
       {[0, 120, 240].map((angle) => (
@@ -379,7 +379,7 @@ export function ToolIcon() {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="group-hover:rotate-45 transition-transform duration-300 origin-center"
+      className="group-hover:rotate-45 transition-transform duration-300 origin-center mobile-spin"
     >
       {/* Screwdriver handle */}
       <rect x="9" y="2" width="6" height="7" rx="2" stroke="#1a1a1a" strokeWidth="1.5" />

@@ -192,20 +192,20 @@ html.lenis { height: auto; }
   to   { transform: translateX(0); }
 }
 
-/* ── Product icons always animate on mobile ── */
-/* (keyframe must be outside @media for full browser support) */
+/* ── Product icons: only targeted icons spin on mobile ── */
 @keyframes icon-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
 @media (max-width: 767px) {
-  /* Spin the SVG element inside every product category card */
-  #products .group svg {
+  /* Only SVGs that carry the mobile-spin class rotate continuously */
+  .mobile-spin {
     animation: icon-spin 2.8s linear infinite;
   }
-  /* Pipe draw-on always active on mobile (no hover needed) */
+  /* Pipe draw-on always active on mobile */
   #products .pipe-animated {
     animation: pipe-flow 0.65s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
+

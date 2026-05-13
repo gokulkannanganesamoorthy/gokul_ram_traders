@@ -65,11 +65,11 @@ export default function Stats() {
                   className="absolute top-0 left-0 h-[1px] bg-brand-black transition-all duration-1000 ease-out"
                   style={{ width: inView ? '100%' : '0%', transitionDelay: `${i * 100 + 300}ms` }}
                 />
-                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6 md:mb-8">{stat.label}</p>
-                <p className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums">
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6 md:mb-8 text-center md:text-left">{stat.label}</p>
+                <p className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums text-center md:text-left">
                   <Counter value={stat.value} inView={inView} />
                 </p>
-                <p className="text-brand-gray-600 font-medium text-sm md:text-base">{stat.sub}</p>
+                <p className="text-brand-gray-600 font-medium text-sm md:text-base text-center md:text-left">{stat.sub}</p>
               </div>
             </div>
           ))}
