@@ -30,7 +30,6 @@ export default function CTA() {
 
             {/* 2×2 contact grid */}
             <div className="flex-1 w-full grid grid-cols-2 gap-y-10 gap-x-6 md:gap-20">
-
               {/* Call */}
               <div className="group min-w-0">
                 <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 block mb-2 md:mb-3">
@@ -53,7 +52,7 @@ export default function CTA() {
                   WhatsApp
                 </span>
                 <a
-                  href="https://wa.me/919364501230"
+                  href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 underline underline-offset-4 decoration-brand-black/10"
@@ -93,7 +92,8 @@ export default function CTA() {
                     rel="noopener noreferrer"
                     className="text-sm md:text-xl font-medium tracking-tight leading-snug block mb-2"
                   >
-                    141 B/2 Andalpuram,<br />
+                    141 B/2 Andalpuram,
+                    <br />
                     Rajapalayam 626108
                   </a>
                   <a
@@ -106,7 +106,6 @@ export default function CTA() {
                   </a>
                 </address>
               </div>
-
             </div>
           </div>
         </div>

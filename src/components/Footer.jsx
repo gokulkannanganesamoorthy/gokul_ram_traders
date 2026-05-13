@@ -23,8 +23,8 @@ export default function Footer() {
     >
       <div className="container-wide py-16">
         {/* Internal Link Grid — signals sitelinks to Google */}
-        <nav aria-label="Footer Navigation" className="mb-16">
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 hidden">
+        <nav aria-label="Footer Navigation" className="mb-16 hidden">
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
             {NAV_ITEMS.map(({ id, label }) => (
               <a
                 key={id}
@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-brand-black/5 pt-10 text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">
           <div className="flex gap-8">
             <a
-              href="https://wa.me/919364501230"
+              href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-brand-black transition-colors"

@@ -33,7 +33,6 @@ const BRAND_MAPPING = {
 
 const BRANDS = Object.keys(BRAND_MAPPING);
 
-// Flatten all unique category tags for filter chips
 const ALL_CATEGORIES = ['All', ...Array.from(
   new Set(Object.values(BRAND_MAPPING).flat())
 ).sort()];
@@ -63,7 +62,7 @@ export default function BrandShowcase() {
       <div className="container-wide">
         {/* Heading */}
         <div
-          className={`mb-12 md:mb-32 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+          className={`mb-10 md:mb-16 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
           <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gray-400 mb-6 text-center">
             Authorized Partners
@@ -77,63 +76,64 @@ export default function BrandShowcase() {
           </h2>
         </div>
 
-        {/* ── Mobile: Category filter chips + brand grid ── */}
+        {/* ── Shared: Category filter chip bar ── */}
         <div
-          className={`md:hidden transition-all duration-1000 delay-300 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+          className={`transition-all duration-1000 delay-200 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          {/* Horizontal scrollable chip bar */}
-          <div className="flex gap-2 overflow-x-auto pb-3 mb-8 scrollbar-none -mx-4 px-4">
+          <div className="flex gap-2 overflow-x-auto pb-3 mb-10 md:mb-16 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap md:justify-center">
             {ALL_CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-200 active:scale-95 ${
                   activeCategory === cat
-                    ? 'bg-brand-black text-white'
-                    : 'bg-brand-gray-100 text-brand-gray-400'
+                    ? 'bg-brand-black text-white scale-105'
+                    : 'bg-brand-gray-100 text-brand-gray-400 hover:bg-brand-black/5 hover:text-brand-black'
                 }`}
               >
                 {cat}
               </button>
             ))}
           </div>
+        </div>
 
-          {/* Brand grid — 2 columns, always shows category below */}
-          <div className="grid grid-cols-2 gap-4">
+        {/* ── Mobile: card grid ── */}
+        <div
+          className={`md:hidden transition-all duration-700 delay-300 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+        >
+          <div className="grid grid-cols-2 gap-3">
             {filteredBrands.map((brand) => (
               <div
                 key={brand}
-                className="border border-brand-black/8 rounded-2xl px-4 py-4 flex flex-col gap-1 active:bg-brand-gray-100 transition-colors"
+                className="border border-brand-black/8 rounded-2xl px-4 py-4 flex flex-col gap-1"
               >
                 <span className="text-xl font-light tracking-tight text-brand-black leading-tight">
                   {brand}
                 </span>
-                <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 leading-relaxed">
+                <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400">
                   {BRAND_MAPPING[brand].join(' · ')}
                 </span>
               </div>
             ))}
           </div>
-
-          {/* Count line */}
           <p className="text-[10px] text-brand-gray-400 text-center mt-6 font-medium uppercase tracking-widest">
             {filteredBrands.length} brand{filteredBrands.length !== 1 ? 's' : ''}
             {activeCategory !== 'All' ? ` in ${activeCategory}` : ' total'}
           </p>
         </div>
 
-        {/* ── Desktop: original hover layout ── */}
+        {/* ── Desktop: large-text hover layout (filtered) ── */}
         <div
-          className={`hidden md:flex flex-wrap justify-center gap-x-32 gap-y-24 transition-all duration-1000 delay-300 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+          className={`hidden md:flex flex-wrap justify-center gap-x-24 gap-y-20 transition-all duration-700 delay-300 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          {BRANDS.map((brand) => (
+          {filteredBrands.map((brand) => (
             <div
               key={brand}
               onMouseEnter={() => setHoveredBrand(brand)}
               onMouseLeave={() => setHoveredBrand(null)}
-              className={`relative group transition-all duration-700 ${
+              className={`relative group transition-all duration-500 ${
                 hoveredBrand && hoveredBrand !== brand
-                  ? 'opacity-20 scale-95 blur-[1px]'
+                  ? 'opacity-15 scale-95 blur-[1px]'
                   : 'opacity-100 scale-100'
               }`}
             >
@@ -153,7 +153,19 @@ export default function BrandShowcase() {
               </div>
             </div>
           ))}
+
+          {filteredBrands.length === 0 && (
+            <p className="text-brand-gray-400 text-lg font-light">
+              No brands found for this category.
+            </p>
+          )}
         </div>
+
+        {/* Desktop count line */}
+        <p className="hidden md:block text-[10px] text-brand-gray-400 text-center mt-12 font-medium uppercase tracking-widest">
+          {filteredBrands.length} of {BRANDS.length} brands
+          {activeCategory !== 'All' ? ` · ${activeCategory}` : ''}
+        </p>
       </div>
     </section>
   );
