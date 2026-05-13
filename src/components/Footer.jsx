@@ -15,7 +15,6 @@ export default function Footer() {
           © 2024 Design by Antigravity.
         </p>
       </div>
-      <div className="h-20" /> {/* Spacer for floating nav */}
     </footer>
   )
 }
