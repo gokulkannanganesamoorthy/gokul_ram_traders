@@ -1,50 +1,48 @@
 import { useState, useEffect } from 'react'
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('home')
+
+  const items = [
+    { id: 'hero', label: 'Home' },
+    { id: 'stats', label: 'Excellence' },
+    { id: 'products', label: 'Offerings' },
+    { id: 'brands', label: 'Partners' },
+    { id: 'contact', label: 'Reach' }
+  ]
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200
+      items.forEach(item => {
+        const el = document.getElementById(item.id)
+        if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+          setActive(item.id)
+        }
+      })
+    }
+    window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
-      scrolled ? 'bg-brand-white/80 backdrop-blur-xl border-brand-gray-200 h-16' : 'bg-transparent border-transparent h-20'
-    }`}>
-      <div className="container-wide h-full flex items-center justify-between px-6 md:px-12">
-        <a href="#hero" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 bg-brand-black rounded-full flex items-center justify-center transition-transform group-hover:scale-110">
-            <span className="text-brand-white font-black text-xs">G</span>
-          </div>
-          <span className="font-bold tracking-tighter text-lg uppercase">Gokul Ram</span>
-        </a>
-
-        <div className="hidden md:flex items-center gap-10">
-          {['Experience', 'Products', 'Brands', 'Contact'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
-              className="text-[11px] uppercase tracking-[0.15em] font-bold text-brand-gray-600 hover:text-brand-black transition-colors"
-            >
-              {item}
-            </a>
-          ))}
-          <a 
-            href="#contact" 
-            className="px-6 py-2.5 bg-brand-black text-brand-white text-[10px] uppercase tracking-widest font-bold rounded-full hover:bg-brand-gray-600 transition-all"
+    <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50">
+      <nav className="glass rounded-full px-2 py-2 flex items-center gap-1">
+        {items.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={() => setActive(item.id)}
+            className={`px-6 py-3 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold transition-all ${
+              active === item.id 
+                ? 'bg-brand-black text-brand-white shadow-lg scale-105' 
+                : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
+            }`}
           >
-            Inquiry
+            {item.label}
           </a>
-        </div>
-
-        <button className="md:hidden p-2 text-brand-black">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M3 12h18M3 6h18M3 18h18" strokeLinecap="round" />
-          </svg>
-        </button>
-      </div>
-    </nav>
+        ))}
+      </nav>
+    </div>
   )
 }

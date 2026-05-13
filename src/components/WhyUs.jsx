@@ -1,52 +1,47 @@
-const VALUES = [
-  { 
-    title: 'Ready Stock', 
-    desc: 'Our 5,000 sq.ft warehouse ensures your project never hits a bottleneck.',
-    icon: '📦'
-  },
-  { 
-    title: 'Expert Advice', 
-    desc: '15 years of technical knowledge to help you choose the right spec.',
-    icon: '⚡'
-  },
-  { 
-    title: 'Transparent Pricing', 
-    desc: 'Fair, wholesale-tier pricing for retailers and contractors alike.',
-    icon: '🏷️'
-  }
+import { useInView } from '../hooks/useInView'
+
+const FEATURES = [
+  { title: 'Quality First', desc: 'Every product is hand-picked for durability.' },
+  { title: 'Local Speed', desc: 'Immediate availability in Rajapalayam.' },
+  { title: 'Fair Scale', desc: 'Wholesale pricing for all project tiers.' }
 ]
 
 export default function WhyUs() {
+  const [ref, inView] = useInView({ once: true })
+
   return (
-    <section id="why-us" className="bg-brand-gray-100 border-t border-brand-gray-200">
+    <section id="why-us" ref={ref} className="section-padding bg-brand-bg relative overflow-hidden">
       <div className="container-wide">
-        <div className="grid-modular">
-          
-          <div className="grid-cell md:col-span-12 py-24 bg-brand-black text-brand-white text-center">
-            <p className="label-mono text-brand-gray-400">The Difference</p>
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mt-4">
-              Why Professionals<br />Choose Gokul Ram
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
+            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6">Our Philosophy</p>
+            <h2 className="text-5xl md:text-7xl font-light tracking-tighter mb-12">
+              Durable solutions for a <span className="font-medium italic">connected</span> tomorrow.
             </h2>
+            <div className="space-y-12">
+              {FEATURES.map((feat, i) => (
+                <div key={feat.title} className="flex gap-8 group">
+                  <span className="text-brand-accent font-mono text-sm mt-1">0{i+1}</span>
+                  <div>
+                    <h4 className="text-xl font-medium mb-2 group-hover:text-brand-accent transition-colors">{feat.title}</h4>
+                    <p className="text-brand-gray-600 max-w-sm">{feat.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {VALUES.map((value) => (
-            <div key={value.title} className="grid-cell md:col-span-4">
-              <span className="text-4xl mb-8 block">{value.icon}</span>
-              <div>
-                <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">{value.title}</h3>
-                <p className="text-brand-gray-600 leading-relaxed">
-                  {value.desc}
-                </p>
+          <div className={`relative transition-all duration-1000 delay-300 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
+            <div className="aspect-square rounded-[80px] bg-white shadow-premium flex items-center justify-center p-20 relative z-10">
+              <div className="text-center">
+                <span className="text-[120px] mb-8 block leading-none">🛡️</span>
+                <p className="text-2xl font-light text-brand-gray-600">The most trusted electrical partner in Tamil Nadu since 2009.</p>
               </div>
             </div>
-          ))}
-
-          <div className="grid-cell md:col-span-12 py-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-brand-gray-200">
-            <p className="font-bold uppercase tracking-[0.2em] text-xs">Trusted by over 100+ local contractors</p>
-            <div className="h-[1px] flex-1 bg-brand-gray-200 hidden md:block mx-12" />
-            <a href="#contact" className="font-black underline underline-offset-4 uppercase tracking-tighter">Read testimonials</a>
+            {/* Decorative blurs */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-brand-black/5 rounded-full blur-3xl" />
           </div>
-
         </div>
       </div>
     </section>
