@@ -15,11 +15,8 @@ const BRANDS = [
   'Vinay',
   'Legrand',
   'Vijay',
-  'Venus',
-  'Sun',
   'Metro',
   'Atlas',
-  'Swan',
   'KVB',
   'Frixon',
   'Life',
@@ -28,7 +25,6 @@ const BRANDS = [
   'Meet',
   'L&T',
   'Shivasu',
-  'Speed',
 ];
 
 export default function BrandShowcase() {
