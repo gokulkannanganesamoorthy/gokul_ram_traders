@@ -61,64 +61,61 @@ export default function Products() {
   const [ref, inView] = useInView({ once: true })
 
   return (
-    <section id="products" ref={ref} className="section-padding bg-white overflow-hidden">
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 20s linear infinite;
-          }
-        `}
-      </style>
+    <section id="products" ref={ref} className="section-padding bg-white">
       <div className="container-wide">
         <div className={`mb-20 md:mb-32 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
           <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6">Our Offerings</p>
           <h2 className="text-5xl md:text-8xl font-light tracking-tighter">Essential Materials.</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-brand-black/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-16 md:gap-y-24">
           {CATEGORIES.map((cat, i) => (
             <div 
               key={cat.id} 
-              className={`transition-all duration-1000 group relative border-b border-brand-black/10 md:border-r ${i % 3 === 2 ? 'md:border-r-0' : ''} ${inView ? 'reveal-visible' : 'reveal-hidden'} overflow-hidden h-[400px] flex flex-col justify-between p-10 hover:bg-brand-black transition-colors duration-500`}
-              style={{ transitionDelay: `${i * 50}ms` }}
+              className={`transition-all duration-1000 group relative ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {/* Category ID - Hidden on Hover */}
-              <span className="text-[10px] font-mono text-brand-gray-400 group-hover:text-brand-gray-600 transition-colors z-10">{cat.id}</span>
-              
-              <div className="z-10 relative">
-                <h3 className="text-3xl font-medium tracking-tight mb-4 group-hover:text-white transition-colors duration-500">
-                  {cat.name}
-                </h3>
+              <div className="border-b border-brand-black/10 pb-8 md:pb-12 group-hover:border-brand-black transition-all h-full flex flex-col min-h-[320px] cursor-pointer">
+                <div className="flex justify-between items-start mb-6 md:mb-8">
+                  <span className="text-[10px] font-mono text-brand-gray-400">{cat.id}</span>
+                  {/* Hover Affordance for Desktop */}
+                  <div className="hidden lg:flex items-center gap-3 opacity-40 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[9px] uppercase tracking-widest font-bold text-brand-black">View Brands</span>
+                    <div className="w-6 h-6 rounded-full border border-brand-black/10 flex items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all duration-500">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" className="group-hover:rotate-90 transition-transform duration-500">
+                        <path d="M6 1V11M1 6H11" stroke="currentColor" strokeWidth="1.5" className="text-brand-black group-hover:text-white" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
                 
-                <p className="text-brand-gray-600 leading-relaxed text-base group-hover:text-brand-gray-400 transition-colors duration-500 max-w-[280px]">
-                  {cat.desc}
-                </p>
-              </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight mb-3 md:mb-4 group-hover:translate-x-2 transition-transform duration-500">
+                    {cat.name}
+                  </h3>
+                  
+                  <p className="text-brand-gray-600 leading-relaxed mb-8 text-sm md:text-base">
+                    {cat.desc}
+                  </p>
 
-              {/* Brands Horizontal Marquee - Reveals on Hover (PC) / Always visible (Mobile) */}
-              <div className="lg:absolute lg:inset-x-0 lg:bottom-12 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 mt-10 lg:mt-0">
-                <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-brand-gray-400 mb-3 px-10 lg:px-0 lg:text-center">Partner Brands</p>
-                <div className="relative flex overflow-hidden group/marquee border-y border-brand-black/5 lg:border-white/10 py-4">
-                  <div className="flex animate-marquee whitespace-nowrap group-hover:lg:pause-on-hover">
-                    {[...cat.brands, ...cat.brands, ...cat.brands].map((brand, idx) => (
-                      <span key={idx} className="text-sm md:text-lg font-medium tracking-tighter text-brand-black lg:group-hover:text-white mx-8">
+                  {/* Brands Layer: Visible on Hover on Desktop, Always visible on Mobile */}
+                  <div className="flex flex-wrap gap-2 mt-4 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-500">
+                    <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">Partner Brands</p>
+                    {cat.brands.map(brand => (
+                      <span key={brand} className="text-[10px] px-3 py-1 rounded-full border border-brand-black/5 text-brand-black font-medium">
                         {brand}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <a href="#contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-black group-hover:text-white mt-8 z-10 transition-colors">
-                Inquire
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
+                <a href="#contact" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-brand-black mt-12 group-hover:gap-4 transition-all">
+                  Inquire
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           ))}
         </div>
