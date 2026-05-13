@@ -32,6 +32,12 @@
     @apply bg-white/70 backdrop-blur-md border border-brand-black/5;
   }
 
+  .bg-grid {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
   .btn-primary {
     @apply relative inline-flex items-center justify-center px-12 py-6 rounded-full bg-brand-black text-brand-white text-[11px] uppercase tracking-[0.3em] font-bold overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)];
     animation: breathing 4s ease-in-out infinite;
