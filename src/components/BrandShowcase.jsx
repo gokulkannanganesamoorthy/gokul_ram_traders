@@ -4,100 +4,87 @@ import { motion, useInView } from 'framer-motion'
 const BRANDS = [
   {
     name: 'Supreme',
-    category: 'Pipes & Fittings',
-    color: '#F5A623',
-    initial: 'S',
-    description: "India's #1 piping solutions brand",
+    category: 'Pipes and Fittings',
+    detail: 'India\'s number one piping brand. CPVC, PVC, UPVC pipes and complete fitting solutions.',
+    since: '1942',
   },
   {
     name: 'Crompton',
-    category: 'Fans & Electricals',
-    color: '#60A5FA',
-    initial: 'C',
-    description: 'Pioneer in electrical appliances since 1937',
+    category: 'Fans and Electricals',
+    detail: 'Pioneer in electrical appliances. Ceiling fans, exhaust fans, and home electricals.',
+    since: '1937',
   },
   {
     name: 'V-Guard',
-    category: 'Electricals',
-    color: '#34D399',
-    initial: 'V',
-    description: 'Trusted voltage protection & home electricals',
-  },
-  {
-    name: 'HiFi',
-    category: 'Switches',
-    color: '#A78BFA',
-    initial: 'H',
-    description: 'Premium modular wiring devices',
-  },
-  {
-    name: 'Vinay',
-    category: 'Switches & Sockets',
-    color: '#FB923C',
-    initial: 'V',
-    description: 'Quality wiring accessories for modern homes',
+    category: 'Electricals and Fans',
+    detail: 'Trusted across India for voltage stabilizers, fans, and home electrical products.',
+    since: '1977',
   },
   {
     name: 'Goldmedal',
     category: 'Wiring Devices',
-    color: '#FBBF24',
-    initial: 'G',
-    description: 'Award-winning modular switches & accessories',
+    detail: 'Premium modular switches, sockets, and wiring accessories for modern interiors.',
+    since: '1997',
+  },
+  {
+    name: 'HiFi',
+    category: 'Modular Switches',
+    detail: 'Clean, durable modular wiring devices for residential and commercial projects.',
+    since: '—',
+  },
+  {
+    name: 'Vinay',
+    category: 'Switches and Sockets',
+    detail: 'Reliable wiring accessories and switch boards for everyday home wiring needs.',
+    since: '—',
   },
 ]
 
 const MARQUEE_BRANDS = [...BRANDS, ...BRANDS]
 
-function BrandCard({ brand, index }) {
+function BrandRow({ brand, index }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const inView = useInView(ref, { once: true, margin: '-40px' })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-500 overflow-hidden cursor-default"
+      transition={{ delay: index * 0.07, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      className="grid grid-cols-12 gap-6 border-b border-[#E5E5E5] py-8 group items-start"
     >
-      {/* Hover glow */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"
-        style={{ background: `radial-gradient(circle at center, ${brand.color}12, transparent 70%)` }}
-      />
-
-      <div className="relative z-10">
-        {/* Brand avatar */}
-        <div
-          className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl font-extrabold mb-4 transition-all duration-500 group-hover:scale-110"
-          style={{
-            background: `${brand.color}20`,
-            border: `1.5px solid ${brand.color}40`,
-            color: brand.color,
-            fontFamily: 'Syne, sans-serif',
-          }}
-        >
-          {brand.initial}
-        </div>
-
-        <h3 className="type-h4 text-white mb-0.5" style={{ fontFamily: 'Syne, sans-serif' }}>
+      {/* Name */}
+      <div className="col-span-12 sm:col-span-3">
+        <p className="type-label text-[#A3A3A3] mb-1">0{index + 1}</p>
+        <h3 className="text-[#0A0A0A] font-semibold text-lg" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>
           {brand.name}
         </h3>
-        <p className="type-label mb-3" style={{ color: brand.color }}>
-          {brand.category}
-        </p>
-        <p className="type-body-sm text-white/40" style={{ fontFamily: 'Inter, sans-serif' }}>
-          {brand.description}
-        </p>
+      </div>
 
-        {/* Bottom accent line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={inView ? { scaleX: 1 } : {}}
-          transition={{ delay: index * 0.1 + 0.4, duration: 0.5 }}
-          className="absolute bottom-0 left-0 right-0 h-px origin-left"
-          style={{ background: `linear-gradient(90deg, ${brand.color}60, transparent)` }}
-        />
+      {/* Category */}
+      <div className="col-span-12 sm:col-span-3">
+        <span
+          className="text-xs text-[#525252] bg-[#F5F5F5] border border-[#E5E5E5] px-3 py-1.5 rounded-full"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          {brand.category}
+        </span>
+      </div>
+
+      {/* Detail */}
+      <div className="col-span-12 sm:col-span-5">
+        <p className="type-body text-[#525252] leading-relaxed">{brand.detail}</p>
+      </div>
+
+      {/* Arrow */}
+      <div className="col-span-12 sm:col-span-1 flex justify-end items-center">
+        <svg
+          width="16" height="16" viewBox="0 0 16 16" fill="none"
+          className="text-[#D4D4D4] group-hover:text-[#0A0A0A] transition-colors duration-200"
+        >
+          <path d="M2 14L14 2M14 2H5M14 2V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
       </div>
     </motion.div>
   )
@@ -105,89 +92,68 @@ function BrandCard({ brand, index }) {
 
 export default function BrandShowcase() {
   const headerRef = useRef(null)
-  const headerInView = useInView(headerRef, { once: true, margin: '-80px' })
+  const headerInView = useInView(headerRef, { once: true, margin: '-60px' })
 
   return (
-    <section id="brands" className="relative py-32 bg-[#0A0F1E] overflow-hidden">
-      {/* Ambient background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F5A623]/4 blur-3xl rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/4 blur-3xl rounded-full" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="brands" className="bg-[#FAFAFA] section-pad border-t border-[#E5E5E5]" aria-label="Brands we carry">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div ref={headerRef} className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-3 mb-6"
-          >
-            <div className="w-8 h-px bg-[#F5A623]" />
-            <span className="type-label text-[#F5A623]">Trusted Brands</span>
-            <div className="w-8 h-px bg-[#F5A623]" />
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="type-h1 text-white mb-6"
-            style={{ fontFamily: 'Syne, sans-serif' }}
-          >
-            Brands We Proudly{' '}
-            <span className="text-gradient">Carry</span>
-          </motion.h2>
-
+        <div ref={headerRef} className="mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="type-body-lg text-white/45 max-w-2xl mx-auto"
-            style={{ fontFamily: 'Inter, sans-serif' }}
+            initial={{ opacity: 0 }}
+            animate={headerInView ? { opacity: 1 } : {}}
+            className="type-label text-[#737373] mb-4"
           >
-            We partner only with India's most reliable manufacturers — so every
-            product you source from us is built to last.
+            Brands We Carry
           </motion.p>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={headerInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="type-h1 text-[#0A0A0A]"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Only the best brands.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="type-body text-[#737373] max-w-xs sm:text-right"
+            >
+              Authorized dealers stocking genuine, warranty-backed products.
+            </motion.p>
+          </div>
         </div>
 
-        {/* Brand Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        {/* Column headers */}
+        <div className="grid grid-cols-12 gap-6 pb-4 border-b border-[#E5E5E5] hidden sm:grid">
+          <p className="col-span-3 type-label text-[#A3A3A3]">Brand</p>
+          <p className="col-span-3 type-label text-[#A3A3A3]">Category</p>
+          <p className="col-span-5 type-label text-[#A3A3A3]">About</p>
+        </div>
+
+        {/* Brand rows */}
+        <div>
           {BRANDS.map((brand, i) => (
-            <BrandCard key={brand.name} brand={brand} index={i} />
+            <BrandRow key={brand.name} brand={brand} index={i} />
           ))}
         </div>
 
-        {/* Marquee Logo Ticker */}
-        <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0F1E] to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0A0F1E] to-transparent z-10" />
-
-          <div className="flex gap-6 animate-[marquee_18s_linear_infinite]">
+        {/* Marquee */}
+        <div className="mt-16 overflow-hidden relative">
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#FAFAFA] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#FAFAFA] to-transparent z-10" />
+          <div className="flex gap-3 animate-[marquee_22s_linear_infinite] whitespace-nowrap">
             {MARQUEE_BRANDS.map((brand, i) => (
-              <div
+              <span
                 key={i}
-                className="flex-shrink-0 glass rounded-2xl px-8 py-5 flex items-center gap-4 hover:bg-white/5 transition-colors duration-300 group"
+                className="flex-shrink-0 text-sm font-medium text-[#0A0A0A] border border-[#E5E5E5] bg-white px-5 py-2.5 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center text-lg font-bold flex-shrink-0"
-                  style={{
-                    background: `${brand.color}20`,
-                    color: brand.color,
-                    fontFamily: 'Syne, sans-serif',
-                  }}
-                >
-                  {brand.initial}
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-sm whitespace-nowrap" style={{ fontFamily: 'Syne, sans-serif' }}>
-                    {brand.name}
-                  </div>
-                  <div className="type-label whitespace-nowrap" style={{ color: brand.color }}>
-                    {brand.category}
-                  </div>
-                </div>
-              </div>
+                {brand.name}
+              </span>
             ))}
           </div>
         </div>

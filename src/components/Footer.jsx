@@ -1,74 +1,56 @@
-import { motion } from 'framer-motion'
-
 const NAV_LINKS = [
   { label: 'Products',  href: '#products' },
   { label: 'Brands',    href: '#brands'   },
-  { label: 'Why Us',   href: '#why-us'   },
-  { label: 'Contact',  href: '#contact'  },
+  { label: 'Why Us',    href: '#why-us'   },
+  { label: 'Contact',   href: '#contact'  },
 ]
 
 const PRODUCT_LINKS = [
-  { label: 'Wiring Materials',    href: '#products' },
-  { label: 'Pipes & Fittings',    href: '#products' },
-  { label: 'Fans & Electricals',  href: '#products' },
-  { label: 'Switches',            href: '#products' },
-  { label: 'Motors & Pumps',      href: '#products' },
-  { label: 'Plumbing Products',   href: '#products' },
+  { label: 'Wiring Materials'   },
+  { label: 'Pipes and Fittings' },
+  { label: 'Fans and Electricals' },
+  { label: 'Switches and Sockets' },
+  { label: 'Motors and Pumps'  },
+  { label: 'Plumbing Products' },
 ]
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
-    <footer className="relative bg-[#050810] border-t border-white/5 overflow-hidden">
-      {/* Top gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5A623]/20 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
-        {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand column */}
+    <footer className="bg-white border-t border-[#E5E5E5]" role="contentinfo">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Top */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-[#F5A623] flex items-center justify-center font-bold text-[#0A0F1E] text-xl"
-                     style={{ fontFamily: 'Syne, sans-serif' }}>
-                  G
-                </div>
-                <div className="absolute inset-0 rounded-xl bg-[#F5A623] blur-md opacity-30" />
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-7 h-7 bg-[#0A0A0A] rounded-sm flex items-center justify-center">
+                <span className="text-white text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>G</span>
               </div>
-              <div>
-                <div className="text-white font-bold text-lg leading-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
-                  Gokul Ram Electricals
-                </div>
-                <div className="text-[#F5A623]/60 text-xs tracking-widest uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Trusted Since 2009
-                </div>
-              </div>
+              <span className="text-[#0A0A0A] font-semibold text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Gokul Ram Electricals
+              </span>
             </div>
-            <p className="type-body text-white/40 max-w-sm leading-relaxed mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Tamil Nadu's trusted wholesale dealer for electrical, plumbing, wiring, motors,
-              and branded materials. 15+ years of quality and service.
+            <p className="type-body text-[#737373] max-w-xs leading-relaxed mb-6">
+              The best electrical shop in Rajapalayam, Tamil Nadu. Trusted wholesale dealer for
+              electrical, plumbing, wiring, fans, motors, and pipes since 2009.
             </p>
-            {/* Address */}
-            <address className="not-italic type-body-sm text-white/35 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-              141 B/2, Andalpuram, Chatrapatti Main Road,<br />
+            <address className="not-italic type-body-sm text-[#A3A3A3] leading-relaxed">
+              141 B/2, Andalpuram, Chatrapatti Main Road,
               Rajapalayam – 626108, Tamil Nadu, India
             </address>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h4 className="type-label text-[#F5A623] mb-6">Navigation</h4>
+            <p className="type-label text-[#A3A3A3] mb-5">Navigate</p>
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="type-body-sm text-white/45 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 group"
+                    className="type-body-sm text-[#525252] hover:text-[#0A0A0A] transition-colors duration-200"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    <span className="w-0 h-px bg-[#F5A623] transition-all duration-300 group-hover:w-3" />
                     {link.label}
                   </a>
                 </li>
@@ -78,16 +60,15 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="type-label text-[#F5A623] mb-6">Products</h4>
+            <p className="type-label text-[#A3A3A3] mb-5">Products</p>
             <ul className="space-y-3">
               {PRODUCT_LINKS.map((link) => (
                 <li key={link.label}>
                   <a
-                    href={link.href}
-                    className="type-body-sm text-white/45 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 group"
+                    href="#products"
+                    className="type-body-sm text-[#525252] hover:text-[#0A0A0A] transition-colors duration-200"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    <span className="w-0 h-px bg-[#F5A623] transition-all duration-300 group-hover:w-3" />
                     {link.label}
                   </a>
                 </li>
@@ -96,18 +77,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent mb-8" />
-
-        {/* Bottom Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="type-label text-white/25" style={{ fontFamily: 'Inter, sans-serif' }}>
-            © {currentYear} Gokul Ram Electricals. All rights reserved.
+        {/* Bottom */}
+        <div className="border-t border-[#E5E5E5] py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="type-label text-[#A3A3A3]">
+            &copy; {new Date().getFullYear()} Gokul Ram Electricals. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] animate-pulse" />
-            <span className="type-label text-white/25">Rajapalayam, Tamil Nadu, India</span>
-          </div>
+          <p className="type-label text-[#A3A3A3]">
+            Best Electrical Shop in Rajapalayam, Tamil Nadu, India
+          </p>
         </div>
       </div>
     </footer>
