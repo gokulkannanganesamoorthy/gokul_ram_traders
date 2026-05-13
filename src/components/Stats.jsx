@@ -1,10 +1,13 @@
+// #4 — Circuit Board Stats Counter
+// Counters that pulse with an electrical spark when they reach 100%
 import { useEffect, useState } from 'react'
 import { useInView } from '../hooks/useInView'
 
 const Counter = ({ value, duration = 2000, inView }) => {
   const [count, setCount] = useState(0)
+  const [sparked, setSparked] = useState(false)
   const target = parseInt(value)
-  
+
   useEffect(() => {
     if (inView && !isNaN(target)) {
       let start = 0
@@ -14,6 +17,7 @@ const Counter = ({ value, duration = 2000, inView }) => {
         if (start >= target) {
           setCount(target)
           clearInterval(timer)
+          setTimeout(() => setSparked(true), 100)
         } else {
           setCount(Math.floor(start))
         }
@@ -22,7 +26,19 @@ const Counter = ({ value, duration = 2000, inView }) => {
     }
   }, [inView, target, duration])
 
-  return isNaN(target) ? value : count + (value.includes('+') ? '+' : value.includes('%') ? '%' : '')
+  return (
+    <span className="relative inline-block">
+      {isNaN(target) ? value : count + (value.includes('+') ? '+' : value.includes('%') ? '%' : '')}
+      {/* Electric Spark burst */}
+      {sparked && (
+        <span className="spark-burst" aria-hidden="true">
+          {[...Array(6)].map((_, i) => (
+            <span key={i} className="spark" style={{ '--i': i }} />
+          ))}
+        </span>
+      )}
+    </span>
+  )
 }
 
 const STATS = [
@@ -40,12 +56,17 @@ export default function Stats() {
       <div className="container-wide relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-20 md:gap-12">
           {STATS.map((stat, i) => (
-            <div 
-              key={stat.label} 
+            <div
+              key={stat.label}
               className={`transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="border-t border-brand-black/20 pt-10 md:pt-12">
+              <div className="border-t border-brand-black/20 pt-10 md:pt-12 relative">
+                {/* Circuit trace line */}
+                <div
+                  className="absolute top-0 left-0 h-[1px] bg-brand-black transition-all duration-1000 ease-out"
+                  style={{ width: inView ? '100%' : '0%', transitionDelay: `${i * 100 + 300}ms` }}
+                />
                 <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6 md:mb-8">{stat.label}</p>
                 <p className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums">
                   <Counter value={stat.value} inView={inView} />
