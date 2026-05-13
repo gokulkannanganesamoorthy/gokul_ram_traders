@@ -24,7 +24,7 @@ export default function Footer() {
       <div className="container-wide py-16">
         {/* Internal Link Grid — signals sitelinks to Google */}
         <nav aria-label="Footer Navigation" className="mb-16">
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 hidden">
             {NAV_ITEMS.map(({ id, label }) => (
               <a
                 key={id}
