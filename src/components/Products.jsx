@@ -109,13 +109,22 @@ const CATEGORIES = [
 export default function Products() {
   const [ref, inView] = useInView({ once: true });
   const [isMobile, setIsMobile] = useState(false);
+  const [iconActive, setIconActive] = useState(false);
 
+  // Detect mobile
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
     check();
     window.addEventListener('resize', check, { passive: true });
     return () => window.removeEventListener('resize', check);
   }, []);
+
+  // On mobile: cycle icons between default ↔ active state (on/off/on/off)
+  useEffect(() => {
+    if (!isMobile) return;
+    const id = setInterval(() => setIconActive((v) => !v), 1600);
+    return () => clearInterval(id);
+  }, [isMobile]);
 
   return (
     <section
@@ -153,9 +162,9 @@ export default function Products() {
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Icon — alwaysActive on mobile so hover state is permanent */}
+                    {/* Icon — pulses on/off on mobile, hover on desktop */}
                     <div className="md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500">
-                      <CategoryIcon name={cat.name} alwaysActive={isMobile} />
+                      <CategoryIcon name={cat.name} alwaysActive={iconActive} />
                     </div>
                   </div>
                 </div>
