@@ -18,7 +18,7 @@ function ChapterNumber({ reason, index, total, scrollYProgress }) {
   const op = useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0, 1, 1, 0])
 
   return (
-    <motion.h2 
+    <motion.div 
       className="absolute text-white font-black leading-none tracking-tighter text-[clamp(8rem,25vw,30rem)]"
       style={{ 
         opacity: op,
@@ -26,7 +26,7 @@ function ChapterNumber({ reason, index, total, scrollYProgress }) {
       }}
     >
       {reason.num}
-    </motion.h2>
+    </motion.div>
   )
 }
 

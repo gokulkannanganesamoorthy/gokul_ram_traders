@@ -16,7 +16,7 @@ function BrandItem({ brand, index, total, scrollYProgress }) {
   const blurValue = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], [20, 0, 20])
 
   return (
-    <motion.h2 
+    <motion.div 
       className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4 leading-[0.8] text-[clamp(4rem,15vw,18rem)]"
       style={{ 
         opacity: op, 
@@ -26,7 +26,7 @@ function BrandItem({ brand, index, total, scrollYProgress }) {
       }}
     >
       {brand}
-    </motion.h2>
+    </motion.div>
   )
 }
 

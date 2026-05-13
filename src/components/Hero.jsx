@@ -31,7 +31,7 @@ export default function Hero() {
           style={{ y, opacity, blur: blurValue }}
           className="text-center px-4 w-full max-w-[90vw]"
         >
-          <motion.h1 
+          <motion.div 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
@@ -39,8 +39,8 @@ export default function Hero() {
             }}
           >
             The Best
-          </motion.h1>
-          <motion.h1 
+          </motion.div>
+          <motion.div 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
@@ -48,8 +48,8 @@ export default function Hero() {
             }}
           >
             Electrical
-          </motion.h1>
-          <motion.h1 
+          </motion.div>
+          <motion.div 
             className="text-[#0A0A0A] font-black uppercase leading-[0.8] whitespace-nowrap text-[clamp(3.5rem,12vw,15rem)]"
             style={{ 
               fontFamily: 'Inter, sans-serif', 
@@ -57,7 +57,7 @@ export default function Hero() {
             }}
           >
             Shop.
-          </motion.h1>
+          </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}

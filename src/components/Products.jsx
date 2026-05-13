@@ -37,33 +37,33 @@ export default function Products() {
         {/* Massive Text Tracks */}
         <div className="relative w-full h-[60vh] flex flex-col justify-center">
           
-          <motion.h2 
+          <motion.div 
             className="absolute top-0 text-[#0A0A0A] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
             style={{ x: x1, fontFamily: 'Inter, sans-serif' }}
           >
             WIRING
-          </motion.h2>
+          </motion.div>
 
-          <motion.h2 
+          <motion.div 
             className="absolute top-1/4 text-[#E5E5E5] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
             style={{ x: x2, fontFamily: 'Inter, sans-serif' }}
           >
             PIPES
-          </motion.h2>
+          </motion.div>
 
-          <motion.h2 
+          <motion.div 
             className="absolute top-2/4 text-[#0A0A0A] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
             style={{ x: x3, fontFamily: 'Inter, sans-serif' }}
           >
             MOTORS
-          </motion.h2>
+          </motion.div>
 
-          <motion.h2 
+          <motion.div 
             className="absolute top-3/4 text-[#E5E5E5] font-black uppercase tracking-tighter whitespace-nowrap leading-[0.8] text-[clamp(6rem,20vw,25rem)]"
             style={{ x: x4, fontFamily: 'Inter, sans-serif' }}
           >
             SWITCHES
-          </motion.h2>
+          </motion.div>
 
         </div>
 
