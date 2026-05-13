@@ -9,6 +9,28 @@ const REASONS = [
   { num: '05', title: 'Quality', desc: 'Materials that stand the test of time. Because cheap alternatives cost more later.' },
 ]
 
+function ChapterNumber({ reason, index, total, scrollYProgress }) {
+  const step = 1 / total
+  const start = index * step
+  const end = start + step
+  
+  // small crossfade window
+  const op = useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0, 1, 1, 0])
+
+  return (
+    <motion.h2 
+      className="absolute text-white font-black leading-none tracking-tighter"
+      style={{ 
+        opacity: op,
+        fontFamily: 'Inter, sans-serif', 
+        fontSize: 'clamp(8rem, 25vw, 30rem)' 
+      }}
+    >
+      {reason.num}
+    </motion.h2>
+  )
+}
+
 export default function WhyUs() {
   const containerRef = useRef(null)
   
@@ -19,16 +41,6 @@ export default function WhyUs() {
 
   // The right side scrolls up twice as fast relative to the sticky container
   const rightY = useTransform(scrollYProgress, [0, 1], ['0%', '-100%'])
-  
-  // Calculate which number should be active on the left based on scroll progress
-  // progress goes 0 to 1 over the 5 items
-  const getNumOpacity = (index, total) => {
-    const step = 1 / total
-    const start = index * step
-    const end = start + step
-    // small crossfade window
-    return useTransform(scrollYProgress, [start - 0.05, start, end, end + 0.05], [0, 1, 1, 0])
-  }
 
   return (
     <section ref={containerRef} id="why-us" className="relative h-[500vh] bg-[#0A0A0A]">
@@ -36,22 +48,15 @@ export default function WhyUs() {
         
         {/* Left Side: Massive Sticky Numbers */}
         <div className="w-full md:w-1/2 h-1/3 md:h-full flex items-center justify-center relative border-b md:border-b-0 md:border-r border-[#262626]">
-          {REASONS.map((reason, i) => {
-            const op = getNumOpacity(i, REASONS.length)
-            return (
-              <motion.h2 
-                key={reason.num}
-                className="absolute text-white font-black leading-none tracking-tighter"
-                style={{ 
-                  opacity: op,
-                  fontFamily: 'Inter, sans-serif', 
-                  fontSize: 'clamp(8rem, 25vw, 30rem)' 
-                }}
-              >
-                {reason.num}
-              </motion.h2>
-            )
-          })}
+          {REASONS.map((reason, i) => (
+            <ChapterNumber 
+              key={reason.num} 
+              reason={reason} 
+              index={i} 
+              total={REASONS.length} 
+              scrollYProgress={scrollYProgress} 
+            />
+          ))}
           
           <div className="absolute top-6 left-6 md:top-12 md:left-12 z-10">
             <p className="type-label text-[#525252]">

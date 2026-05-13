@@ -16,13 +16,13 @@ export default function Products() {
   const x4 = useTransform(scrollYProgress, [0, 1], ['-50%', '-250%'])
 
   // Opacity for the descriptions that fade in when their title is near center
-  const getOpacity = (start, peak, end) => 
+  const useOpacity = (start, peak, end) => 
     useTransform(scrollYProgress, [start, peak, peak+0.1, end], [0, 1, 1, 0])
 
-  const op1 = getOpacity(0, 0.15, 0.35)
-  const op2 = getOpacity(0.2, 0.4, 0.6)
-  const op3 = getOpacity(0.45, 0.65, 0.85)
-  const op4 = getOpacity(0.7, 0.85, 1)
+  const op1 = useOpacity(0, 0.15, 0.35)
+  const op2 = useOpacity(0.2, 0.4, 0.6)
+  const op3 = useOpacity(0.45, 0.65, 0.85)
+  const op4 = useOpacity(0.7, 0.85, 1)
 
   return (
     <section ref={containerRef} id="products" className="relative h-[400vh] bg-white border-t border-[#E5E5E5]">

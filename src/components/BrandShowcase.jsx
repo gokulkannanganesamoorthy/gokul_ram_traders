@@ -3,6 +3,34 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const BRANDS = ['Supreme', 'Crompton', 'V-Guard', 'Goldmedal', 'HiFi']
 
+function BrandItem({ brand, index, total, scrollYProgress }) {
+  const chunk = 1 / total
+  const start = index * chunk
+  const peak = start + (chunk / 2)
+  const end = start + chunk
+
+  // Add a little overlap
+  const op = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], [0, 1, 0])
+  const scale = useTransform(scrollYProgress, [start - 0.1, end + 0.1], [0.8, 1.5])
+  const blur = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], ['blur(20px)', 'blur(0px)', 'blur(20px)'])
+
+  return (
+    <motion.h2 
+      className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4"
+      style={{ 
+        opacity: op, 
+        scale, 
+        filter: blur,
+        fontFamily: 'Inter, sans-serif', 
+        fontSize: 'clamp(4rem, 15vw, 18rem)', 
+        lineHeight: 0.8 
+      }}
+    >
+      {brand}
+    </motion.h2>
+  )
+}
+
 export default function BrandShowcase() {
   const containerRef = useRef(null)
   
@@ -10,21 +38,6 @@ export default function BrandShowcase() {
     target: containerRef,
     offset: ['start start', 'end start']
   })
-
-  // We want to sequence the 5 brands scaling up and fading in/out
-  const getBrandAnimations = (index, total) => {
-    const chunk = 1 / total
-    const start = index * chunk
-    const peak = start + (chunk / 2)
-    const end = start + chunk
-
-    // Add a little overlap
-    const op = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], [0, 1, 0])
-    const scale = useTransform(scrollYProgress, [start - 0.1, end + 0.1], [0.8, 1.5])
-    const blur = useTransform(scrollYProgress, [start - 0.1, peak, end + 0.1], ['blur(20px)', 'blur(0px)', 'blur(20px)'])
-    
-    return { op, scale, blur }
-  }
 
   return (
     <section ref={containerRef} id="brands" className="relative h-[400vh] bg-white border-t border-[#E5E5E5]">
@@ -36,26 +49,15 @@ export default function BrandShowcase() {
           </p>
         </div>
 
-        {BRANDS.map((brand, i) => {
-          const { op, scale, blur } = getBrandAnimations(i, BRANDS.length)
-          
-          return (
-            <motion.h2 
-              key={brand}
-              className="absolute text-[#0A0A0A] font-black uppercase tracking-tighter text-center w-full px-4"
-              style={{ 
-                opacity: op, 
-                scale, 
-                filter: blur,
-                fontFamily: 'Inter, sans-serif', 
-                fontSize: 'clamp(4rem, 15vw, 18rem)', 
-                lineHeight: 0.8 
-              }}
-            >
-              {brand}
-            </motion.h2>
-          )
-        })}
+        {BRANDS.map((brand, i) => (
+          <BrandItem 
+            key={brand} 
+            brand={brand} 
+            index={i} 
+            total={BRANDS.length} 
+            scrollYProgress={scrollYProgress} 
+          />
+        ))}
 
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
           <p className="type-label text-[#A3A3A3] text-center max-w-xs">
