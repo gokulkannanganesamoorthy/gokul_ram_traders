@@ -6,7 +6,7 @@ const BRANDS = [
   'V-Guard',
   'Goldmedal',
   'Hi-Fi',
-  'Orient',
+  'Oriant',
   'Kundan',
   'LEO',
   'Ganga',
@@ -18,7 +18,7 @@ const BRANDS = [
   'Venus',
   'Sun',
   'Metro',
-  'NMP',
+  'Atlas',
   'Swan',
   'KVB',
   'Frixon',
@@ -26,6 +26,9 @@ const BRANDS = [
   'Zoloto',
   'Apaxx',
   'Meet',
+  'L&T',
+  'Shivasu',
+  'Speed',
 ];
 
 export default function BrandShowcase() {

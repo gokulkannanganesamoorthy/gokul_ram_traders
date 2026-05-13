@@ -1,15 +1,51 @@
 import { useInView } from '../hooks/useInView'
 
 const CATEGORIES = [
-  { id: '01', name: 'Wiring & Cables', desc: 'FR/FRLS Grade Copper wiring from Supreme and Finolex.' },
-  { id: '02', name: 'PVC & Casing Pipes', desc: 'Heavy-duty PVC, Casing-Caping and GI piping systems.' },
-  { id: '03', name: 'Pump Systems', desc: 'High-performance water solutions for homes and industry.' },
-  { id: '04', name: 'MCBs & Switchgear', desc: 'Modular switches, MCBs and advanced circuit protection.' },
-  { id: '05', name: 'Fans & Lighting', desc: 'Branded circulation and energy-efficient illumination.' },
-  { id: '06', name: 'Water Tanks', desc: 'Triple-layer insulated storage tanks for domestic and industrial use.' },
-  { id: '07', name: 'Water Heaters', desc: 'Premium electric geysers and instant heating solutions.' },
-  { id: '08', name: 'Sanitaryware', desc: 'Premium faucets, showers and modern bathroom fittings.' },
-  { id: '09', name: 'Accessories', desc: 'All essential electrical and plumbing hardware.' },
+  { 
+    id: '01', 
+    name: 'Wiring & Cables', 
+    desc: 'FR/FRLS Grade Copper wiring from Supreme and Finolex.' 
+  },
+  { 
+    id: '02', 
+    name: 'Pipes & Hoses', 
+    desc: 'PVC, Casing-Caping, GI Pipes, and heavy-duty Water Hoses.' 
+  },
+  { 
+    id: '03', 
+    name: 'Pump Systems', 
+    desc: 'High-performance motors and industrial Pump Starters.' 
+  },
+  { 
+    id: '04', 
+    name: 'MCBs & Boards', 
+    desc: 'MCBs, TPN Boxes, Metal/Wood/Wiring boards, and Switchgear.' 
+  },
+  { 
+    id: '05', 
+    name: 'Fans & Ventilation', 
+    desc: 'Ceiling fans, Exhaust fans, and energy-efficient Lighting.' 
+  },
+  { 
+    id: '06', 
+    name: 'Water Tanks', 
+    desc: 'Triple-layer insulated storage tanks for all requirements.' 
+  },
+  { 
+    id: '07', 
+    name: 'Water Heaters', 
+    desc: 'Premium electric geysers and instant heating solutions.' 
+  },
+  { 
+    id: '08', 
+    name: 'Sanitaryware', 
+    desc: 'Premium faucets, showers and modern bathroom fittings.' 
+  },
+  { 
+    id: '09', 
+    name: 'Accessories', 
+    desc: 'All essential electrical and plumbing hardware.' 
+  },
 ];
 
 export default function Products() {
