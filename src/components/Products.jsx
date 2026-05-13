@@ -1,5 +1,4 @@
-// #6 — Product Card with Cable Spool Hover
-// Each card shows a spinning cable spool SVG on hover, product-type specific
+import { useState, useEffect } from 'react';
 import { useInView } from '../hooks/useInView';
 import { CategoryIcon } from './ProductIcons';
 
@@ -109,6 +108,14 @@ const CATEGORIES = [
 
 export default function Products() {
   const [ref, inView] = useInView({ once: true });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check, { passive: true });
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <section
@@ -146,9 +153,9 @@ export default function Products() {
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Icon — always animates on mobile, hover-triggered on desktop */}
-                    <div className="md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500 [&_svg]:md:paused [&_svg]:md:group-hover:running">
-                      <CategoryIcon name={cat.name} />
+                    {/* Icon — alwaysActive on mobile so hover state is permanent */}
+                    <div className="md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500">
+                      <CategoryIcon name={cat.name} alwaysActive={isMobile} />
                     </div>
                   </div>
                 </div>
