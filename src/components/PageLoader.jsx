@@ -3,14 +3,18 @@
 import { useEffect, useState } from 'react';
 
 export default function PageLoader() {
-  const [speed, setSpeed] = useState(0);       // 0 = idle, 1 = spin, 2 = fast + fade
+  const [speed, setSpeed] = useState(0); // 0 = idle, 1 = spin, 2 = fast + fade
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setSpeed(1), 100);   // start spinning
-    const t2 = setTimeout(() => setSpeed(2), 600);   // go fast
+    const t1 = setTimeout(() => setSpeed(1), 100); // start spinning
+    const t2 = setTimeout(() => setSpeed(2), 600); // go fast
     const t3 = setTimeout(() => setVisible(false), 1200); // fade out
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
   }, []);
 
   if (!visible) return null;
@@ -28,9 +32,12 @@ export default function PageLoader() {
           viewBox="0 0 72 72"
           fill="none"
           style={{
-            animation: speed === 0 ? 'none'
-              : speed === 1 ? 'fan-spin 1s cubic-bezier(0.4,0,0.2,1) infinite'
-              : 'fan-spin 0.2s linear infinite',
+            animation:
+              speed === 0
+                ? 'none'
+                : speed === 1
+                  ? 'fan-spin 1s cubic-bezier(0.4,0,0.2,1) infinite'
+                  : 'fan-spin 0.2s linear infinite',
           }}
         >
           <style>{`
@@ -41,8 +48,21 @@ export default function PageLoader() {
           `}</style>
           {/* 3 blades at 0°, 120°, 240° */}
           {[0, 120, 240].map((angle) => (
-            <g key={angle} style={{ transform: `rotate(${angle}deg)`, transformOrigin: '36px 36px' }}>
-              <ellipse cx="36" cy="16" rx="10" ry="16" fill="#1a1a1a" opacity="0.85" />
+            <g
+              key={angle}
+              style={{
+                transform: `rotate(${angle}deg)`,
+                transformOrigin: '36px 36px',
+              }}
+            >
+              <ellipse
+                cx="36"
+                cy="16"
+                rx="10"
+                ry="16"
+                fill="#1a1a1a"
+                opacity="0.85"
+              />
             </g>
           ))}
           {/* Motor hub */}

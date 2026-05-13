@@ -1,59 +1,70 @@
-// #1 — Wire Uncoiling Divider
-// Animated SVG cable that unrolls left-to-right on scroll into view
+// #1 — Wire Divider — Real Electrical Cable with printed text markings
+// Cylindrical look via gradient, with brand text printed on the insulation like real cables
 import { useInView } from '../hooks/useInView';
 
-export default function WireDivider() {
-  const [ref, inView] = useInView({ once: true, rootMargin: '-20% 0px' });
+const WIRE_TEXTS = [
+  'GOKUL RAM ELECTRICALS',
+  '1100V FR / FRLS',
+  'RAJAPALAYAM • TN',
+  'WHOLESALE SUPPLY',
+  'GENUINE BRANDS',
+];
+
+export default function WireDivider({ label }) {
+  const [ref, inView] = useInView({ once: true, rootMargin: '-10% 0px' });
+  const text = label || WIRE_TEXTS[Math.floor(Math.random() * WIRE_TEXTS.length)];
 
   return (
-    <div ref={ref} className="container-wide py-0 overflow-hidden" aria-hidden="true">
-      <svg
-        viewBox="0 0 1200 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-7"
+    <div ref={ref} className="container-wide py-6 overflow-hidden" aria-hidden="true">
+      {/* Cylindrical wire: a thick bar with a radial gradient to simulate 3D tube */}
+      <div
+        className="relative w-full h-6 rounded-full overflow-hidden transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          background: 'linear-gradient(to bottom, #b0b0b5 0%, #e8e8ea 28%, #f5f5f7 50%, #e8e8ea 72%, #b0b0b5 100%)',
+          transform: inView ? 'scaleX(1)' : 'scaleX(0)',
+          transformOrigin: 'left',
+          boxShadow: '0 3px 10px rgba(0,0,0,0.12), inset 0 -2px 4px rgba(0,0,0,0.1), inset 0 2px 3px rgba(255,255,255,0.6)',
+        }}
       >
-        {/* Outer jacket (grey) */}
-        <path
-          d="M0 14 Q300 6 600 14 Q900 22 1200 14"
-          stroke="#d1d1d6"
-          strokeWidth="6"
-          strokeLinecap="round"
-          fill="none"
-          style={{
-            strokeDasharray: 1300,
-            strokeDashoffset: inView ? 0 : 1300,
-            transition: 'stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1)',
-          }}
+        {/* Inner highlight stripe — top gloss */}
+        <div
+          className="absolute top-[4px] left-0 right-0 h-[3px] rounded-full"
+          style={{ background: 'rgba(255,255,255,0.7)' }}
         />
-        {/* Inner copper core highlight */}
-        <path
-          d="M0 14 Q300 6 600 14 Q900 22 1200 14"
-          stroke="#f5c57a"
-          strokeWidth="2"
-          strokeLinecap="round"
-          fill="none"
+
+        {/* Printed cable text — repeating like real wire insulation */}
+        <div
+          className="absolute inset-0 flex items-center"
           style={{
-            strokeDasharray: 1300,
-            strokeDashoffset: inView ? 0 : 1300,
-            transition: 'stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1) 0.1s',
+            opacity: inView ? 1 : 0,
+            transition: 'opacity 0.6s ease 1.2s',
           }}
-        />
-        {/* Cable band markings */}
-        {[200, 400, 600, 800, 1000].map((x) => (
-          <line
-            key={x}
-            x1={x} y1="9"
-            x2={x} y2="19"
-            stroke="#a1a1aa"
-            strokeWidth="1.5"
+        >
+          {Array.from({ length: 8 }).map((_, i) => (
+            <span
+              key={i}
+              className="text-[7px] font-bold tracking-[0.3em] whitespace-nowrap px-12 flex-shrink-0"
+              style={{ color: 'rgba(60,60,70,0.55)' }}
+            >
+              {text}
+            </span>
+          ))}
+        </div>
+
+        {/* Band rings every ~160px to simulate cable wrap rings */}
+        {Array.from({ length: 10 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute top-0 bottom-0 w-[2px]"
             style={{
-              opacity: inView ? 0.5 : 0,
-              transition: `opacity 0.4s ease ${0.8 + x / 3000}s`,
+              left: `${i * 10 + 5}%`,
+              background: 'rgba(0,0,0,0.07)',
+              opacity: inView ? 1 : 0,
+              transition: `opacity 0.3s ease ${1 + i * 0.08}s`,
             }}
           />
         ))}
-      </svg>
+      </div>
     </div>
   );
 }

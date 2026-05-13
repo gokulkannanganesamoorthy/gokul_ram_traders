@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -13,12 +13,6 @@ import PageLoader from './components/PageLoader';         // #3
 import PipeJunction from './components/PipeJunction';     // #5
 
 function App() {
-  const [dark, setDark] = useState(false);
-
-  // #2 — Dark mode class on <html>
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-  }, [dark]);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -47,8 +41,8 @@ function App() {
       {/* #3 — Fan Blade Page Loader */}
       <PageLoader />
 
-      <div className={`bg-brand-white min-h-screen flex flex-col bg-grid transition-colors duration-700 ${dark ? 'dark' : ''}`}>
-        <Navbar dark={dark} onToggle={() => setDark(d => !d)} />
+      <div className="bg-brand-white min-h-screen flex flex-col bg-grid">
+        <Navbar />
         <main className="flex-grow">
           <Hero />
           <WireDivider />           {/* #1 — Wire Uncoiling */}

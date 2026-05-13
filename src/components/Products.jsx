@@ -72,9 +72,15 @@ export default function Products() {
 
                 <div className="flex justify-between items-start mb-6 md:mb-8">
                   <span className="text-[10px] font-mono text-brand-gray-400">{cat.id}</span>
-                  {/* #6 — Cable Spool Icon — spins on hover */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <SpoolIcon name={cat.name} />
+                  <div className="flex items-center gap-3">
+                    {/* View Brands label */}
+                    <span className="hidden lg:block text-[9px] uppercase tracking-widest font-bold text-brand-black opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      View Brands
+                    </span>
+                    {/* #6 — Cable Spool Icon — spins on hover */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <SpoolIcon name={cat.name} />
+                    </div>
                   </div>
                 </div>
 

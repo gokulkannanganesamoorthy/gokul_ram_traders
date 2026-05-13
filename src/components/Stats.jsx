@@ -1,5 +1,4 @@
 // #4 — Circuit Board Stats Counter
-// Counters that pulse with an electrical spark when they reach 100%
 import { useEffect, useState } from 'react'
 import { useInView } from '../hooks/useInView'
 
@@ -29,7 +28,6 @@ const Counter = ({ value, duration = 2000, inView }) => {
   return (
     <span className="relative inline-block">
       {isNaN(target) ? value : count + (value.includes('+') ? '+' : value.includes('%') ? '%' : '')}
-      {/* Electric Spark burst */}
       {sparked && (
         <span className="spark-burst" aria-hidden="true">
           {[...Array(6)].map((_, i) => (

@@ -8,40 +8,7 @@ const NAV_ITEMS = [
   { id: 'contact',  label: 'Contact' },
 ]
 
-// #2 — Light Switch Dark Mode Toggle
-function LightSwitch({ dark, onToggle }) {
-  return (
-    <button
-      onClick={onToggle}
-      aria-label="Toggle dark mode"
-      className="relative flex flex-col items-center justify-center w-7 h-11 rounded-sm border border-brand-black/15 bg-brand-gray-100 hover:border-brand-black/30 transition-all duration-300 cursor-pointer group ml-2 flex-shrink-0"
-      title={dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-    >
-      {/* Rocker plate */}
-      <div
-        className="w-5 h-8 rounded-sm flex items-center justify-center transition-all duration-300 relative overflow-hidden"
-        style={{ background: dark ? '#1a1a1a' : '#f5f5f7', border: '1px solid rgba(0,0,0,0.1)' }}
-      >
-        {/* Rocker knob */}
-        <div
-          className="w-4 h-3 rounded-sm transition-all duration-300 shadow-sm"
-          style={{
-            background: dark ? '#4a4a4a' : '#ffffff',
-            transform: dark ? 'translateY(4px)' : 'translateY(-4px)',
-            boxShadow: dark ? 'inset 0 -1px 2px rgba(0,0,0,0.5)' : 'inset 0 1px 2px rgba(0,0,0,0.15)',
-          }}
-        />
-      </div>
-      {/* Indicator dot */}
-      <div
-        className="absolute bottom-1 w-1.5 h-1.5 rounded-full transition-colors duration-300"
-        style={{ background: dark ? '#f59e0b' : '#22c55e' }}
-      />
-    </button>
-  )
-}
-
-export default function Navbar({ dark, onToggle }) {
+export default function Navbar() {
   const [active, setActive] = useState('home')
   const [isOpen, setIsOpen] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -115,8 +82,6 @@ export default function Navbar({ dark, onToggle }) {
             {label}
           </a>
         ))}
-        {/* #2 — Light Switch */}
-        <LightSwitch dark={dark} onToggle={onToggle} />
       </nav>
 
       {/* Mobile */}
@@ -132,7 +97,6 @@ export default function Navbar({ dark, onToggle }) {
             className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
             <path d="M1 1L5 5L9 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <LightSwitch dark={dark} onToggle={onToggle} />
         </button>
 
         {isOpen && (

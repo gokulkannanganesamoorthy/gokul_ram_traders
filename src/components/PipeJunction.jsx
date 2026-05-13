@@ -1,5 +1,4 @@
 // #5 — Pipe Junction Section Connector
-// Shows a plumbing T-junction SVG schematic between sections
 import { useInView } from '../hooks/useInView';
 
 export default function PipeJunction() {
@@ -20,7 +19,7 @@ export default function PipeJunction() {
         {/* Centre drop pipe */}
         <line x1="100" y1="30" x2="100" y2="60" stroke="#d1d1d6" strokeWidth="5" strokeLinecap="round"
           style={lineStyle(0.3)} />
-        {/* T-junction cap (flat end fitting) */}
+        {/* T-junction cap */}
         <rect x="93" y="54" width="14" height="6" rx="2" fill="#a1a1aa"
           style={{ opacity: inView ? 1 : 0, transition: 'opacity 0.5s ease 0.8s' }} />
         {/* Pipe flange rings */}
@@ -28,7 +27,7 @@ export default function PipeJunction() {
           <rect key={x} x={x - 3} y="25" width="6" height="10" rx="1" fill="#a1a1aa"
             style={{ opacity: inView ? 0.6 : 0, transition: `opacity 0.4s ease ${0.5 + i * 0.15}s` }} />
         ))}
-        {/* Copper inner line */}
+        {/* Copper inner highlight */}
         <line x1="0" y1="30" x2="200" y2="30" stroke="#f5c57a" strokeWidth="1.5" strokeLinecap="round"
           style={lineStyle(0.1)} />
       </svg>
