@@ -4,7 +4,7 @@ const FEATURES = [
   {
     id: '01',
     title: 'Trusted Legacy',
-    desc: 'Serving Rajapalayam for over 15 years with genuine products.',
+    desc: 'Serving Rajapalayam for over 13 years with genuine products.',
     detail:
       'Since 2013, we have been the cornerstone of local infrastructure projects.',
   },
