@@ -1,6 +1,7 @@
 // #6 — Product Card with Cable Spool Hover
 // Each card shows a spinning cable spool SVG on hover, product-type specific
 import { useInView } from '../hooks/useInView';
+import { CategoryIcon } from './ProductIcons';
 
 // Maps product category to a distinctive spool color
 const SPOOL_COLORS = {
@@ -36,41 +37,6 @@ const SPOOL_COLORS = {
     label: 'Service',
   },
 };
-
-function FanIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 72 72"
-      fill="none"
-      className="group-hover:rotate-[360deg] transition-transform duration-[1200ms] ease-out"
-    >
-      {/* 2 slim blades at 0° and 180° */}
-      {[0, 180].map((angle) => (
-        <g
-          key={angle}
-          style={{
-            transform: `rotate(${angle}deg)`,
-            transformOrigin: '36px 36px',
-          }}
-        >
-          <ellipse
-            cx="36"
-            cy="18"
-            rx="4"
-            ry="16"
-            fill="#1a1a1a"
-            opacity="0.85"
-          />
-        </g>
-      ))}
-      {/* Motor hub */}
-      <circle cx="36" cy="36" r="6" fill="#000000" />
-      <circle cx="36" cy="36" r="3" fill="#555" />
-    </svg>
-  );
-}
 
 const CATEGORIES = [
   {
@@ -180,9 +146,9 @@ export default function Products() {
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Fan Icon — spins on hover */}
+                    {/* Dynamic Animated Icon — spins/animates on hover */}
                     <div className="transition-opacity duration-500">
-                      <FanIcon />
+                      <CategoryIcon name={cat.name} />
                     </div>
                   </div>
                 </div>
