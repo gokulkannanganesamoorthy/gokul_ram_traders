@@ -10,8 +10,8 @@ const CATEGORIES = [
   { 
     id: '02', 
     name: 'Pipes & Hoses', 
-    desc: 'PVC, Casing-Caping, GI Pipes, Wiring Pipes and heavy-duty Water Hoses.',
-    brands: ['Supreme', 'Vijay', 'Ashirwad']
+    desc: 'PVC, Casing-Caping, GI Pipes, Column Pipes, HDPE Hose, and heavy-duty Water Hoses.',
+    brands: ['Supreme', 'Global', 'Ashirwad', 'Vijay']
   },
   { 
     id: '03', 
