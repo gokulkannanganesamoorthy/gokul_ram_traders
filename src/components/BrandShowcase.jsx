@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useInView } from '../hooks/useInView'
 
 const BRAND_MAPPING = {
@@ -34,9 +34,20 @@ const BRANDS = Object.keys(BRAND_MAPPING)
 export default function BrandShowcase() {
   const [ref, inView] = useInView({ once: true })
   const [hoveredBrand, setHoveredBrand] = useState(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    if (hoveredBrand) {
+      window.addEventListener('mousemove', handleMouseMove)
+    }
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [hoveredBrand])
 
   return (
-    <section id="brands" ref={ref} className="section-padding bg-white border-t border-brand-black/5">
+    <section id="brands" ref={ref} className="section-padding bg-white border-t border-brand-black/5 relative overflow-hidden">
       <div className="container-wide text-center">
         <div className={`mb-20 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
           <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gray-400 mb-6">Our Partners</p>
@@ -49,21 +60,30 @@ export default function BrandShowcase() {
               key={brand}
               onMouseEnter={() => setHoveredBrand(brand)}
               onMouseLeave={() => setHoveredBrand(null)}
-              className="group relative flex flex-col items-center justify-center p-8 border border-brand-black/5 rounded-[30px] hover:border-brand-black hover:bg-brand-gray-100 transition-all duration-500 cursor-pointer overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-12 border border-brand-black/5 rounded-[30px] hover:border-brand-black/20 hover:bg-brand-gray-100 transition-all duration-500 cursor-none"
             >
               <span className="text-lg font-medium tracking-tight group-hover:scale-110 transition-transform duration-500">{brand}</span>
-              
-              {/* Category Reveal - "The Trial" */}
-              <div className={`absolute inset-0 flex flex-col items-center justify-center bg-brand-black transition-all duration-500 ${hoveredBrand === brand ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-                <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-2">Category</p>
-                {BRAND_MAPPING[brand].map(cat => (
-                  <span key={cat} className="text-white text-[11px] font-medium tracking-tight mb-1">{cat}</span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Cursor Follower "Trial" - Visible only on PC/Hover */}
+      {hoveredBrand && (
+        <div 
+          className="fixed pointer-events-none z-[100] transition-all duration-100 ease-out flex flex-col"
+          style={{ 
+            left: mousePos.x + 20, 
+            top: mousePos.y + 20
+          }}
+        >
+          <div className="bg-brand-black px-4 py-2 rounded-full shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <p className="text-white text-[9px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">
+              {BRAND_MAPPING[hoveredBrand].join(' + ')}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
