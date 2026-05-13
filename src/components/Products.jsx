@@ -10,7 +10,7 @@ const CATEGORIES = [
   { 
     id: '02', 
     name: 'Pipes & Hoses', 
-    desc: 'PVC, Casing-Caping, GI Pipes, Column Pipes, HDPE Hose, and heavy-duty Water Hoses.',
+    desc: 'PVC (4kg / 6kg), CPVC, GI Pipes (Class A / B), Column Pipes, and HDPE Hose (6kg / 10kg).',
     brands: ['Supreme', 'Global', 'Ashirwad', 'Vijay']
   },
   { 
