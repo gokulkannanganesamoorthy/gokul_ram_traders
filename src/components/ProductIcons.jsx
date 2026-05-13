@@ -1,24 +1,27 @@
 export function WiringIcon() {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      className="group-hover:rotate-[360deg] transition-transform duration-1000 ease-out"
-    >
-      <circle cx="12" cy="12" r="10" stroke="#1a1a1a" strokeWidth="1.5" />
-      <circle cx="12" cy="12" r="4" stroke="#1a1a1a" strokeWidth="1.5" />
-      <circle
-        cx="12"
-        cy="12"
-        r="7"
-        stroke="#a1a1aa"
-        strokeWidth="1"
-        strokeDasharray="2 2"
-        className="group-hover:rotate-180 origin-center transition-transform duration-1000"
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      {/* Zigzag lightning bolt — electric current */}
+      <polyline
+        points="13,2 8,13 12,13 11,22 16,11 12,11 13,2"
+        stroke="#1a1a1a"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        fill="none"
+        className="group-hover:stroke-black transition-all duration-300"
+        style={{ strokeDasharray: 50, strokeDashoffset: 50 }}
       />
-      <circle cx="12" cy="12" r="1" fill="#1a1a1a" />
+      <polyline
+        points="13,2 8,13 12,13 11,22 16,11 12,11 13,2"
+        stroke="#1a1a1a"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        fill="none"
+        className="group-hover:[stroke-dashoffset:0] transition-all duration-500"
+        style={{ strokeDasharray: 50, strokeDashoffset: 0 }}
+      />
     </svg>
   );
 }
@@ -26,21 +29,19 @@ export function WiringIcon() {
 export function PipesIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      {/* Horizontal pipe body */}
+      <rect x="2" y="9" width="20" height="6" rx="3" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Flow arrow that appears on hover and slides right */}
       <path
-        d="M4 20L4 12C4 8 8 4 12 4L20 4"
+        d="M7 12 L10 12 M10 12 L8.5 10.5 M10 12 L8.5 13.5"
         stroke="#1a1a1a"
-        strokeWidth="2"
-        strokeLinecap="square"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-5 transition-all duration-700 ease-in-out"
       />
-      <rect x="2" y="10" width="4" height="4" fill="#1a1a1a" />
-      <rect x="10" y="2" width="4" height="4" fill="#1a1a1a" />
-      <circle
-        cx="4"
-        cy="20"
-        r="1.5"
-        fill="#a1a1aa"
-        className="opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:-translate-y-8"
-      />
+      {/* End cap flanges */}
+      <line x1="2" y1="8" x2="2" y2="16" stroke="#1a1a1a" strokeWidth="2" />
+      <line x1="22" y1="8" x2="22" y2="16" stroke="#1a1a1a" strokeWidth="2" />
     </svg>
   );
 }
@@ -173,27 +174,24 @@ export function TankIcon() {
 export function HeaterIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      {/* Thermometer bulb */}
+      <circle cx="12" cy="19" r="3" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Thermometer tube */}
+      <rect x="10.5" y="4" width="3" height="13" rx="1.5" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Rising mercury level */}
       <rect
-        x="6"
-        y="3"
-        width="12"
-        height="18"
-        rx="6"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
+        x="11.2"
+        y="14"
+        width="1.6"
+        height="5"
+        rx="0.8"
+        fill="#1a1a1a"
+        className="origin-bottom transition-all duration-700 group-hover:scale-y-150"
       />
-      <circle
-        cx="12"
-        cy="16"
-        r="2"
-        className="fill-transparent group-hover:fill-brand-black transition-colors duration-500"
-      />
-      <path
-        d="M9 10 Q12 8 15 10 T9 10"
-        stroke="#a1a1aa"
-        strokeWidth="1"
-        className="opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-700"
-      />
+      {/* Tick marks */}
+      <line x1="14" y1="8" x2="15.5" y2="8" stroke="#a1a1aa" strokeWidth="1" />
+      <line x1="14" y1="11" x2="15.5" y2="11" stroke="#a1a1aa" strokeWidth="1" />
+      <line x1="14" y1="14" x2="15.5" y2="14" stroke="#a1a1aa" strokeWidth="1" />
     </svg>
   );
 }
@@ -201,32 +199,19 @@ export function HeaterIcon() {
 export function SanitaryIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M6 20V12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M18 12V14"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <rect
-        x="4"
-        y="10"
-        width="4"
-        height="2"
-        rx="1"
-        fill="#1a1a1a"
-        className="group-hover:-rotate-45 origin-right transition-transform duration-300"
-      />
-      <path
-        d="M18 16L19 18C19 18.5523 18.5523 19 18 19C17.4477 19 17 18.5523 17 18L18 16Z"
-        fill="#a1a1aa"
-        className="opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-700"
-      />
+      {/* Showerhead body */}
+      <rect x="6" y="4" width="12" height="5" rx="2.5" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Water rays — appear and cascade on hover */}
+      <line x1="8" y1="9" x2="7" y2="14" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300 delay-0" />
+      <line x1="10" y1="9" x2="9.5" y2="15" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100" />
+      <line x1="12" y1="9" x2="12" y2="16" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200" />
+      <line x1="14" y1="9" x2="14.5" y2="15" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300 delay-300" />
+      <line x1="16" y1="9" x2="17" y2="14" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300 delay-[400ms]" />
     </svg>
   );
 }
@@ -234,31 +219,17 @@ export function SanitaryIcon() {
 export function PlugIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      {/* Power socket face */}
+      <rect x="4" y="4" width="16" height="16" rx="3" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Left pin hole */}
+      <rect x="8" y="9" width="2.5" height="4" rx="1" fill="#1a1a1a" />
+      {/* Right pin hole */}
+      <rect x="13.5" y="9" width="2.5" height="4" rx="1" fill="#1a1a1a" />
+      {/* Ground pin hole — appears on hover */}
       <rect
-        x="8"
-        y="10"
-        width="8"
-        height="10"
-        rx="2"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M10 10V6"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M14 10V6"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M12 2 L14 4 L12 6 L10 4 Z"
+        x="10.5" y="15" width="3" height="1.5" rx="0.75"
         fill="#a1a1aa"
-        className="scale-0 group-hover:scale-100 origin-center transition-transform duration-300 delay-200"
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"
       />
     </svg>
   );
@@ -267,65 +238,57 @@ export function PlugIcon() {
 export function SolarIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <g transform="skewX(-15)">
-        <rect
-          x="8"
-          y="10"
-          width="16"
-          height="10"
-          rx="1"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          fill="transparent"
-        />
-        <line
-          x1="12"
-          y1="10"
-          x2="12"
-          y2="20"
-          stroke="#1a1a1a"
-          strokeWidth="1"
-        />
-        <line
-          x1="16"
-          y1="10"
-          x2="16"
-          y2="20"
-          stroke="#1a1a1a"
-          strokeWidth="1"
-        />
-      </g>
-      <circle
-        cx="12"
-        cy="6"
-        r="3"
-        fill="#a1a1aa"
-        className="-translate-x-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-1000 ease-in-out"
-      />
+      {/* Sun circle */}
+      <circle cx="12" cy="12" r="4" stroke="#1a1a1a" strokeWidth="1.5" />
+      {/* Rays — expand outward on hover */}
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
+        const rad = (deg * Math.PI) / 180;
+        const x1 = 12 + 5.5 * Math.cos(rad);
+        const y1 = 12 + 5.5 * Math.sin(rad);
+        const x2 = 12 + 8 * Math.cos(rad);
+        const y2 = 12 + 8 * Math.sin(rad);
+        return (
+          <line
+            key={deg}
+            x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke="#1a1a1a"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ transitionDelay: `${i * 30}ms` }}
+          />
+        );
+      })}
     </svg>
   );
 }
 
 export function ToolIcon() {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      className="group-hover:rotate-45 transition-transform duration-300"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      {/* Hard hat brim */}
       <path
-        d="M14.7 9.3C15.8 10.4 17.7 10.4 18.8 9.3L19.5 8.6L15.4 4.5L14.7 5.2C13.6 6.3 13.6 8.2 14.7 9.3Z"
+        d="M3 17 Q3 19 12 19 Q21 19 21 17"
+        stroke="#1a1a1a"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      {/* Hard hat dome */}
+      <path
+        d="M6 17 C6 11 8 8 12 8 C16 8 18 11 18 17"
         stroke="#1a1a1a"
         strokeWidth="1.5"
       />
+      {/* Center ridge line */}
+      <line x1="12" y1="8" x2="12" y2="5" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Brim highlight — slides in on hover */}
       <path
-        d="M14.7 9.3L5 19L3 21L5 21L14.7 11.3"
-        stroke="#1a1a1a"
-        strokeWidth="1.5"
+        d="M5 17 Q5 18.5 12 18.5 Q19 18.5 19 17"
+        stroke="#a1a1aa"
+        strokeWidth="1"
+        strokeLinecap="round"
+        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"
       />
-      <circle cx="17.5" cy="6.5" r="1" fill="#a1a1aa" />
     </svg>
   );
 }
