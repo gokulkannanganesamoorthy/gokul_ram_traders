@@ -9,6 +9,8 @@ import WhyUs from './components/WhyUs'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
+import Cursor from './components/Cursor'
+
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -37,6 +39,7 @@ function App() {
 
   return (
     <div className="bg-brand-white">
+      <Cursor />
       <Navbar />
       <main>
         <Hero />

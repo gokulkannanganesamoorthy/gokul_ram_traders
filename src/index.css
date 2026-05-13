@@ -15,7 +15,6 @@
 @layer base {
   * {
     @apply transition-all duration-700 ease-out;
-    cursor: default;
   }
   
   html {
