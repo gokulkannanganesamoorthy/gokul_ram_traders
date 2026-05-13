@@ -8,17 +8,17 @@ const CATEGORIES = [
   },
   {
     id: '02',
-    name: 'Pipes, Hoses & Fittings',
+    name: 'Pipes & Fittings',
     desc: 'Heavy-duty PVC, CPVC and GI piping for secure builds.',
   },
   {
     id: '03',
-    name: 'Motor Pumps & Compressors',
+    name: 'Pump Systems',
     desc: 'High-performance water solutions for homes and industry.',
   },
   {
     id: '04',
-    name: 'Switches & Switchgears',
+    name: 'Switches & Gears',
     desc: 'Modular switches and advanced circuit protection.',
   },
   {
@@ -33,8 +33,18 @@ const CATEGORIES = [
   },
   {
     id: '07',
+    name: 'Solar Solutions',
+    desc: 'High-efficiency panels and industrial inverter systems.',
+  },
+  {
+    id: '08',
+    name: 'Sanitaryware',
+    desc: 'Premium faucets, showers and modern bathroom fittings.',
+  },
+  {
+    id: '09',
     name: 'Accessories',
-    desc: 'All essential electrical and plumbing accessories.',
+    desc: 'All essential electrical and plumbing hardware.',
   },
 ];
 
