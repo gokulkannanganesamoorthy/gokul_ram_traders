@@ -1,21 +1,25 @@
 export default function Footer() {
   return (
-    <footer className="py-20 bg-white border-t border-brand-black/5">
-      <div className="container-wide flex flex-col md:flex-row justify-between items-center gap-10 px-6">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 bg-brand-black rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xs">G</span>
+    <footer className="py-24 bg-white border-t border-brand-black/5">
+      <div className="container-wide px-6">
+        <div className="flex flex-col items-center text-center gap-12">
+          <div className="w-12 h-12 bg-brand-black rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-lg">G</span>
           </div>
-          <span className="font-bold tracking-tighter uppercase text-lg">Gokul Ram Traders</span>
-        </div>
-        
-        <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gray-400 text-center">
-          Trusted Electrical & Plumbing Dealers in Rajapalayam
-        </p>
+          
+          <div className="space-y-4">
+            <h3 className="font-bold tracking-[0.2em] uppercase text-2xl">Gokul Ram Traders</h3>
+            <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gray-400">
+              Trusted Electrical & Plumbing Dealers in Rajapalayam
+            </p>
+          </div>
 
-        <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-brand-gray-400">
-          © 2024 Gokul Ram Traders.
-        </p>
+          <div className="w-full h-px bg-brand-black/5" />
+
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gray-600">
+            © 2024 GOKUL RAM TRADERS.
+          </p>
+        </div>
       </div>
     </footer>
   )
