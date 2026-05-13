@@ -22,6 +22,10 @@ const BRANDS = [
   'Swan',
   'KVB',
   'Frixon',
+  'Life',
+  'Zoloto',
+  'Apaxx',
+  'Meet',
 ];
 
 export default function BrandShowcase() {

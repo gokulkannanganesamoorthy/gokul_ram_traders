@@ -39,22 +39,31 @@ export default function WhyUs() {
           {FEATURES.map((feat, i) => (
             <div 
               key={feat.id} 
-              className={`group relative h-auto lg:h-[450px] transition-all duration-1000 overflow-hidden border border-brand-black/5 rounded-[40px] hover:border-brand-black p-8 md:p-10 flex flex-col justify-between ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+              className={`group relative h-auto lg:h-[480px] transition-all duration-1000 overflow-hidden border border-brand-black/5 rounded-[40px] hover:border-brand-black/20 hover:shadow-2xl p-8 md:p-12 flex flex-col justify-between cursor-pointer ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
               <div className="relative z-10">
-                <span className="text-[10px] font-mono text-brand-gray-400 mb-6 lg:mb-8 block">{feat.id}</span>
+                <div className="flex justify-between items-start mb-8 lg:mb-12">
+                  <span className="text-[10px] font-mono text-brand-gray-400">{feat.id}</span>
+                  {/* Visual Affordance for Desktop */}
+                  <div className="hidden lg:flex w-8 h-8 rounded-full border border-brand-black/10 items-center justify-center group-hover:bg-brand-black group-hover:border-brand-black transition-all duration-500">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:rotate-90 transition-transform duration-500">
+                      <path d="M6 1V11M1 6H11" stroke="currentColor" strokeWidth="1.5" className="text-brand-black group-hover:text-white" />
+                    </svg>
+                  </div>
+                </div>
+                
                 <h3 className="text-3xl font-medium tracking-tight mb-4 group-hover:lg:translate-y-[-10px] transition-transform duration-500">{feat.title}</h3>
                 <p className="text-brand-gray-600 leading-relaxed lg:group-hover:opacity-0 transition-opacity duration-500">{feat.desc}</p>
                 
-                {/* Always visible on mobile, hidden on desktop until hover */}
-                <p className="lg:hidden mt-6 text-sm font-medium leading-relaxed text-brand-black">
+                {/* Always visible on mobile */}
+                <p className="lg:hidden mt-8 text-sm font-medium leading-relaxed text-brand-black border-t border-brand-black/5 pt-8">
                   {feat.detail}
                 </p>
               </div>
 
               {/* Desktop Hidden Detail Layer */}
-              <div className="hidden lg:block absolute inset-x-10 bottom-10 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
+              <div className="hidden lg:block absolute inset-x-12 bottom-12 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
                 <p className="text-lg font-medium leading-relaxed text-brand-black mb-8">
                   {feat.detail}
                 </p>
@@ -65,23 +74,6 @@ export default function WhyUs() {
               <div className="hidden lg:block absolute inset-0 bg-brand-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
             </div>
           ))}
-        </div>
-
-        <div className={`mt-32 p-12 md:p-16 border border-brand-black/5 rounded-[40px] md:rounded-[60px] flex flex-col md:flex-row items-center justify-between gap-12 transition-all duration-1000 delay-500 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}>
-           <div className="text-center md:text-left">
-             <h4 className="text-3xl font-medium mb-2 tracking-tight">Rajapalayam Legacy</h4>
-             <p className="text-brand-gray-600 text-sm md:text-base">Established in 2013. Serving Tamil Nadu with pride.</p>
-           </div>
-           <div className="flex gap-12 md:gap-16">
-              <div className="text-center">
-                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-gray-400 mb-1">Establishment</p>
-                <p className="text-xl md:text-2xl font-bold">2013</p>
-              </div>
-              <div className="text-center">
-                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-gray-400 mb-1">Location</p>
-                <p className="text-xl md:text-2xl font-bold">TN</p>
-              </div>
-           </div>
         </div>
       </div>
     </section>

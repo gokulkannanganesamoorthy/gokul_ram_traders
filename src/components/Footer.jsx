@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="w-full h-px bg-brand-black/5" />
 
           <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gray-600">
-            © {new Date().getFullYear()} GOKUL RAM TRADERS.
+            © {new Date().getFullYear()} GOKUL RAM TRADERS
           </p>
         </div>
       </div>
