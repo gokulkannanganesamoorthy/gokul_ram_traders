@@ -176,7 +176,7 @@ export default function Products() {
                     {cat.desc}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 transition-all duration-500">
+                  <div className="flex flex-wrap gap-2 transition-all duration-500 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0">
                     <p className="w-full text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 mb-2">
                       Partner Brands
                     </p>
