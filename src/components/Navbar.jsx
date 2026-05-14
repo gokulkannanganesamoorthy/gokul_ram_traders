@@ -16,42 +16,57 @@ export default function Navbar() {
   const pipeMobileRef  = useRef(null);
   const rafRef         = useRef(null);
 
-  /* Equal-bucket global progress:
-     Each of the 5 nav sections owns exactly 1/5 of the pipe.
-     As you scroll through a section its bucket fills 0→20%, giving
-     short sections (Brands, Contact) the same visual range as tall ones. */
+  /* Equal-bucket global progress — uses absolute offsetTop positions.
+     Each section's range = its start → next section's start (Contact → page end).
+     No dead zones, no getBoundingClientRect lag. */
   useEffect(() => {
     const SECTION_IDS = NAV_ITEMS.map((n) => n.id);
     const BUCKET = 100 / SECTION_IDS.length; // 20% each
+    const NAV_H  = 80; // navbar height offset
 
     const tick = () => {
+      const scrollY    = window.scrollY;
+      const scrollMax  = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Snap to 100% at bottom
+      if (scrollMax <= 0 || scrollY >= scrollMax - 2) {
+        const v = '100%';
+        if (pipeDesktopRef.current) pipeDesktopRef.current.style.width = v;
+        if (pipeMobileRef.current)  pipeMobileRef.current.style.width  = v;
+        rafRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
       let pct = 0;
 
       for (let i = 0; i < SECTION_IDS.length; i++) {
-        const el = document.getElementById(SECTION_IDS[i]);
+        const el     = document.getElementById(SECTION_IDS[i]);
         if (!el) continue;
 
-        const rect      = el.getBoundingClientRect();
-        const elH       = el.offsetHeight;
-        const scrolledIn = -rect.top; // positive after section top crosses viewport top
+        // Section starts when its top scrolls under the navbar
+        const secStart = el.offsetTop - NAV_H;
+
+        // Section ends where the next one begins (Contact ends at scrollMax)
+        const nextEl   = SECTION_IDS[i + 1] ? document.getElementById(SECTION_IDS[i + 1]) : null;
+        const secEnd   = nextEl ? nextEl.offsetTop - NAV_H : scrollMax;
+        const secRange = Math.max(1, secEnd - secStart);
+
+        const scrolledIn = scrollY - secStart;
 
         if (scrolledIn < 0) {
-          // Haven't reached this section yet — stop here
+          // Haven't entered this section yet
           pct = i * BUCKET;
           break;
         }
 
-        if (scrolledIn >= elH) {
-          // Fully past this section — full bucket
-          if (i === SECTION_IDS.length - 1) {
-            pct = 100; // last section complete
-          }
+        if (scrolledIn >= secRange) {
+          // Fully past — continue to next
+          if (i === SECTION_IDS.length - 1) pct = 100;
           continue;
         }
 
-        // Actively inside this section
-        const within = Math.min(1, scrolledIn / elH);
-        pct = i * BUCKET + within * BUCKET;
+        // Inside this section
+        pct = i * BUCKET + (scrolledIn / secRange) * BUCKET;
         break;
       }
 
@@ -64,6 +79,7 @@ export default function Navbar() {
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
+
 
   /* Active section tracker */
   useEffect(() => {
