@@ -146,11 +146,11 @@ export default function Navbar() {
           className="glass rounded-full p-2 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
           {/* Brand Logo */}
-          <div className="pl-10 pr-8 border-r border-brand-black/10 mr-4 flex items-center">
+          <div className="pl-10 pr-8 border-r border-brand-black/10 mr-4 flex items-center shrink-0">
             <img
               src="/brand_assets/brand_logo_with_name_black.png"
               alt="GOKULRAM ELECTRICALS"
-              className="h-12 w-auto object-contain transition-transform hover:scale-105"
+              className="h-12 w-auto object-contain transition-transform hover:scale-105 shrink-0"
             />
           </div>
 
@@ -190,11 +190,11 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-8 py-4 flex items-center justify-between gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
+            className="glass rounded-full px-8 py-4 flex items-center justify-between gap-6 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 pr-2">
               <img
-                src="/brand_assets/logo_white.png"
+                src="/brand_assets/logo_black.png"
                 alt="GOKULRAM"
                 className="h-10 w-10 object-contain shrink-0"
               />
@@ -207,7 +207,7 @@ export default function Navbar() {
               height="6"
               viewBox="0 0 10 6"
               fill="none"
-              className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+              className={`shrink-0 ml-2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             >
               <path
                 d="M1 1L5 5L9 1"
