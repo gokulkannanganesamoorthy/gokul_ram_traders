@@ -32,11 +32,10 @@ export function PipesIcon() {
   );
 }
 
-export function MotorIcon({ alwaysActive }) {
+export function MotorIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-      className="transition-transform duration-700 ease-in-out"
-      style={alwaysActive ? { animation: 'icon-spin 2s linear infinite' } : undefined}>
+      style={{ animation: 'icon-spin 2.5s linear infinite' }}>
       <circle cx="12" cy="12" r="6" stroke="#1a1a1a" strokeWidth="1.5" />
       {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
         const rad = (deg * Math.PI) / 180;
@@ -65,11 +64,10 @@ export function SwitchIcon({ alwaysActive }) {
   );
 }
 
-export function FanIcon({ alwaysActive }) {
+export function FanIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 72 72" fill="none"
-      className="transition-transform duration-[1200ms] ease-out"
-      style={alwaysActive ? { animation: 'icon-spin 1.8s linear infinite' } : undefined}>
+      style={{ animation: 'icon-spin 2s linear infinite' }}>
       {[0, 120, 240].map((angle) => (
         <g key={angle} style={{ transform: `rotate(${angle}deg)`, transformOrigin: '36px 36px' }}>
           <ellipse cx="36" cy="18" rx="4" ry="16" fill="#1a1a1a" opacity="0.85" />
@@ -164,8 +162,8 @@ export function ToolIcon({ alwaysActive }) {
   const on = alwaysActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100';
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-      className="transition-transform duration-300 origin-center"
-      style={alwaysActive ? { animation: 'icon-spin 2.5s linear infinite' } : undefined}>
+      className="origin-center"
+      style={{ animation: 'icon-spin 3s linear infinite' }}>
       <rect x="9" y="2" width="6" height="7" rx="2" stroke="#1a1a1a" strokeWidth="1.5" />
       <line x1="12" y1="9"  x2="12"   y2="20"  stroke="#1a1a1a" strokeWidth="2"   strokeLinecap="round" />
       <line x1="9.5" y1="20" x2="14.5" y2="20" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" />
@@ -180,15 +178,15 @@ export function CategoryIcon({ name, alwaysActive }) {
   switch (name) {
     case 'Wiring & Cables':                  return <WiringIcon   {...p} />;
     case 'Pipes & Hoses':                    return <PipesIcon    />;
-    case 'Motor Pumps & Compressors':        return <MotorIcon    {...p} />;
+    case 'Motor Pumps & Compressors':        return <MotorIcon    />;        {/* always spins */}
     case 'MCBs, Switchgears & Boards':       return <SwitchIcon   {...p} />;
-    case 'Fans, Lights & Ventilation':       return <FanIcon      {...p} />;
+    case 'Fans, Lights & Ventilation':       return <FanIcon      />;        {/* always spins */}
     case 'Water Tanks':                      return <TankIcon     {...p} />;
     case 'Water Heaters':                    return <HeaterIcon   {...p} />;
     case 'Sanitaryware':                     return <SanitaryIcon {...p} />;
     case 'Accessories':                      return <PlugIcon     {...p} />;
     case 'Solar & Street Lighting':          return <SolarIcon    {...p} />;
-    case 'Professional Installation':        return <ToolIcon     {...p} />;
-    default:                                 return <FanIcon      {...p} />;
+    case 'Professional Installation':        return <ToolIcon     {...p} />;  {/* always spins */}
+    default:                                 return <FanIcon      />;
   }
 }
