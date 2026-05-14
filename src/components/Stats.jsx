@@ -27,9 +27,7 @@ const Counter = ({ value, duration = 2000, inView }) => {
 
   return (
     <span className="relative inline-block">
-      {isNaN(target)
-        ? value
-        : count + (value.includes('+') ? '+' : value.includes('%') ? '%' : '')}
+      {isNaN(target) ? value : count + (value.includes('+') ? '+' : value.includes('%') ? '%' : '')}
       {sparked && (
         <span className="spark-burst" aria-hidden="true">
           {[...Array(6)].map((_, i) => (
@@ -77,7 +75,7 @@ export default function Stats() {
                 <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6 md:mb-8 text-center md:text-left">
                   {stat.label}
                 </p>
-                <div className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums flex justify-center md:justify-start">
+                <div className="text-5xl md:text-8xl font-light tracking-tighter mb-4 flex justify-center md:justify-start md:-ml-[0.04em]">
                   <Counter value={stat.value} inView={inView} />
                 </div>
                 <p className="text-brand-gray-600 font-medium text-sm md:text-base text-center md:text-left">
