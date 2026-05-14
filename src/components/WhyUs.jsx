@@ -5,19 +5,22 @@ const FEATURES = [
     id: '01',
     title: 'Trusted Legacy',
     desc: 'Serving Rajapalayam for over 13 years with genuine products.',
-    detail: 'Since 2013, we have been the cornerstone of local infrastructure projects.',
+    detail:
+      'Since 2013, we have been the cornerstone of local infrastructure projects.',
   },
   {
     id: '02',
     title: 'Authorized Dealer',
-    desc: 'Sourcing directly from Supreme, Global, and ELGI.',
-    detail: 'Eliminating middle-men to ensure you get authentic products at the best prices.',
+    desc: 'Sourcing directly from Supreme, L&T, and ELGI.',
+    detail:
+      'Eliminating middle-men to ensure you get authentic products at the best prices.',
   },
   {
     id: '03',
     title: 'Project Ready',
     desc: 'Wholesale inventory and installation for contractors.',
-    detail: 'Large-scale stock availability for immediate pickup and professional installation support.',
+    detail:
+      'Large-scale stock availability for immediate pickup and professional installation support.',
   },
 ];
 
@@ -105,6 +108,58 @@ export default function WhyUs() {
               <div className="hidden lg:block absolute inset-0 bg-brand-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
             </div>
           ))}
+        </div>
+
+        {/* ── Founder's Section ── */}
+        <div
+          className={`mt-32 pt-24 border-t border-brand-black/10 transition-all duration-1000 ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
+          style={{ transitionDelay: '300ms' }}
+        >
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start lg:items-center">
+            {/* Image Box */}
+            <div className="w-full lg:w-1/3 aspect-[4/5] lg:aspect-square bg-brand-gray-100 rounded-[40px] overflow-hidden relative group shrink-0">
+              {/* Replace the src below with your actual founder image in the public folder */}
+              <img
+                src="/brand_assets/placeholder_founder.jpg"
+                alt="Founder"
+                className="w-full h-full object-cover grayscale opacity-0 transition-opacity duration-500"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center p-8 text-center text-brand-gray-400 font-mono text-xs uppercase tracking-widest border border-dashed border-brand-black/20 m-4 rounded-[32px]">
+                Add Founder Image <br/> (public/brand_assets/placeholder_founder.jpg)
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="w-full lg:w-2/3 flex flex-col gap-8 md:gap-12">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="text-brand-black/10"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+              
+              <blockquote className="text-3xl md:text-5xl font-light tracking-tight leading-[1.2] text-brand-black">
+                "Our mission has always been simple: provide the highest quality electrical goods with unmatched reliability. Trust isn't given—it's built over years of consistent, honest service."
+              </blockquote>
+              
+              <div className="pt-4 md:pt-8 flex items-center gap-6">
+                <div className="w-12 h-px bg-brand-black/20"></div>
+                <div>
+                  <p className="text-2xl font-medium tracking-tight mb-2">Gokulkannan G.</p>
+                  <p className="text-[10px] text-brand-gray-600 uppercase tracking-[0.2em] font-bold">
+                    Founder & Managing Director
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

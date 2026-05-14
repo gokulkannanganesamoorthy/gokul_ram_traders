@@ -33,9 +33,9 @@ export default function Hero() {
           style={{ transitionDelay: '400ms' }}
         >
           <p className="mask-reveal-content text-brand-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-            Virudhunagar District's most trusted wholesale supplier for
+            Rajapalayam and Tamil Nadu's most trusted wholesale supplier for
             electricals, plumbing & piping. Delivering industrial quality across
-            Tamil Nadu.
+            places.
           </p>
         </div>
 
