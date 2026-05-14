@@ -1,6 +1,6 @@
 # GOKULRAM ELECTRICALS
 
-> Premium website for GOKULRAM ELECTRICALS — Tamil Nadu's trusted electrical & plumbing wholesaler since 2009.
+> Premium website for GOKULRAM ELECTRICALS - Tamil Nadu's trusted electrical & plumbing wholesaler since 2009.
 
 **Live:** https://gokulramelectricals.in
 
@@ -28,14 +28,14 @@
 
 ## Pages / Sections
 
-- **Navbar** — Glassmorphism fixed nav with mobile menu
-- **Hero** — Full-viewport immersive hero with parallax
-- **Stats** — Animated marquee + counting numbers
-- **Products** — 6-category grid with accent colors
-- **Brand Showcase** — Cards + animated marquee ticker
-- **Why Us** — Editorial 2-column with timeline
-- **CTA / Contact** — Store info, hours, directions
-- **Footer** — Minimal dark footer
+- **Navbar** - Glassmorphism fixed nav with mobile menu
+- **Hero** - Full-viewport immersive hero with parallax
+- **Stats** - Animated marquee + counting numbers
+- **Products** - 6-category grid with accent colors
+- **Brand Showcase** - Cards + animated marquee ticker
+- **Why Us** - Editorial 2-column with timeline
+- **CTA / Contact** - Store info, hours, directions
+- **Footer** - Minimal dark footer
 
 ## Getting Started
 
