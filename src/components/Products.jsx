@@ -119,12 +119,11 @@ export default function Products() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // On mobile: cycle icons between default ↔ active state (on/off/on/off)
+  // Pulse icons on/off on all devices
   useEffect(() => {
-    if (!isMobile) return;
-    const id = setInterval(() => setIconActive((v) => !v), 1600);
+    const id = setInterval(() => setIconActive((v) => !v), 1000);
     return () => clearInterval(id);
-  }, [isMobile]);
+  }, []);
 
   return (
     <section
