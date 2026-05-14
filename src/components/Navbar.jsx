@@ -190,37 +190,33 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full pl-3 pr-8 py-3 flex items-center gap-6 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
+            className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
           >
-            <div className="flex items-center gap-4">
-              <div className="bg-brand-black rounded-full p-1.5 flex items-center justify-center">
-                <img
-                  src="/brand_assets/logo_white.png"
-                  alt="GOKULRAM"
-                  className="h-8 w-8 object-contain"
-                />
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
+            <div className="flex items-center gap-3">
+              <img
+                src="/brand_assets/logo_white.png"
+                alt="GOKULRAM"
+                className="h-10 w-10 object-contain"
+              />
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
                 {activeLabel}
               </span>
             </div>
-            <div className="flex items-center">
-              <svg
-                width="12"
-                height="8"
-                viewBox="0 0 10 6"
-                fill="none"
-                className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-              >
-                <path
-                  d="M1 1L5 5L9 1"
-                  stroke="black"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
 
             {/* Pipe inside the toggle — bottom edge */}
             <div
