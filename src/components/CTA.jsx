@@ -42,7 +42,7 @@ export default function CTA() {
                   +91 93645 01230
                 </a>
                 <p className="text-[10px] text-brand-gray-400">
-                  Available Mon - Sat 8:30 AM — 8:30 PM
+                  Available : Mon - Sat | 8:30 AM — 8:30 PM
                 </p>
               </div>
 

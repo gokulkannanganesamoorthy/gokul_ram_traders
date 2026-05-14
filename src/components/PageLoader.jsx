@@ -1,4 +1,4 @@
-// #3 — Fan Blade Page Loader
+// #3 - Fan Blade Page Loader
 // Spins up like a ceiling fan on first page load, fades out
 import { useEffect, useState } from 'react';
 

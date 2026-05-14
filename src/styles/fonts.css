@@ -1,6 +1,6 @@
 /* ============================================================
-   FONTS.CSS — Gokul Ram Electricals
-   Typography system — Apple / Nothing design language.
+   FONTS.CSS - Gokul Ram Electricals
+   Typography system - Apple / Nothing design language.
    All type decisions live here. No emojis.
    ============================================================ */
 
@@ -8,49 +8,51 @@
 
 :root {
   /* Font Families */
-  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* ── Fluid Type Scale ────────────────────────────────── */
 
   /* Display */
-  --text-display:  clamp(3.5rem, 8vw + 0.5rem, 7rem);
-  --text-hero:     clamp(2.8rem, 6vw + 0.5rem, 5.5rem);
+  --text-display: clamp(3.5rem, 8vw + 0.5rem, 7rem);
+  --text-hero: clamp(2.8rem, 6vw + 0.5rem, 5.5rem);
 
   /* Headings */
-  --text-h1: clamp(2rem,   4vw + 0.5rem, 3.75rem);
+  --text-h1: clamp(2rem, 4vw + 0.5rem, 3.75rem);
   --text-h2: clamp(1.6rem, 3vw + 0.3rem, 2.75rem);
   --text-h3: clamp(1.2rem, 2vw + 0.2rem, 1.75rem);
-  --text-h4: clamp(1rem,   1.2vw + 0.1rem, 1.25rem);
+  --text-h4: clamp(1rem, 1.2vw + 0.1rem, 1.25rem);
 
   /* Body */
-  --text-body-lg:  clamp(1.05rem, 1.2vw + 0.1rem, 1.2rem);
-  --text-body:     clamp(0.9rem,  0.9vw + 0.1rem, 1rem);
-  --text-body-sm:  clamp(0.8rem,  0.75vw + 0.05rem, 0.875rem);
+  --text-body-lg: clamp(1.05rem, 1.2vw + 0.1rem, 1.2rem);
+  --text-body: clamp(0.9rem, 0.9vw + 0.1rem, 1rem);
+  --text-body-sm: clamp(0.8rem, 0.75vw + 0.05rem, 0.875rem);
 
   /* Labels */
   --text-label: clamp(0.65rem, 0.65vw + 0.05rem, 0.75rem);
 
   /* Line Heights */
-  --lh-tight:   1.08;
-  --lh-snug:    1.2;
-  --lh-normal:  1.5;
+  --lh-tight: 1.08;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
   --lh-relaxed: 1.7;
 
   /* Letter Spacing */
-  --ls-tight:   -0.04em;
-  --ls-snug:    -0.02em;
-  --ls-normal:  -0.01em;
-  --ls-wide:     0.06em;
-  --ls-wider:    0.12em;
-  --ls-widest:   0.2em;
+  --ls-tight: -0.04em;
+  --ls-snug: -0.02em;
+  --ls-normal: -0.01em;
+  --ls-wide: 0.06em;
+  --ls-wider: 0.12em;
+  --ls-widest: 0.2em;
 
   /* Font Weights */
-  --fw-light:    300;
-  --fw-regular:  400;
-  --fw-medium:   500;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
   --fw-semibold: 600;
-  --fw-bold:     700;
+  --fw-bold: 700;
 }
 
 /* ── Utility Classes ─────────────────────────────────────── */

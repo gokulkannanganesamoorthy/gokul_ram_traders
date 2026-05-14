@@ -1,4 +1,4 @@
-// Floating WhatsApp + Call bar — mobile only, sticky at bottom
+// Floating WhatsApp + Call bar - mobile only, sticky at bottom
 import { useState, useEffect } from 'react';
 
 export default function FloatingContact() {

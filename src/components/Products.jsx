@@ -129,7 +129,7 @@ export default function Products() {
     <section
       id="products"
       ref={ref}
-      aria-label="Products — Electrical, Plumbing & Piping"
+      aria-label="Products - Electrical, Plumbing & Piping"
       className="section-padding bg-transparent"
     >
       <div className="container-wide">
@@ -161,7 +161,7 @@ export default function Products() {
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Icon — always full black, scales up on hover */}
+                    {/* Icon - always full black, scales up on hover */}
                     <div className="transition-transform duration-300 ease-out group-hover:scale-150 group-hover:-rotate-12">
                       <CategoryIcon name={cat.name} alwaysActive={iconActive} />
                     </div>

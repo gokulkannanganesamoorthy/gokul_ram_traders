@@ -1,4 +1,4 @@
-// #1 — Wire Divider — Real Electrical Cable with printed text markings
+// #1 - Wire Divider - Real Electrical Cable with printed text markings
 // Cylindrical look via gradient, with brand text printed on the insulation like real cables
 import { useInView } from '../hooks/useInView';
 
@@ -27,13 +27,13 @@ export default function WireDivider({ label }) {
             '0 3px 10px rgba(0,0,0,0.12), inset 0 -2px 4px rgba(0,0,0,0.1), inset 0 2px 3px rgba(255,255,255,0.6)',
         }}
       >
-        {/* Inner highlight stripe — top gloss */}
+        {/* Inner highlight stripe - top gloss */}
         <div
           className="absolute top-[4px] left-0 right-0 h-[3px] rounded-full"
           style={{ background: 'rgba(255,255,255,0.7)' }}
         />
 
-        {/* Band rings every ~10% to simulate cable wrap rings — moved BEFORE text to avoid cutting letters */}
+        {/* Band rings every ~10% to simulate cable wrap rings - moved BEFORE text to avoid cutting letters */}
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
@@ -47,7 +47,7 @@ export default function WireDivider({ label }) {
           />
         ))}
 
-        {/* Printed cable text — repeating like real wire insulation — moved AFTER rings */}
+        {/* Printed cable text - repeating like real wire insulation - moved AFTER rings */}
         <div
           className="absolute inset-0 flex items-center px-10"
           style={{
