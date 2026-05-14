@@ -7,7 +7,7 @@ export default function CTA() {
     <section
       id="contact"
       ref={ref}
-      className="section-padding bg-transparent border-t border-brand-black/5"
+      className="pt-24 md:pt-48 pb-4 md:pb-6 bg-transparent border-t border-brand-black/5"
     >
       <div className="container-wide">
         <div
