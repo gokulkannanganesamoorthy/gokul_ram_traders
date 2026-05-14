@@ -120,17 +120,14 @@ export default function WhyUs() {
             <div className="w-full lg:w-1/3 aspect-[4/5] lg:aspect-square bg-brand-gray-100 rounded-[40px] overflow-hidden relative group shrink-0">
               {/* Replace the src below with your actual founder image in the public folder */}
               <img
-                src="/brand_assets/placeholder_founder.jpg"
+                src="/ganesamoorthy.png"
                 alt="Founder"
-                className="w-full h-full object-cover grayscale opacity-0 transition-opacity duration-500"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-700 ease-out"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'flex';
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center p-8 text-center text-brand-gray-400 font-mono text-xs uppercase tracking-widest border border-dashed border-brand-black/20 m-4 rounded-[32px]">
-                Add Founder Image <br/> (public/brand_assets/placeholder_founder.jpg)
-              </div>
             </div>
 
             {/* Content */}
@@ -144,17 +141,21 @@ export default function WhyUs() {
               >
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
-              
+
               <blockquote className="text-3xl md:text-5xl font-light tracking-tight leading-[1.2] text-brand-black">
-                "Our mission has always been simple: provide the highest quality electrical goods with unmatched reliability. Trust isn't given—it's built over years of consistent, honest service."
+                "Our mission has always been simple: provide the highest quality
+                electrical goods with unmatched reliability. Trust isn't given;
+                it's built over years of consistent & honest service."
               </blockquote>
-              
+
               <div className="pt-4 md:pt-8 flex items-center gap-6">
                 <div className="w-12 h-px bg-brand-black/20"></div>
                 <div>
-                  <p className="text-2xl font-medium tracking-tight mb-2">Gokulkannan G.</p>
+                  <p className="text-2xl font-medium tracking-tight mb-2">
+                    Ganesamoorthy M.
+                  </p>
                   <p className="text-[10px] text-brand-gray-600 uppercase tracking-[0.2em] font-bold">
-                    Founder & Managing Director
+                    Founder
                   </p>
                 </div>
               </div>
