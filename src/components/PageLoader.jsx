@@ -30,7 +30,7 @@ export default function PageLoader() {
           <img
             src="/brand_assets/brand_logo_with_name_black.png"
             alt="Logo"
-            className="w-40 h-auto object-contain"
+            className="w-60 h-auto object-contain"
           />
         </div>
         {/* Fan Blade SVG */}
