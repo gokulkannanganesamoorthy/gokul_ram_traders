@@ -16,16 +16,51 @@ export default function Navbar() {
   const pipeMobileRef  = useRef(null);
   const rafRef         = useRef(null);
 
-  /* Global scroll progress — direct DOM, zero lag */
+  /* Equal-bucket global progress:
+     Each of the 5 nav sections owns exactly 1/5 of the pipe.
+     As you scroll through a section its bucket fills 0→20%, giving
+     short sections (Brands, Contact) the same visual range as tall ones. */
   useEffect(() => {
+    const SECTION_IDS = NAV_ITEMS.map((n) => n.id);
+    const BUCKET = 100 / SECTION_IDS.length; // 20% each
+
     const tick = () => {
-      const scrollH = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
+      let pct = 0;
+
+      for (let i = 0; i < SECTION_IDS.length; i++) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (!el) continue;
+
+        const rect      = el.getBoundingClientRect();
+        const elH       = el.offsetHeight;
+        const scrolledIn = -rect.top; // positive after section top crosses viewport top
+
+        if (scrolledIn < 0) {
+          // Haven't reached this section yet — stop here
+          pct = i * BUCKET;
+          break;
+        }
+
+        if (scrolledIn >= elH) {
+          // Fully past this section — full bucket
+          if (i === SECTION_IDS.length - 1) {
+            pct = 100; // last section complete
+          }
+          continue;
+        }
+
+        // Actively inside this section
+        const within = Math.min(1, scrolledIn / elH);
+        pct = i * BUCKET + within * BUCKET;
+        break;
+      }
+
       const val = `${pct}%`;
       if (pipeDesktopRef.current) pipeDesktopRef.current.style.width = val;
       if (pipeMobileRef.current)  pipeMobileRef.current.style.width  = val;
       rafRef.current = requestAnimationFrame(tick);
     };
+
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
