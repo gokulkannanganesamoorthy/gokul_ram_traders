@@ -143,14 +143,14 @@ export default function Navbar() {
       <div className="hidden md:flex flex-col items-center">
         <nav
           aria-label="Main Navigation"
-          className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl relative overflow-hidden"
+          className="glass rounded-full p-2 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
           {/* Brand Logo */}
-          <div className="pl-12 pr-10 border-r border-brand-black/10 mr-4 flex items-center">
+          <div className="pl-10 pr-8 border-r border-brand-black/10 mr-4 flex items-center">
             <img
               src="/brand_assets/brand_logo_with_name_black.png"
               alt="GOKULRAM ELECTRICALS"
-              className="h-14 w-auto object-contain transition-transform hover:scale-105"
+              className="h-12 w-auto object-contain transition-transform hover:scale-105"
             />
           </div>
 
@@ -163,7 +163,7 @@ export default function Navbar() {
                 scrollTo(id);
               }}
               aria-current={active === id ? 'page' : undefined}
-              className={`px-8 py-3.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap ${
+              className={`px-8 py-4 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap ${
                 active === id
                   ? 'bg-brand-black text-brand-white shadow-xl'
                   : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
