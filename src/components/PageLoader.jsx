@@ -8,8 +8,8 @@ export default function PageLoader() {
 
   useEffect(() => {
     const t1 = setTimeout(() => setSpeed(1), 100); // start spinning
-    const t2 = setTimeout(() => setSpeed(2), 1800); // go fast and start fade
-    const t3 = setTimeout(() => setVisible(false), 2400); // completely unmount
+    const t2 = setTimeout(() => setSpeed(2), 1200); // go fast and start fade
+    const t3 = setTimeout(() => setVisible(false), 1800); // completely unmount
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
