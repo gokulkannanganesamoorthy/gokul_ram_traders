@@ -33,38 +33,40 @@ export default function WireDivider({ label }) {
           style={{ background: 'rgba(255,255,255,0.7)' }}
         />
 
-        {/* Printed cable text — repeating like real wire insulation */}
-        <div
-          className="absolute inset-0 flex items-center"
-          style={{
-            opacity: inView ? 1 : 0,
-            transition: 'opacity 0.6s ease 1.2s',
-          }}
-        >
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={i}
-              className="text-[7px] font-bold tracking-[0.3em] whitespace-nowrap px-12 flex-shrink-0"
-              style={{ color: 'rgba(60,60,70,0.55)' }}
-            >
-              {text}
-            </span>
-          ))}
-        </div>
-
-        {/* Band rings every ~160px to simulate cable wrap rings */}
+        {/* Band rings every ~10% to simulate cable wrap rings — moved BEFORE text to avoid cutting letters */}
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
             className="absolute top-0 bottom-0 w-[2px]"
             style={{
               left: `${i * 10 + 5}%`,
-              background: 'rgba(0,0,0,0.07)',
+              background: 'rgba(0,0,0,0.06)',
               opacity: inView ? 1 : 0,
               transition: `opacity 0.3s ease ${1 + i * 0.08}s`,
             }}
           />
         ))}
+
+        {/* Printed cable text — repeating like real wire insulation — moved AFTER rings */}
+        <div
+          className="absolute inset-0 flex items-center px-10"
+          style={{
+            opacity: inView ? 1 : 0,
+            transition: 'opacity 0.6s ease 1.2s',
+          }}
+        >
+          <div className="flex w-full justify-around items-center">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span
+                key={i}
+                className="text-[8px] font-bold tracking-[0.3em] whitespace-nowrap leading-none flex-shrink-0"
+                style={{ color: 'rgba(20,20,30,0.6)' }}
+              >
+                {text}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
