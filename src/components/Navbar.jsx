@@ -81,7 +81,7 @@ export default function Navbar() {
       <div className="hidden md:flex flex-col items-center">
         <nav
           aria-label="Main Navigation"
-          className="glass rounded-t-full rounded-b-none p-1.5 pb-0 flex items-center gap-1 shadow-2xl"
+          className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl"
         >
           {NAV_ITEMS.map(({ id, label }) => (
             <a
@@ -100,10 +100,10 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Pipe fused to the bottom of the nav */}
+        {/* Pipe below the nav */}
         <div
           className="w-full overflow-hidden"
-          style={{ height: 6, ...pipeTrack, borderRadius: '0 0 999px 999px' }}
+          style={{ height: 6, ...pipeTrack, borderRadius: '999px' }}
         >
           <div ref={pipeDesktopRef} style={pipeFill} />
         </div>
@@ -116,7 +116,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-t-full rounded-b-none px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all"
+            className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all"
           >
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
               {activeLabel}
@@ -131,7 +131,7 @@ export default function Navbar() {
           {/* Pipe fused to the bottom of the toggle */}
           <div
             className="w-full overflow-hidden"
-            style={{ height: 6, ...pipeTrack, borderRadius: '0 0 999px 999px' }}
+            style={{ height: 6, ...pipeTrack, borderRadius: '999px' }}
           >
             <div ref={pipeMobileRef} style={pipeFill} />
           </div>
