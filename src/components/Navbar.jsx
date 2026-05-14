@@ -135,11 +135,11 @@ export default function Navbar() {
           className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
           {/* Brand Logo */}
-          <div className="pl-6 pr-4 border-r border-brand-black/5 mr-2">
+          <div className="pl-8 pr-6 border-r border-brand-black/10 mr-2 flex items-center">
             <img 
               src="/brand_assets/brand_logo_with_name_black.png" 
               alt="GOKULRAM ELECTRICALS" 
-              className="h-8 w-auto object-contain"
+              className="h-10 w-auto object-contain transition-transform hover:scale-105"
             />
           </div>
 
@@ -179,7 +179,7 @@ export default function Navbar() {
               <img 
                 src="/brand_assets/logo_black.png" 
                 alt="GOKULRAM" 
-                className="h-6 w-6 object-contain"
+                className="h-8 w-8 object-contain"
               />
               <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
                 {activeLabel}
