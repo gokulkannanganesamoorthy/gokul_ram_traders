@@ -150,7 +150,7 @@ export default function Navbar() {
             <img
               src="/brand_assets/brand_logo_with_name_black.png"
               alt="GOKULRAM ELECTRICALS"
-              className="h-12 w-auto object-contain transition-transform hover:scale-105 shrink-0"
+              className="h-auto w-20 object-contain transition-transform hover:scale-105 shrink-0"
             />
           </div>
 
@@ -163,7 +163,7 @@ export default function Navbar() {
                 scrollTo(id);
               }}
               aria-current={active === id ? 'page' : undefined}
-              className={`px-8 py-4 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap ${
+              className={`px-4 lg:px-6 xl:px-8 py-4 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap ${
                 active === id
                   ? 'bg-brand-black text-brand-white shadow-xl'
                   : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
@@ -194,7 +194,7 @@ export default function Navbar() {
           >
             <div className="flex items-center gap-4 pr-2">
               <img
-                src="/brand_assets/logo_black.png"
+                src="/brand_assets/logo_white.png"
                 alt="GOKULRAM"
                 className="h-10 w-10 object-contain shrink-0"
               />

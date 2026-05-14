@@ -151,7 +151,7 @@ export default function Products() {
               className={`transition-all duration-1000 group relative ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="border-b border-brand-black/10 pb-8 md:pb-12 group-hover:border-brand-black transition-all h-full flex flex-col min-h-[320px] cursor-pointer">
+              <div className="border border-brand-black/5 rounded-3xl p-6 md:p-8 hover:border-brand-black/15 transition-all h-full flex flex-col min-h-[320px] cursor-pointer bg-white/50">
                 <div className="flex justify-between items-start mb-6 md:mb-8">
                   <span className="text-[10px] font-mono text-brand-gray-400">
                     {cat.id}

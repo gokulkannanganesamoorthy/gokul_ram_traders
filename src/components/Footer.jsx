@@ -18,7 +18,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-transparent" role="contentinfo">
-      <div className="container-wide pb-12 md:pb-16 pt-0">
+      <div className="container-wide pb-28 md:pb-16 pt-0">
         {/* Internal Link Grid — signals sitelinks to Google */}
         <nav aria-label="Footer Navigation" className="mb-16 hidden">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
