@@ -61,22 +61,10 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-fit px-4 md:px-0">
-      {/* Scroll Progress Pipe */}
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-brand-gray-100 rounded-full overflow-hidden border border-black/[0.03] shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]">
-        <div
-          className="h-full rounded-full will-change-transform"
-          style={{
-            transform: `scaleX(${progress})`,
-            transformOrigin: 'left',
-            background: 'linear-gradient(to bottom, #1a1a1a 0%, #555 35%, #888 50%, #555 65%, #1a1a1a 100%)',
-          }}
-        />
-      </div>
-
       {/* Desktop Pill Nav */}
       <nav
         aria-label="Main Navigation"
-        className="hidden md:flex glass rounded-full p-1.5 items-center gap-1 shadow-2xl"
+        className="hidden md:flex glass rounded-full p-1.5 items-center gap-1 shadow-2xl relative"
       >
         {NAV_ITEMS.map(({ id, label }) => (
           <a
@@ -87,13 +75,30 @@ export default function Navbar() {
               scrollTo(id);
             }}
             aria-current={active === id ? 'page' : undefined}
-            className={`px-8 py-3.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap ${
+            className={`relative px-8 py-3.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap group ${
               active === id
                 ? 'bg-brand-black text-brand-white shadow-xl'
                 : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
             }`}
           >
-            {label}
+            <span className="relative z-10">{label}</span>
+            {active === id && (
+              <div
+                className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[2px] rounded-full overflow-hidden"
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                }}
+              >
+                <div
+                  className="h-full rounded-full transition-transform duration-150 origin-left"
+                  style={{
+                    transform: `scaleX(${progress})`,
+                    background:
+                      'linear-gradient(to right, #888 0%, #fff 50%, #888 100%)',
+                  }}
+                />
+              </div>
+            )}
           </a>
         ))}
       </nav>
@@ -104,26 +109,40 @@ export default function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
-          className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all"
+          className="glass rounded-full px-8 py-4 flex flex-col items-center gap-1 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
         >
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
-            {activeLabel}
-          </span>
-          <svg
-            width="10"
-            height="6"
-            viewBox="0 0 10 6"
-            fill="none"
-            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          >
-            <path
-              d="M1 1L5 5L9 1"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
+              {activeLabel}
+            </span>
+            <svg
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+            >
+              <path
+                d="M1 1L5 5L9 1"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          {/* Integrated Mobile Progress Pipe */}
+          <div className="w-12 h-[3px] bg-brand-gray-100 rounded-full mt-1 overflow-hidden relative border border-black/[0.03]">
+            <div
+              className="h-full rounded-full transition-transform duration-150 origin-left"
+              style={{
+                transform: `scaleX(${progress})`,
+                background:
+                  'linear-gradient(to bottom, #1a1a1a 0%, #555 35%, #888 50%, #555 65%, #1a1a1a 100%)',
+              }}
             />
-          </svg>
+          </div>
         </button>
 
         {isOpen && (
