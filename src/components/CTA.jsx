@@ -96,7 +96,7 @@ export default function CTA() {
                     <br />
                     Chatrapatti Main Road,
                     <br />
-                    Rajapalayam 626108
+                    Rajapalayam - 626108
                   </a>
                   <a
                     href="https://maps.app.goo.gl/7Xjbt1dYqnoMBvtg7"
