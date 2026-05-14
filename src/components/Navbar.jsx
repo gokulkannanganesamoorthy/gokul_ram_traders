@@ -12,23 +12,15 @@ export default function Navbar() {
   const [active, setActive] = useState('home');
   const [isOpen, setIsOpen] = useState(false);
 
-  // Ref-tracked active id — avoids stale closure in the rAF loop
-  const activeIdRef    = useRef('home');
   const pipeDesktopRef = useRef(null);
   const pipeMobileRef  = useRef(null);
   const rafRef         = useRef(null);
 
-  /* Per-section progress: pipe fills 0→100% through the active section.
-     Brands & Contact get the same full-range pipe as Home & Products. */
+  /* Global scroll progress — direct DOM, zero lag */
   useEffect(() => {
     const tick = () => {
-      const el = document.getElementById(activeIdRef.current);
-      let pct = 0;
-      if (el) {
-        const rect       = el.getBoundingClientRect();
-        const scrolledIn = -rect.top;           // positive once top passes viewport
-        pct = Math.min(100, Math.max(0, (scrolledIn / el.offsetHeight) * 100));
-      }
+      const scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollH > 0 ? (window.scrollY / scrollH) * 100 : 0;
       const val = `${pct}%`;
       if (pipeDesktopRef.current) pipeDesktopRef.current.style.width = val;
       if (pipeMobileRef.current)  pipeMobileRef.current.style.width  = val;
@@ -48,7 +40,6 @@ export default function Navbar() {
         ([entry]) => {
           if (entry.isIntersecting) {
             setActive(id);
-            activeIdRef.current = id;           // keep ref in sync
             history.replaceState(null, '', id === 'home' ? '/' : `/#${id}`);
           }
         },
