@@ -16,19 +16,21 @@ export default function Navbar() {
   const pipeMobileRef  = useRef(null);
   const rafRef         = useRef(null);
 
-  /* Equal-bucket global progress — uses absolute offsetTop positions.
-     Each section's range = its start → next section's start (Contact → page end).
-     No dead zones, no getBoundingClientRect lag. */
+  /* Equal-bucket global progress with correct section boundaries.
+     Bug: contact.offsetTop (6972) > scrollMax (6867) so secStart was unreachable.
+     Fix: last section starts when it first enters the viewport (offsetTop - innerHeight),
+          and all boundaries are clamped to be monotonically increasing. */
   useEffect(() => {
     const SECTION_IDS = NAV_ITEMS.map((n) => n.id);
-    const BUCKET = 100 / SECTION_IDS.length; // 20% each
-    const NAV_H  = 80; // navbar height offset
+    const N      = SECTION_IDS.length;
+    const BUCKET = 100 / N;
+    const NAV_H  = 80;
 
     const tick = () => {
-      const scrollY    = window.scrollY;
-      const scrollMax  = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollY   = window.scrollY;
+      const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
 
-      // Snap to 100% at bottom
+      // Bottom of page → full pipe
       if (scrollMax <= 0 || scrollY >= scrollMax - 2) {
         const v = '100%';
         if (pipeDesktopRef.current) pipeDesktopRef.current.style.width = v;
@@ -37,35 +39,33 @@ export default function Navbar() {
         return;
       }
 
+      // Build section start boundaries:
+      // • Normal sections  → offsetTop - navH  (fills when top crosses nav)
+      // • Last section     → offsetTop - innerHeight (fills when section ENTERS viewport from below)
+      // Then enforce monotonically increasing so no gaps exist.
+      const starts = SECTION_IDS.map((id, i) => {
+        const el = document.getElementById(id);
+        if (!el) return (i / N) * scrollMax;
+        return i === N - 1
+          ? el.offsetTop - window.innerHeight   // Contact: visible-from-bottom trigger
+          : el.offsetTop - NAV_H;
+      });
+
+      // Clamp: ensure each start >= previous start + 10 and <= scrollMax
+      for (let i = 1; i < starts.length; i++) {
+        starts[i] = Math.min(scrollMax, Math.max(starts[i], starts[i - 1] + 10));
+      }
+      starts.push(scrollMax); // final boundary
+
       let pct = 0;
-
-      for (let i = 0; i < SECTION_IDS.length; i++) {
-        const el     = document.getElementById(SECTION_IDS[i]);
-        if (!el) continue;
-
-        // Section starts when its top scrolls under the navbar
-        const secStart = el.offsetTop - NAV_H;
-
-        // Section ends where the next one begins (Contact ends at scrollMax)
-        const nextEl   = SECTION_IDS[i + 1] ? document.getElementById(SECTION_IDS[i + 1]) : null;
-        const secEnd   = nextEl ? nextEl.offsetTop - NAV_H : scrollMax;
+      for (let i = 0; i < N; i++) {
+        const secStart = starts[i];
+        const secEnd   = starts[i + 1];
         const secRange = Math.max(1, secEnd - secStart);
-
         const scrolledIn = scrollY - secStart;
 
-        if (scrolledIn < 0) {
-          // Haven't entered this section yet
-          pct = i * BUCKET;
-          break;
-        }
-
-        if (scrolledIn >= secRange) {
-          // Fully past — continue to next
-          if (i === SECTION_IDS.length - 1) pct = 100;
-          continue;
-        }
-
-        // Inside this section
+        if (scrolledIn < 0) { pct = i * BUCKET; break; }
+        if (scrolledIn >= secRange) { if (i === N - 1) pct = 100; continue; }
         pct = i * BUCKET + (scrolledIn / secRange) * BUCKET;
         break;
       }
@@ -79,6 +79,7 @@ export default function Navbar() {
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
+
 
 
   /* Active section tracker */
