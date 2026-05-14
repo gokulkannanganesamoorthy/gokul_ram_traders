@@ -190,7 +190,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-8 py-4 flex items-center gap-6 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
+            className="glass rounded-full px-8 py-4 flex items-center justify-between gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
           >
             <div className="flex items-center gap-3">
               <img
