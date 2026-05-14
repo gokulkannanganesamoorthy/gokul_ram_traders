@@ -77,9 +77,9 @@ export default function Stats() {
                 <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gray-400 mb-6 md:mb-8 text-center md:text-left">
                   {stat.label}
                 </p>
-                <p className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums text-center md:text-left">
+                <div className="text-5xl md:text-8xl font-light tracking-tighter mb-4 tabular-nums flex justify-center md:justify-start">
                   <Counter value={stat.value} inView={inView} />
-                </p>
+                </div>
                 <p className="text-brand-gray-600 font-medium text-sm md:text-base text-center md:text-left">
                   {stat.sub}
                 </p>
