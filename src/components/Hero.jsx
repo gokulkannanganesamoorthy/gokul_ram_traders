@@ -20,10 +20,10 @@ export default function Hero() {
         <div
           className={`mb-16 mask-reveal ${inView ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          <h1 className="mask-reveal-content text-7xl md:text-[10rem] lg:text-[13rem] font-light tracking-tighter leading-[0.8]">
-            Gokul Ram
+          <h1 className="mask-reveal-content text-7xl md:text-[10rem] lg:text-[13rem] font-medium tracking-tighter leading-[0.8] uppercase text-brand-black">
+            GOKULRAM
             <br />
-            <span className="font-medium text-brand-black">Electricals</span>
+            ELECTRICALS
           </h1>
         </div>
 

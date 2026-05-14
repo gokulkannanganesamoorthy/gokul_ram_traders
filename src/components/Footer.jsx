@@ -17,10 +17,7 @@ export default function Footer() {
   };
 
   return (
-    <footer
-      className="bg-transparent"
-      role="contentinfo"
-    >
+    <footer className="bg-transparent" role="contentinfo">
       <div className="container-wide pb-12 md:pb-16 pt-0">
         {/* Internal Link Grid — signals sitelinks to Google */}
         <nav aria-label="Footer Navigation" className="mb-16 hidden">
@@ -42,22 +39,29 @@ export default function Footer() {
         </nav>
 
         {/* Bottom strip */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-6 text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">
-          <div className="flex gap-8">
-            <a
-              href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand-black transition-colors"
-            >
-              WhatsApp
-            </a>
-            <a
-              href="mailto:mecrjpm@gmail.com"
-              className="hover:text-brand-black transition-colors"
-            >
-              Email
-            </a>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-brand-black/5 text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">
+          <div className="flex items-center gap-8">
+            <img
+              src="/brand_assets/brand_logo_with_name_black.png"
+              alt="GOKULRAM ELECTRICALS"
+              className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+            />
+            <div className="flex gap-8">
+              <a
+                href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-black transition-colors"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="mailto:mecrjpm@gmail.com"
+                className="hover:text-brand-black transition-colors"
+              >
+                Email
+              </a>
+            </div>
           </div>
 
           <div className="text-center md:text-right space-y-1">

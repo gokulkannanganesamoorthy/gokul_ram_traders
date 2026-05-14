@@ -134,6 +134,15 @@ export default function Navbar() {
           aria-label="Main Navigation"
           className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
+          {/* Brand Logo */}
+          <div className="pl-6 pr-4 border-r border-brand-black/5 mr-2">
+            <img 
+              src="/brand_assets/brand_logo_with_name_black.png" 
+              alt="GOKULRAM ELECTRICALS" 
+              className="h-8 w-auto object-contain"
+            />
+          </div>
+
           {NAV_ITEMS.map(({ id, label }) => (
             <a
               key={id}
@@ -166,9 +175,16 @@ export default function Navbar() {
             aria-label="Toggle navigation"
             className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
           >
-            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
-              {activeLabel}
-            </span>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/brand_assets/logo_black.png" 
+                alt="GOKULRAM" 
+                className="h-6 w-6 object-contain"
+              />
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
+                {activeLabel}
+              </span>
+            </div>
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
               className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             >
