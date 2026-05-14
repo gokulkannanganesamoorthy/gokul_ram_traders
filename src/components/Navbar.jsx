@@ -146,13 +146,21 @@ export default function Navbar() {
           className="glass rounded-full p-2 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
           {/* Brand Logo */}
-          <div className="pl-10 pr-8 border-r border-brand-black/10 mr-4 flex items-center shrink-0">
+          <a 
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('home');
+            }}
+            aria-label="Home"
+            className="pl-10 pr-8 border-r border-brand-black/10 mr-4 flex items-center shrink-0 cursor-pointer"
+          >
             <img
               src="/brand_assets/brand_logo_with_name_black.png"
               alt="GOKULRAM ELECTRICALS"
               className="h-auto w-20 object-contain transition-transform hover:scale-105 shrink-0"
             />
-          </div>
+          </a>
 
           {NAV_ITEMS.map(({ id, label }) => (
             <a
