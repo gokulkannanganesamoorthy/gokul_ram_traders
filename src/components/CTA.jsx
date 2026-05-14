@@ -42,7 +42,7 @@ export default function CTA() {
                   +91 93645 01230
                 </a>
                 <p className="text-[10px] text-brand-gray-400">
-                  Available 9AM — 8PM
+                  Available 8:30 AM — 8:30 PM
                 </p>
               </div>
 
@@ -93,6 +93,8 @@ export default function CTA() {
                     className="text-sm md:text-xl font-medium tracking-tight leading-snug block mb-2"
                   >
                     141 B/2 Andalpuram,
+                    <br />
+                    Chatrapatti Main Road,
                     <br />
                     Rajapalayam 626108
                   </a>
