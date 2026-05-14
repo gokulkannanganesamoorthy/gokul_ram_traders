@@ -23,8 +23,8 @@ export default function CTA() {
                 Ready for your <br /> next project?
               </h2>
               <p className="text-brand-gray-600 text-sm leading-relaxed">
-                Contact our technical team for wholesale pricing, stock
-                availability, and installation support.
+                Contact our team for wholesale pricing, stock availability, and
+                installation support.
               </p>
             </div>
 
@@ -42,7 +42,7 @@ export default function CTA() {
                   +91 93645 01230
                 </a>
                 <p className="text-[10px] text-brand-gray-400">
-                  Available : Mon - Sat | 8:30 AM — 8:30 PM
+                  Available : Mon - Sat | 8:30 AM - 8:30 PM
                 </p>
               </div>
 
