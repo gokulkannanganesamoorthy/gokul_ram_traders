@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center md:text-right space-y-1">
-            <p>© {new Date().getFullYear()} Gokul Ram Electricals</p>
+            <p>© {new Date().getFullYear()} GOKULRAM ELECTRICALS</p>
             <p className="opacity-40">
               Authorized Wholesale Supplier — Rajapalayam, Tamil Nadu
             </p>

@@ -70,7 +70,7 @@ export default function PageLoader() {
           <circle cx="36" cy="36" r="3" fill="#555" />
         </svg>
         <p className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-gray-400">
-          Gokul Ram Electricals
+          GOKULRAM ELECTRICALS
         </p>
       </div>
     </div>

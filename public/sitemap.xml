@@ -11,6 +11,13 @@
 
   <!-- Section deep links — signals content structure to Google -->
   <url>
+    <loc>https://gokulramelectricals.in/#about</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+
     <loc>https://gokulramelectricals.in/#products</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -22,13 +29,6 @@
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://gokulramelectricals.in/#about</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
   </url>
 
   <url>

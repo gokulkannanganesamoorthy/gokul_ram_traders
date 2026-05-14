@@ -28,7 +28,7 @@ export default function WhyUs() {
     <section
       id="about"
       ref={ref}
-      aria-label="About Gokul Ram Electricals"
+      aria-label="About GOKULRAM ELECTRICALS"
       className="section-padding bg-transparent relative overflow-hidden"
     >
       <div className="container-wide relative z-10">

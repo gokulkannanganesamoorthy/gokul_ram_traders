@@ -2,7 +2,7 @@
 // Cylindrical look via gradient, with brand text printed on the insulation like real cables
 import { useInView } from '../hooks/useInView';
 
-const WIRE_TEXTS = ['GOKUL RAM ELECTRICALS'];
+const WIRE_TEXTS = ['GOKULRAM ELECTRICALS'];
 
 export default function WireDivider({ label }) {
   const [ref, inView] = useInView({ once: true, rootMargin: '-10% 0px' });

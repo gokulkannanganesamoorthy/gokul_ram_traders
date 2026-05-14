@@ -1,6 +1,6 @@
-# Gokul Ram Electricals
+# GOKULRAM ELECTRICALS
 
-> Premium website for Gokul Ram Electricals — Tamil Nadu's trusted electrical & plumbing wholesaler since 2009.
+> Premium website for GOKULRAM ELECTRICALS — Tamil Nadu's trusted electrical & plumbing wholesaler since 2009.
 
 **Live:** https://gokulramelectricals.com
 
@@ -70,6 +70,6 @@ public/
 
 ## Brand
 
-**Gokul Ram Electricals**  
+**GOKULRAM ELECTRICALS**  
 141 B/2, Andalpuram, Chatrapatti Main Road  
 Rajapalayam – 626108, Tamil Nadu, India

@@ -12,7 +12,7 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      aria-label="Home - Gokul Ram Electricals"
+      aria-label="Home - GOKULRAM ELECTRICALS"
       className="min-h-screen flex items-center justify-center pt-20 bg-transparent relative overflow-hidden"
     >
       <div className="container-wide relative z-10 text-center">
