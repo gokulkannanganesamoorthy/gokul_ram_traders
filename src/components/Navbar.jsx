@@ -61,14 +61,14 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-fit px-4 md:px-0">
-      {/* Scroll Progress Bar */}
-      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[1px] bg-brand-black/5 hidden md:block overflow-hidden">
+      {/* Scroll Progress Pipe */}
+      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-brand-gray-100 rounded-full overflow-hidden border border-black/[0.03] shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]">
         <div
-          className="h-full bg-brand-black"
+          className="h-full rounded-full will-change-transform"
           style={{
             transform: `scaleX(${progress})`,
             transformOrigin: 'left',
-            willChange: 'transform',
+            background: 'linear-gradient(to bottom, #1a1a1a 0%, #555 35%, #888 50%, #555 65%, #1a1a1a 100%)',
           }}
         />
       </div>
