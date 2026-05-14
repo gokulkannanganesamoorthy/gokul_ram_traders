@@ -81,7 +81,7 @@ export default function Navbar() {
       <div className="hidden md:flex flex-col items-center">
         <nav
           aria-label="Main Navigation"
-          className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl"
+          className="glass rounded-full p-1.5 flex items-center gap-1 shadow-2xl relative overflow-hidden"
         >
           {NAV_ITEMS.map(({ id, label }) => (
             <a
@@ -98,15 +98,12 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-        </nav>
 
-        {/* Pipe below the nav */}
-        <div
-          className="w-full overflow-hidden"
-          style={{ height: 6, ...pipeTrack, borderRadius: '999px' }}
-        >
-          <div ref={pipeDesktopRef} style={pipeFill} />
-        </div>
+          {/* Pipe inside the nav — bottom edge */}
+          <div className="absolute bottom-0 left-0 right-0 overflow-hidden" style={{ height: 5, ...pipeTrack }}>
+            <div ref={pipeDesktopRef} style={pipeFill} />
+          </div>
+        </nav>
       </div>
 
       {/* ── MOBILE ──────────────────────────────────────── */}
@@ -116,7 +113,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all"
+            className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
           >
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
               {activeLabel}
@@ -126,15 +123,12 @@ export default function Navbar() {
             >
               <path d="M1 1L5 5L9 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </button>
 
-          {/* Pipe fused to the bottom of the toggle */}
-          <div
-            className="w-full overflow-hidden"
-            style={{ height: 6, ...pipeTrack, borderRadius: '999px' }}
-          >
-            <div ref={pipeMobileRef} style={pipeFill} />
-          </div>
+            {/* Pipe inside the toggle — bottom edge */}
+            <div className="absolute bottom-0 left-0 right-0 overflow-hidden" style={{ height: 5, ...pipeTrack }}>
+              <div ref={pipeMobileRef} style={pipeFill} />
+            </div>
+          </button>
         </div>
 
         {isOpen && (
