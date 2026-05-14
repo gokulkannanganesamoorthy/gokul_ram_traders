@@ -161,8 +161,8 @@ export default function Products() {
                     <span className="text-[9px] uppercase tracking-widest font-bold text-brand-gray-400 group-hover:text-brand-black transition-colors duration-300">
                       View Brands
                     </span>
-                    {/* Icon — pulses on/off on mobile, hover on desktop */}
-                    <div className="md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500">
+                    {/* Icon — always full black, scales up on hover */}
+                    <div className="transition-transform duration-300 ease-out group-hover:scale-150 group-hover:-rotate-12">
                       <CategoryIcon name={cat.name} alwaysActive={iconActive} />
                     </div>
                   </div>
