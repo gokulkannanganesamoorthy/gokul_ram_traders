@@ -2,29 +2,29 @@
 
 > Premium website for GOKULRAM ELECTRICALS — Tamil Nadu's trusted electrical & plumbing wholesaler since 2009.
 
-**Live:** https://gokulramelectricals.com
+**Live:** https://gokulramelectricals.in
 
 ---
 
 ## Tech Stack
 
-| Tool | Version |
-|---|---|
-| React | 19 |
-| Vite | 6 |
-| Tailwind CSS | 4 |
-| Framer Motion | Latest |
-| Lenis | Latest |
+| Tool          | Version |
+| ------------- | ------- |
+| React         | 19      |
+| Vite          | 6       |
+| Tailwind CSS  | 4       |
+| Framer Motion | Latest  |
+| Lenis         | Latest  |
 
 ## Features
 
-- ⚡ Framer Motion scroll-triggered animations
-- 🌊 Lenis ultra-smooth scrolling
-- 🎨 Premium dark design with amber/gold accents
-- 📱 Fully responsive
-- 🔍 SEO optimized (OG, Twitter cards, JSON-LD schema)
-- 🗺️ robots.txt + sitemap.xml
-- ✍️ Fluid responsive typography system (`fonts.css`)
+- Framer Motion scroll-triggered animations
+- Lenis ultra-smooth scrolling
+- Premium dark design with amber/gold accents
+- Fully responsive
+- SEO optimized (OG, Twitter cards, JSON-LD schema)
+- robots.txt + sitemap.xml
+- Fluid responsive typography system (`fonts.css`)
 
 ## Pages / Sections
 

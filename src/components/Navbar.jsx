@@ -139,8 +139,8 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-fit px-4 md:px-0">
-      {/* ── DESKTOP ─────────────────────────────────────── */}
-      <div className="hidden md:flex flex-col items-center">
+      {/* ── DESKTOP ──────────────────────────────────────── */}
+      <div className="hidden lg:flex flex-col items-center">
         <nav
           aria-label="Main Navigation"
           className="glass rounded-full p-2 flex items-center gap-1 shadow-2xl relative overflow-hidden"
@@ -184,7 +184,7 @@ export default function Navbar() {
       </div>
 
       {/* ── MOBILE ──────────────────────────────────────── */}
-      <div className="md:hidden relative flex flex-col items-center">
+      <div className="lg:hidden relative flex flex-col items-center">
         <div className="flex flex-col items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}

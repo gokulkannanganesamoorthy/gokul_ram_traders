@@ -55,7 +55,7 @@ export default function WireDivider({ label }) {
             transition: 'opacity 0.6s ease 1.2s',
           }}
         >
-          <div className="flex w-full justify-around items-center">
+          <div className="flex w-full items-center gap-12 md:justify-around md:gap-0">
             {Array.from({ length: 4 }).map((_, i) => (
               <span
                 key={i}
