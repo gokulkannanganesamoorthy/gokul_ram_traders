@@ -190,15 +190,15 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-8 py-4 flex items-center gap-4 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
+            className="glass rounded-full px-8 py-4 flex items-center gap-6 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
           >
             <div className="flex items-center gap-3">
               <img
                 src="/brand_assets/logo_white.png"
                 alt="GOKULRAM"
-                className="h-10 w-10 object-contain"
+                className="h-10 w-10 object-contain shrink-0"
               />
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
                 {activeLabel}
               </span>
             </div>
@@ -207,7 +207,7 @@ export default function Navbar() {
               height="6"
               viewBox="0 0 10 6"
               fill="none"
-              className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+              className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             >
               <path
                 d="M1 1L5 5L9 1"
