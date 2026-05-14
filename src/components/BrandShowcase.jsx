@@ -4,7 +4,6 @@ import { useInView } from '../hooks/useInView';
 const BRAND_MAPPING = {
   Supreme: ['Pipes', 'Water Tanks', 'Accessories'],
   Ashirwad: ['Pipes'],
-  Global: ['HDPE Pipes'],
   Crompton: ['Fans'],
   'V-Guard': ['Fans', 'Water Heaters'],
   Goldmedal: ['Switches & Accessories'],
@@ -18,7 +17,6 @@ const BRAND_MAPPING = {
   Almonard: ['Ventilation'],
   Vinay: ['Switches & Accessories'],
   Legrand: ['MCBs'],
-  Vijay: ['Pipes'],
   Metro: ['Sanitaryware'],
   Atlas: ['Sanitaryware'],
   KVB: ['Lights'],
@@ -26,16 +24,16 @@ const BRAND_MAPPING = {
   Life: ['Sanitaryware'],
   Zoloto: ['Sanitaryware'],
   Apaxx: ['Accessories'],
-  Meet: ['Sanitaryware'],
   'L&T': ['MCBs Starters'],
   Shivasu: ['MCB Boards'],
 };
 
 const BRANDS = Object.keys(BRAND_MAPPING);
 
-const ALL_CATEGORIES = ['All', ...Array.from(
-  new Set(Object.values(BRAND_MAPPING).flat())
-).sort()];
+const ALL_CATEGORIES = [
+  'All',
+  ...Array.from(new Set(Object.values(BRAND_MAPPING).flat())).sort(),
+];
 
 export default function BrandShowcase() {
   const [ref, inView] = useInView({ once: true });
@@ -45,10 +43,11 @@ export default function BrandShowcase() {
   const filteredBrands = useMemo(() => {
     if (activeCategory === 'All') return BRANDS;
     return BRANDS.filter((b) =>
-      BRAND_MAPPING[b].some((cat) =>
-        cat.toLowerCase().includes(activeCategory.toLowerCase()) ||
-        activeCategory.toLowerCase().includes(cat.toLowerCase())
-      )
+      BRAND_MAPPING[b].some(
+        (cat) =>
+          cat.toLowerCase().includes(activeCategory.toLowerCase()) ||
+          activeCategory.toLowerCase().includes(cat.toLowerCase()),
+      ),
     );
   }, [activeCategory]);
 
@@ -117,7 +116,8 @@ export default function BrandShowcase() {
             ))}
           </div>
           <p className="text-[10px] text-brand-gray-400 text-center mt-6 font-medium uppercase tracking-widest">
-            {filteredBrands.length} brand{filteredBrands.length !== 1 ? 's' : ''}
+            {filteredBrands.length} brand
+            {filteredBrands.length !== 1 ? 's' : ''}
             {activeCategory !== 'All' ? ` in ${activeCategory}` : ' total'}
           </p>
         </div>
