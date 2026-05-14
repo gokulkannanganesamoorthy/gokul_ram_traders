@@ -15,7 +15,6 @@ import FloatingContact from './components/FloatingContact';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -62,6 +61,7 @@ function App() {
           <BrandShowcase />
           <PipeJunction />
           <CTA />
+          <WireDivider />
         </main>
         <Footer />
       </div>

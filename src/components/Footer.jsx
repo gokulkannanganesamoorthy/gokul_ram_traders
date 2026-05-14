@@ -42,7 +42,7 @@ export default function Footer() {
         </nav>
 
         {/* Bottom strip */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-brand-black/5 pt-6 text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-6 text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gray-400">
           <div className="flex gap-8">
             <a
               href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
