@@ -8,12 +8,10 @@ export default function PageLoader() {
 
   useEffect(() => {
     const t1 = setTimeout(() => setSpeed(1), 100); // start spinning
-    const t2 = setTimeout(() => setSpeed(2), 2500); // go fast and start fade
-    const t3 = setTimeout(() => setVisible(false), 3200); // unmount
+    const t2 = setTimeout(() => setSpeed(2), 1800); // go fast and start fade
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
     };
   }, []);
 
@@ -40,12 +38,7 @@ export default function PageLoader() {
           viewBox="0 0 72 72"
           fill="none"
           style={{
-            animation:
-              speed === 0
-                ? 'none'
-                : speed === 1
-                  ? 'fan-spin 1s cubic-bezier(0.4,0,0.2,1) infinite'
-                  : 'fan-spin 0.2s linear infinite',
+            animation: speed === 0 ? 'none' : 'fan-spin 0.6s linear infinite',
           }}
         >
           <style>{`
