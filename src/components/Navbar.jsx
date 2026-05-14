@@ -64,7 +64,7 @@ export default function Navbar() {
       {/* Desktop Pill Nav */}
       <nav
         aria-label="Main Navigation"
-        className="hidden md:flex glass rounded-full p-1.5 items-center gap-1 shadow-2xl relative"
+        className="hidden md:flex glass rounded-full p-1.5 items-center gap-1 shadow-2xl relative overflow-hidden"
       >
         {NAV_ITEMS.map(({ id, label }) => (
           <a
@@ -75,32 +75,27 @@ export default function Navbar() {
               scrollTo(id);
             }}
             aria-current={active === id ? 'page' : undefined}
-            className={`relative px-8 py-3.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap group ${
+            className={`relative px-8 py-3.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-all whitespace-nowrap z-10 ${
               active === id
                 ? 'bg-brand-black text-brand-white shadow-xl'
                 : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
             }`}
           >
-            <span className="relative z-10">{label}</span>
-            {active === id && (
-              <div
-                className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[2px] rounded-full overflow-hidden"
-                style={{
-                  background: 'rgba(255,255,255,0.1)',
-                }}
-              >
-                <div
-                  className="h-full rounded-full transition-transform duration-150 origin-left"
-                  style={{
-                    transform: `scaleX(${progress})`,
-                    background:
-                      'linear-gradient(to right, #888 0%, #fff 50%, #888 100%)',
-                  }}
-                />
-              </div>
-            )}
+            {label}
           </a>
         ))}
+
+        {/* Global Progress Pipe - Desktop */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-black/5">
+          <div
+            className="h-full origin-left transition-transform duration-150 ease-out"
+            style={{
+              transform: `scaleX(${progress})`,
+              background:
+                'linear-gradient(to right, #1a1a1a 0%, #555 50%, #1a1a1a 100%)',
+            }}
+          />
+        </div>
       </nav>
 
       {/* Mobile */}
@@ -111,7 +106,7 @@ export default function Navbar() {
           aria-label="Toggle navigation"
           className="glass rounded-full px-8 py-4 flex flex-col items-center gap-1 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden"
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mb-0.5">
             <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black">
               {activeLabel}
             </span>
@@ -132,14 +127,14 @@ export default function Navbar() {
             </svg>
           </div>
 
-          {/* Integrated Mobile Progress Pipe */}
-          <div className="w-12 h-[3px] bg-brand-gray-100 rounded-full mt-1 overflow-hidden relative border border-black/[0.03]">
+          {/* Global Progress Pipe - Mobile */}
+          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-brand-gray-100">
             <div
-              className="h-full rounded-full transition-transform duration-150 origin-left"
+              className="h-full origin-left transition-transform duration-150 ease-out"
               style={{
                 transform: `scaleX(${progress})`,
                 background:
-                  'linear-gradient(to bottom, #1a1a1a 0%, #555 35%, #888 50%, #555 65%, #1a1a1a 100%)',
+                  'linear-gradient(to right, #1a1a1a 0%, #555 50%, #1a1a1a 100%)',
               }}
             />
           </div>
