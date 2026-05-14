@@ -44,7 +44,7 @@ export default function Footer() {
             <img
               src="/brand_assets/brand_logo_with_name_black.png"
               alt="GOKULRAM ELECTRICALS"
-              className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              className="h-10 w-auto object-contain opacity-100 hover:opacity-70 transition-opacity"
             />
             <div className="flex gap-8">
               <a

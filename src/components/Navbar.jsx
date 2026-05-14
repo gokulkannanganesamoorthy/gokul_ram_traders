@@ -138,7 +138,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-fit px-4 md:px-0">
+    <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-max max-w-[100vw]">
       {/* ── DESKTOP ──────────────────────────────────────── */}
       <div className="hidden lg:flex flex-col items-center">
         <nav
