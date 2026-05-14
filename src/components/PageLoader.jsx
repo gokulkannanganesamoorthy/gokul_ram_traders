@@ -9,9 +9,11 @@ export default function PageLoader() {
   useEffect(() => {
     const t1 = setTimeout(() => setSpeed(1), 100); // start spinning
     const t2 = setTimeout(() => setSpeed(2), 1800); // go fast and start fade
+    const t3 = setTimeout(() => setVisible(false), 2400); // completely unmount
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
@@ -19,7 +21,7 @@ export default function PageLoader() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-brand-white transition-opacity duration-500"
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-brand-white transition-opacity duration-500 ${speed === 2 ? 'pointer-events-none' : ''}`}
       style={{ opacity: speed === 2 ? 0 : 1 }}
     >
       <div className="flex flex-col items-center gap-6">
