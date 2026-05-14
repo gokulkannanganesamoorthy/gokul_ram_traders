@@ -55,11 +55,13 @@ export default function WireDivider({ label }) {
             transition: 'opacity 0.6s ease 1.2s',
           }}
         >
-          <div className="flex w-full items-center gap-12 md:justify-around md:gap-0">
+          <div className="flex w-full items-center justify-center gap-12 md:justify-around md:gap-0">
             {Array.from({ length: 4 }).map((_, i) => (
               <span
                 key={i}
-                className="text-[8px] font-bold tracking-[0.3em] whitespace-nowrap leading-none flex-shrink-0"
+                className={`text-[8px] font-bold tracking-[0.3em] whitespace-nowrap leading-none flex-shrink-0 ${
+                  i > 1 ? 'hidden md:block' : ''
+                }`}
                 style={{ color: 'rgba(20,20,30,0.6)' }}
               >
                 {text}
