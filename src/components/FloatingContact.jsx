@@ -1,5 +1,5 @@
-// Floating WhatsApp + Call bar - mobile only, sticky at bottom
 import { useState, useEffect } from 'react';
+import { trackEvent } from '../utils/tracker';
 
 export default function FloatingContact() {
   const [visible, setVisible] = useState(false);
@@ -22,6 +22,7 @@ export default function FloatingContact() {
           <a
             href="tel:+919364501230"
             id="floating-call-btn"
+            onClick={() => trackEvent("Phone Call Clicked", { source: "Mobile Floating Bar" })}
             className="flex-1 flex items-center justify-center gap-2.5 py-3.5 rounded-2xl border-2 border-brand-black text-brand-black font-bold text-[11px] uppercase tracking-widest active:scale-95 transition-transform"
           >
             <svg
@@ -45,6 +46,7 @@ export default function FloatingContact() {
             id="floating-whatsapp-btn"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("WhatsApp Clicked", { source: "Mobile Floating Bar" })}
             className="flex-1 flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-brand-black text-white font-bold text-[11px] uppercase tracking-widest active:scale-95 transition-transform"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

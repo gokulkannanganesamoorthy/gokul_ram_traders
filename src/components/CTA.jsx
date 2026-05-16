@@ -1,4 +1,5 @@
 import { useInView } from '../hooks/useInView';
+import { trackEvent } from '../utils/tracker';
 
 export default function CTA() {
   const [ref, inView] = useInView({ once: true });
@@ -37,6 +38,7 @@ export default function CTA() {
                 </span>
                 <a
                   href="tel:+919364501230"
+                  onClick={() => trackEvent("Phone Call Clicked", { source: "CTA Section" })}
                   className="text-base md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 break-all"
                 >
                   +91 93645 01230
@@ -55,6 +57,7 @@ export default function CTA() {
                   href="https://wa.me/919364501230?text=Hello%20Gokul%20Ram%20Electricals%2C%20I%20would%20like%20to%20enquire%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent("WhatsApp Clicked", { source: "CTA Section" })}
                   className="text-base md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 underline underline-offset-4 decoration-brand-black/10"
                 >
                   Direct Message
@@ -71,6 +74,7 @@ export default function CTA() {
                 </span>
                 <a
                   href="mailto:mecrjpm@gmail.com"
+                  onClick={() => trackEvent("Email Clicked", { source: "CTA Section" })}
                   className="text-[13px] md:text-2xl font-medium tracking-tight hover:text-brand-gray-400 transition-colors block mb-1 md:mb-2 break-all"
                 >
                   mecrjpm@gmail.com
