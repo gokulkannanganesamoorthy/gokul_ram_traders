@@ -198,24 +198,24 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-8 py-4 flex items-center justify-between gap-6 bg-white shadow-2xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
+            className="glass rounded-full px-4 py-2.5 flex items-center justify-between gap-3 bg-white shadow-xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
           >
-            <div className="flex items-center gap-4 pr-2">
+            <div className="flex items-center gap-2.5">
               <img
                 src="/brand_assets/logo_white.png"
                 alt="GOKULRAM"
-                className="h-10 w-10 object-contain shrink-0"
+                className="h-6 w-6 object-contain shrink-0"
               />
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
+              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
                 {activeLabel}
               </span>
             </div>
             <svg
-              width="10"
-              height="6"
+              width="8"
+              height="5"
               viewBox="0 0 10 6"
               fill="none"
-              className={`shrink-0 ml-2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+              className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             >
               <path
                 d="M1 1L5 5L9 1"
@@ -229,7 +229,7 @@ export default function Navbar() {
             {/* Pipe inside the toggle — bottom edge */}
             <div
               className="absolute bottom-0 left-0 right-0 overflow-hidden"
-              style={{ height: 5, ...pipeTrack }}
+              style={{ height: 3, ...pipeTrack }}
             >
               <div ref={pipeMobileRef} style={pipeFill} />
             </div>
@@ -237,7 +237,7 @@ export default function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="absolute top-full mt-2 w-48 glass rounded-[30px] p-2 flex flex-col gap-1 bg-white/90 backdrop-blur-xl shadow-2xl">
+          <div className="absolute top-full mt-2 w-40 glass rounded-2xl p-1.5 flex flex-col gap-0.5 bg-white/90 backdrop-blur-xl shadow-xl">
             {NAV_ITEMS.map(({ id, label }) => (
               <a
                 key={id}
@@ -246,7 +246,7 @@ export default function Navbar() {
                   e.preventDefault();
                   scrollTo(id);
                 }}
-                className={`px-6 py-4 rounded-[20px] text-[10px] uppercase tracking-[0.2em] font-bold transition-all ${
+                className={`px-4 py-2.5 rounded-xl text-[9px] uppercase tracking-[0.2em] font-bold transition-all ${
                   active === id
                     ? 'bg-brand-black text-brand-white'
                     : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
