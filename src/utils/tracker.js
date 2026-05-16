@@ -3,30 +3,36 @@
  */
 
 // Replace this with your actual Discord Webhook URL
-const DISCORD_WEBHOOK_URL = "YOUR_DISCORD_WEBHOOK_URL_HERE";
+const DISCORD_WEBHOOK_URL =
+  'https://discord.com/api/webhooks/1505063519584915586/hIkZ-WKRs-kV9opdTK_8wipWeuCGzUDvzIsqakk-Sa1Ufn0ip8wKkfPMQdqgrQNcs8YE';
 
 export const trackEvent = async (actionName, details = {}) => {
-  if (DISCORD_WEBHOOK_URL === "YOUR_DISCORD_WEBHOOK_URL_HERE") {
-    console.warn("Discord Webhook URL not configured. Event not sent:", actionName);
+  if (DISCORD_WEBHOOK_URL === 'YOUR_DISCORD_WEBHOOK_URL_HERE') {
+    console.warn(
+      'Discord Webhook URL not configured. Event not sent:',
+      actionName,
+    );
     return;
   }
 
   const payload = {
-    username: "Gokul Ram Tracker",
-    avatar_url: "https://gokulramelectricals.in/brand_assets/logo_black.png",
+    username: 'Gokul Ram Tracker',
+    avatar_url: 'https://gokulramelectricals.in/brand_assets/logo_black.png',
     embeds: [
       {
-        title: "🔔 New Customer Interaction",
+        title: '🔔 New Customer Interaction',
         color: 16766720, // Brand yellow/gold color
         fields: [
           {
-            name: "Action",
+            name: 'Action',
             value: actionName,
             inline: true,
           },
           {
-            name: "Time",
-            value: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+            name: 'Time',
+            value: new Date().toLocaleString('en-IN', {
+              timeZone: 'Asia/Kolkata',
+            }),
             inline: true,
           },
           ...Object.entries(details).map(([key, value]) => ({
@@ -36,7 +42,7 @@ export const trackEvent = async (actionName, details = {}) => {
           })),
         ],
         footer: {
-          text: "Gokul Ram Electricals Monitoring",
+          text: 'Gokul Ram Electricals Monitoring',
         },
       },
     ],
@@ -44,13 +50,13 @@ export const trackEvent = async (actionName, details = {}) => {
 
   try {
     await fetch(DISCORD_WEBHOOK_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     });
   } catch (error) {
-    console.error("Failed to send webhook:", error);
+    console.error('Failed to send webhook:', error);
   }
 };
