@@ -13,8 +13,33 @@ import PageLoader from './components/PageLoader';
 import PipeJunction from './components/PipeJunction';
 import FloatingContact from './components/FloatingContact';
 import ScrollToTop from './components/ScrollToTop';
+import { trackEvent } from './utils/tracker';
+
+const getDeviceType = () => {
+  const ua = navigator.userAgent;
+  if (/Mobi|Android|iPhone|iPad/i.test(ua)) return '📱 Mobile';
+  if (/Tablet|iPad/i.test(ua)) return '📟 Tablet';
+  return '🖥️ Desktop';
+};
+
+const getReferrer = () => {
+  if (!document.referrer) return 'Direct / Bookmark';
+  try {
+    return new URL(document.referrer).hostname;
+  } catch {
+    return document.referrer;
+  }
+};
 
 function App() {
+  // Fire once on page load — notify Discord of a new visitor
+  useEffect(() => {
+    trackEvent('👀 New Site Visit', {
+      Device: getDeviceType(),
+      'Came From': getReferrer(),
+    });
+  }, []);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
