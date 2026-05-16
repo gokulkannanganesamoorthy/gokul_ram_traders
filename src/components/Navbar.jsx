@@ -198,21 +198,21 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
-            className="glass rounded-full px-4 py-2.5 flex items-center justify-between gap-3 bg-white shadow-xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
+            className="glass rounded-full px-5 py-3 flex items-center justify-between gap-4 bg-white shadow-xl active:scale-95 transition-all relative overflow-hidden min-w-fit"
           >
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-3">
               <img
                 src="/brand_assets/logo_white.png"
                 alt="GOKULRAM"
-                className="h-6 w-6 object-contain shrink-0"
+                className="h-8 w-8 object-contain shrink-0"
               />
-              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-black whitespace-nowrap">
                 {activeLabel}
               </span>
             </div>
             <svg
-              width="8"
-              height="5"
+              width="9"
+              height="6"
               viewBox="0 0 10 6"
               fill="none"
               className={`shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -229,7 +229,7 @@ export default function Navbar() {
             {/* Pipe inside the toggle — bottom edge */}
             <div
               className="absolute bottom-0 left-0 right-0 overflow-hidden"
-              style={{ height: 3, ...pipeTrack }}
+              style={{ height: 4, ...pipeTrack }}
             >
               <div ref={pipeMobileRef} style={pipeFill} />
             </div>
@@ -237,7 +237,7 @@ export default function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="absolute top-full mt-2 w-40 glass rounded-2xl p-1.5 flex flex-col gap-0.5 bg-white/90 backdrop-blur-xl shadow-xl">
+          <div className="absolute top-full mt-2 w-44 glass rounded-2xl p-2 flex flex-col gap-0.5 bg-white/90 backdrop-blur-xl shadow-xl">
             {NAV_ITEMS.map(({ id, label }) => (
               <a
                 key={id}
@@ -246,7 +246,7 @@ export default function Navbar() {
                   e.preventDefault();
                   scrollTo(id);
                 }}
-                className={`px-4 py-2.5 rounded-xl text-[9px] uppercase tracking-[0.2em] font-bold transition-all ${
+                className={`px-5 py-3 rounded-xl text-[10px] uppercase tracking-[0.2em] font-bold transition-all ${
                   active === id
                     ? 'bg-brand-black text-brand-white'
                     : 'text-brand-gray-400 hover:text-brand-black hover:bg-brand-gray-100'
